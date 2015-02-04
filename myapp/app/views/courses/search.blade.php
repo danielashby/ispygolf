@@ -49,8 +49,9 @@
                     
                     </div>
                 
-
+							<div id="content">
                             
+                            <div class="listing">
                             @foreach ($courses as $course)
                             
                             	
@@ -76,8 +77,11 @@
                                  </div>
                             
                             @endforeach
+                            </div>
                             
                           {{ $courses->links() }}
+                          
+                          </div>
                          
                    
                     

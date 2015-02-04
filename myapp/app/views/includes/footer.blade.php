@@ -47,6 +47,12 @@ $(document).ready(function() {
 		});
 	};
     
+	$('#content').infinitescroll({
+		navSelector  : ".pagination",            
+		nextSelector : ".pagination li:last a:last",    
+		itemSelector : "#content .listing",
+		loadingText  : "Loading More Courses..."
+	 });
 
 	if( $('#main-search').length )  
 	{	
