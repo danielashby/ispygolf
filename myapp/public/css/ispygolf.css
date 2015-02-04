@@ -1,0 +1,136 @@
+body {
+  padding-top: 80px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* Full Screen Background Image */
+.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  z-index:-1;
+  
+}
+
+
+
+.navbar
+{
+	min-height:55px;
+	font-size:13px;
+}
+
+.navbar .dropdown-menu
+{
+	background-color:#000;
+}
+
+	/* Menu link Styling */
+	.navbar a, .navbar a:visited { color: #FFF !important;}
+	.navbar a:hover, .navbar a:focus { color: #999 !important; }
+
+	
+	/* CUSTOM LINK COLORS */
+	.navbar .grey , .navbar .grey:visited {color: #999 !important; }
+	.navbar .grey:hover { color: #666 !important; }
+
+
+/*   HOME PAGE */
+
+ 	#main-search
+	{
+		margin-top:70px;
+	}
+	
+	#homesearch_input
+	{
+		height:59px;
+		width:100%;
+		
+		background-color:#FFF;
+		padding-left:10px;
+		
+		font-size:19px;	
+
+		-moz-border-radius:5px; /* Firefox */
+		-webkit-border-radius: 5px; /* Safari, Chrome */
+		-khtml-border-radius: 5px; /* KHTML */
+		border-radius: 5px; /* CSS3 */
+		
+		behavior:url("border-radius.htc");
+		border-color:#FFF;
+		border: 6px solid rgba(256,256,256, 0.3);
+		
+		/*Allow transparrent border */
+						
+		-moz-background-clip: padding;     /* Firefox 3.6 */
+		-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+		background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+		
+		font-family: 'PT Sans', sans-serif;
+						
+		
+	}
+	
+	#homesearch_submit
+	{
+		width:100%;
+		height:59px;	
+		
+		font-size:19px;	
+		
+		background-color:#cdde54;
+		
+		-moz-border-radius:5px; /* Firefox */
+		-webkit-border-radius: 5px; /* Safari, Chrome */
+		-khtml-border-radius: 5px; /* KHTML */
+		border-radius: 5px; /* CSS3 */
+		
+		behavior:url("border-radius.htc");
+		border-color:#FFF;
+		
+		border: 6px solid rgba(256,256,256, 0.3);
+		
+		/*Allow transparrent border */
+						
+		  -moz-background-clip: padding;     /* Firefox 3.6 */
+		  -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+		  background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+		
+	}	
+	
+	
+	
+	
+	#main-search  h1{font-size: 33px;}
+	#main-search  h2{font-size: 16px;}
+	
+	
+	#main-pop-box
+	{
+	bottom:30px;position:fixed;right:30px;
+	}
+	
+    .ui-autocomplete-loading{background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
+	}
+	
+	
+/* misc */
+
+	/* Shadow options */
+	.shadow-big
+	{
+		text-shadow: 1px 1px 2px rgba(48, 48, 48, 0.68);
+	}
+	
+	.text_white {color:#FFF !important;}
