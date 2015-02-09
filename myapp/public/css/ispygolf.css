@@ -52,7 +52,7 @@ body {
 		margin-top:70px;
 	}
 	
-	#homesearch_input
+	#mainsearch_input
 	{
 		height:59px;
 		width:100%;
@@ -82,7 +82,7 @@ body {
 		
 	}
 	
-	#homesearch_submit
+	#mainsearch_submit
 	{
 		width:100%;
 		height:59px;	

@@ -10,11 +10,11 @@
 $(document).ready(function() {
 
 
-	if( $('#homesearch_input').length )       
+	if( $('#mainsearch_input').length )       
 	{
 		//HOME PAGE SEARCH AJAX
 
-		$( "#homesearch_input" ).autocomplete({
+		$( "#mainsearch_input" ).autocomplete({
 		  source: "/ajax/coursesearch",
 		  minLength: 0,
 		  select: function( event, ui ) {

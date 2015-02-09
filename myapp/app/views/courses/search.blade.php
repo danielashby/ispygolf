@@ -5,12 +5,34 @@
 			<div class="row">
 
   			 {{-- This comment will not be in the rendered HTML --}}
-
-                <div class="col-md-12">
-                
                 	<h1 class="page-header">
                     Search Results
                     </h1>
+                    
+                    
+                    <div class="col-md-8">
+
+                           
+                            <form action="/golfcourses" method="post">
+                            <div class="col-md-9">
+                                <input type="text" value="" id="mainsearch_input" autocorrect="off" name="place" placeholder="Where do you want to play?" />                
+                                <input type="hidden" value="" name="country" id="country" >                       
+                                <input type="hidden" value="" name="region" id="region" >
+                                <input type="hidden" value="" name="town" id="town" >
+                                <input type="hidden" value=""  name="name" id="name">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="text_white" id="mainsearch_submit" value="Search"/>
+                            </div>
+                            </form>
+                         
+                    
+                </div>
+                    
+                    
+                <div class="col-md-12">
+                
+
                     
                     
                     <div class="row">
@@ -19,28 +41,21 @@
 
                         
                         {{ Form::open(array('action' => 'PagesController@courses','method'=>'get','id'=>'filter_options','name'=>'filter_options')) }}
-                        {{ Form::select('vpp', array(
-                        				'20' => '20 Per Page', 
-                                        '30' => '30 Per Page',
-                                        '40' => '40 Per Page',
-                                        '50' => '50 Per Page',
-                                        '60' => '60 Per Page'),
-                                         $venues_per_page) }}
+
                         
                         {{ Form::select('vorder', array(
-                        				'PHL' => 'Price (High to Low)', 
-                        				'PLH' => 'Price (Low to High)', 
-                                        'VAZ' => 'Venue (A to Z)',  
-                                        'VZA' => 'Venue (Z to A)', 
-                                        'CAZ' => 'County (A to Z)', 
-                                        'CZA' => 'County (Z to A)', 
-                                        'SAZ' => 'Style (A to Z)', 
-                                        'SZA' => 'Style (Z to A)', 
-                                        'VAZ' => 'IDR (Hard to Easy)',  
-                                        'VZA' => 'IDR (Easy to Hard)'),  
+                        				'PHL' => 'Price - High to Low', 
+                        				'PLH' => 'Price - Low to High', 
+                                        'VAZ' => 'Venue - A to Z',  
+                                        'VZA' => 'Venue - Z to A', 
+                                        'CAZ' => 'County - A to Z', 
+                                        'CZA' => 'County - Z to A', 
+                                        'SAZ' => 'Style - A to Z', 
+                                        'SZA' => 'Style - Z to A', 
+                                        'IHE' => 'IDR - Hard to Easy',  
+                                        'IEH' => 'IDR - Easy to Hard'),  
                                         $venues_order) }}
                                         
-                        {{ Form::submit('Re-Order') }}
                         {{ Form::close() }}
                         
                                    
@@ -78,8 +93,10 @@
                             
                             @endforeach
                             </div>
-                            
-                          {{ $courses->links() }}
+                          
+
+                          {{ $courses->appends(Input::except('page'))->links() }}
+                      
                           
                           </div>
                          
