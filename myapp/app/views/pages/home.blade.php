@@ -21,14 +21,15 @@
                            
                             <form action="/golfcourses" method="post">
                             <div class="col-md-9">
-                                <input type="text" value="" id="mainsearch_input" autocorrect="off" name="place" placeholder="Where do you want to play?" />                
+                                <input type="text" value="" id="mainsearch_input" class="homesearch_input" autocorrect="off" name="place" placeholder="Where do you want to play?" />                
                                 <input type="hidden" value="" name="country" id="country" >                       
                                 <input type="hidden" value="" name="region" id="region" >
                                 <input type="hidden" value="" name="town" id="town" >
+                                <input type="hidden" value="" name="postcode" id="postcode" >
                                 <input type="hidden" value=""  name="name" id="name">
                             </div>
                             <div class="col-md-3">
-                                <input type="submit" class="text_white" id="mainsearch_submit" value="Search"/>
+                                <input type="submit" class="text_white homesearch_submit" value="Search"/>
                             </div>
                             </form>
                          

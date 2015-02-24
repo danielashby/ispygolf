@@ -19,7 +19,7 @@ class AjaxController extends \BaseController {
 				  $a_json_row["value"] =  $club->CLUB_ADD1;
 				  $a_json_row["label"] =   $club->CLUB_ADD1;
 				  $a_json_row["type"] = "name";
-				  $a_json_row["imgsrc"] =  '/images/course.png';
+				  $a_json_row["imgsrc"] =  'flag';
 				  array_push($a_json, $a_json_row);
 		
 		}
@@ -32,7 +32,7 @@ class AjaxController extends \BaseController {
 				  $a_json_row["value"] =  $club->CLUB_COUNTRY;
 				  $a_json_row["label"] =   $club->CLUB_COUNTRY;
 				  $a_json_row["type"] = "country";
-				  $a_json_row["imgsrc"] =  '/images/marker.jpg';
+				  $a_json_row["imgsrc"] =  'globe';
 				  array_push($a_json, $a_json_row);
 		
 		}
@@ -45,7 +45,7 @@ class AjaxController extends \BaseController {
 				  $a_json_row["value"] =  $club->CLUB_COUNTY;
 				  $a_json_row["label"] =   $club->CLUB_COUNTY;
 				  $a_json_row["type"] = "region";
-				  $a_json_row["imgsrc"] =  '/images/marker.jpg';
+				  $a_json_row["imgsrc"] =  'record';
 				  array_push($a_json, $a_json_row);
 		
 		}
@@ -58,11 +58,26 @@ class AjaxController extends \BaseController {
 				  $a_json_row["value"] =  $club->CLUB_CITY;
 				  $a_json_row["label"] =  $club->CLUB_CITY;
 				  $a_json_row["type"] =   "town";
-				  $a_json_row["imgsrc"] = '/images/marker.jpg';
+				  $a_json_row["imgsrc"] = 'record';
 				  array_push($a_json, $a_json_row);
 		}
 		
 		}
+		
+		$postcodes  = Postcodes::where('POSTCODE', 'LIKE', "$searchStr%" )->get()->take(3);
+		 
+		foreach($postcodes as $postcode){
+		if ( strpos( strtolower( $postcode->POSTCODE),strtolower( $searchStr ) ) !== false ) {
+				  $a_json_row["id"] =     $postcode->POSTCODE;
+				  $a_json_row["value"] =  $postcode->POSTCODE;
+				  $a_json_row["label"] =  $postcode->POSTCODE;
+				  $a_json_row["type"] =   "postcode";
+				  $a_json_row["imgsrc"] = 'record';
+				  array_push($a_json, $a_json_row);
+		}
+		
+		}		
+		
 
 		return Response::json( $a_json );
 	

@@ -31,7 +31,7 @@ $(document).ready(function() {
 		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
 			return $( "<li></li>" )
 				.data( "ui-autocomplete-item", item )
-				.append( "<span style='text-align:left;'><a>" + "<span class='item-icon'><img width='24' height='24' src='" + item.imgsrc + "' /></span>" + item.label+ "</a></span>" )
+				.append( "<span style='text-align:left;'><a>" + "<span class='glyphicon glyphicon-med glyphicon-"+item.imgsrc+"' aria-hidden='true'> </span>&nbsp;" + item.label+ "</a></span>" )
 				.appendTo( ul );
 		};
 	
@@ -51,7 +51,12 @@ $(document).ready(function() {
 		navSelector  : ".pagination",            
 		nextSelector : ".pagination li:last a:last",    
 		itemSelector : "#content .listing",
-		loadingText  : "Loading More Courses..."
+		
+		loading: {
+			msgText  : "<em>Loading More Results...</em>",
+			msg: null
+		},
+		bufferPx: 80
 	 });
 
 	if( $('#main-search').length )  

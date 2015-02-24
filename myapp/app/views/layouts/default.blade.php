@@ -9,6 +9,8 @@
   <body>
   
 	@include('includes.header')
+    
+    @yield('searchbar')
 
     <div class="container">
 

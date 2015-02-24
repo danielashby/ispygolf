@@ -1,7 +1,21 @@
 body {
-  padding-top: 80px;
-  font-family: 'PT Sans', sans-serif;
+  padding-top: 55px;
+  font-family: 'PT Sans', sans-serif !important;
 }
+
+
+a
+{
+	color: #999999;
+	text-decoration:none;
+}
+
+a:focus, a:hover
+{
+	color: #666666 !important;
+	text-decoration:none !important;
+}
+
 
 /* Full Screen Background Image */
 .bg {
@@ -52,7 +66,7 @@ body {
 		margin-top:70px;
 	}
 	
-	#mainsearch_input
+	.homesearch_input
 	{
 		height:59px;
 		width:100%;
@@ -62,27 +76,26 @@ body {
 		
 		font-size:19px;	
 
-		-moz-border-radius:5px; /* Firefox */
-		-webkit-border-radius: 5px; /* Safari, Chrome */
-		-khtml-border-radius: 5px; /* KHTML */
-		border-radius: 5px; /* CSS3 */
+		-moz-border-radius:5px; 
+		-webkit-border-radius: 5px; 
+		-khtml-border-radius: 5px; 
+		border-radius: 5px; 
 		
 		behavior:url("border-radius.htc");
 		border-color:#FFF;
 		border: 6px solid rgba(256,256,256, 0.3);
 		
-		/*Allow transparrent border */
 						
-		-moz-background-clip: padding;     /* Firefox 3.6 */
-		-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
-		background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+		-moz-background-clip: padding;     
+		-webkit-background-clip: padding;  
+		background-clip: padding-box;     
 		
 		font-family: 'PT Sans', sans-serif;
 						
 		
 	}
 	
-	#mainsearch_submit
+	.homesearch_submit
 	{
 		width:100%;
 		height:59px;	
@@ -91,30 +104,37 @@ body {
 		
 		background-color:#cdde54;
 		
-		-moz-border-radius:5px; /* Firefox */
-		-webkit-border-radius: 5px; /* Safari, Chrome */
-		-khtml-border-radius: 5px; /* KHTML */
-		border-radius: 5px; /* CSS3 */
+		-moz-border-radius:5px;
+		-webkit-border-radius: 5px; 
+		-khtml-border-radius: 5px; 
+		border-radius: 5px; 
 		
 		behavior:url("border-radius.htc");
 		border-color:#FFF;
 		
 		border: 6px solid rgba(256,256,256, 0.3);
 		
-		/*Allow transparrent border */
 						
-		  -moz-background-clip: padding;     /* Firefox 3.6 */
-		  -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
-		  background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+		  -moz-background-clip: padding;    
+		  -webkit-background-clip: padding;  
+		  background-clip: padding-box;      
 		
 	}	
 	
 	
+	/* MISC */
 	
+	.full-width
+	{
+		width:100%;
+	}
 	
 	#main-search  h1{font-size: 33px;}
 	#main-search  h2{font-size: 16px;}
 	
+	.glyphicon-med {
+		font-size:16px;
+	}
 	
 	#main-pop-box
 	{
@@ -125,7 +145,80 @@ body {
 	}
 	
 	
-/* misc */
+/* SEARCH PAGE */
+
+
+	.search-header
+	{
+		background-color:#e4e4e4;
+		padding-top:25px;
+		padding-bottom:25px;
+	}
+	
+	
+	.search-result
+	{
+		margin-top:30px;
+	}
+	
+	.search-result-bx
+	{
+		font-size:12px;color:#FFF;
+		color:#333333;
+		text-align:center;
+		
+		border-bottom: #000;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		
+	}
+	
+	.search-result-bx H3,H2	
+	{
+		margin-top:0px;
+		margin-bottom:10px;
+		font-size: 30px;
+		
+	}
+	
+	.search-result-bx p
+	{
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	
+	.search-result-bx h2
+	{
+		font-size:40px;
+		
+	}
+	
+	.search-result-bx-black
+	{
+		background-color:rgba(51,51,51,1);
+	}
+	
+	.search-result-bx-red
+	{
+		background-color:rgba(158,11,15,1);
+	}
+	
+	.search-result-bx-green
+	{
+		background-color:rgba(140,154,39,1);
+	}
+	
+	
+	.search-result-bx-brown
+	{
+		background-color:rgba(156,117,23,1);
+	}
+	.search-result-bx-blue
+	{
+		background-color:rgba(0,33,87,1);
+	}
+	
+	/* misc */
 
 	/* Shadow options */
 	.shadow-big
