@@ -26,7 +26,6 @@
                                 <input type="hidden" value="" name="region" id="region" >
                                 <input type="hidden" value="" name="town" id="town" >
                                 <input type="hidden" value="" name="postcode" id="postcode" >
-                                <input type="hidden" value=""  name="name" id="name">
                             </div>
                             <div class="col-md-3">
                                 <input type="submit" class="text_white homesearch_submit" value="Search"/>

@@ -57,21 +57,10 @@ class PagesController extends \BaseController {
 		//SETUP SORT ORDER
 		if($orderby_opt1=="PLH") 
 		{
-			$orderby_colname_1 = "COURSES.COURSE_HIGH_WEEK";
+			$orderby_colname_1 = "COURSES.COURSE_LOW_WEEK";
 			$orderby_colsort_1 = "asc";
 		}
-		else if($orderby_opt1=="IEH") 
-		{
-			$orderby_colname_1 = "COURSES.COURSE_IDR_CHAMP";
-			$orderby_colsort_1 = "asc";	
-		
-		}
-		else if($orderby_opt1=="IHE") 
-		{
-			$orderby_colname_1 = "COURSES.COURSE_IDR_CHAMP";
-			$orderby_colsort_1 = "desc";	
-		
-		}
+
 		else if($orderby_opt1=="VAZ") 
 		{
 			$orderby_colname_1 = "CLUBS.CLUB_ADD1";
@@ -95,23 +84,11 @@ class PagesController extends \BaseController {
 			$orderby_colname_1 = "CLUBS.CLUB_COUNTY";
 			$orderby_colsort_1 = "desc";	
 		
-		}		
-		else if($orderby_opt1=="SAZ") 
-		{
-			$orderby_colname_1 = "COURSES.COURSE_STYLE";
-			$orderby_colsort_1 = "asc";	
-		
-		}
-		else if($orderby_opt1=="SZA") 
-		{
-			$orderby_colname_1 = "COURSES.COURSE_STYLE";
-			$orderby_colsort_1 = "desc";	
-		
-		}		
+		}			
 		else
 		{
 			//Default sort order 
-			$orderby_colname_1 = "COURSES.COURSE_HIGH_WEEK";
+			$orderby_colname_1 = "COURSES.COURSE_LOW_WEEK";
 			$orderby_colsort_1 = "desc";
 		}
 		
@@ -154,17 +131,11 @@ class PagesController extends \BaseController {
 		->orderBy('SYS_CLUBS_USERS.ONSTOP','ASC')->orderBy($orderby_colname_1,$orderby_colsort_1)
 		->paginate($selected_venues_per_page);
 	
-		//SQL DEBUG OUTPUT
-		$queries = DB::getQueryLog();
-		$last_query = end($queries);
-		//dd($last_query);
-		//echo $last_query['query'];
-		//die;
-		//exit;
+
 		
 		/*		->havingRaw("'DISTANCE' < 100"	, []) */
 		
-		
+		$i=0;
 		//SET STANDARD FIELD OPTIONS FOR VIEW
 		foreach($courses as $course)
 		{
@@ -172,7 +143,6 @@ class PagesController extends \BaseController {
 			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}
 			
 			//CHECK FOR SPECIAL OFFERS 
-			
 			$todaysdate = date("Y-m-d");	
 	
 			if ($course->SPECIAL1_UNTIL > $todaysdate or $course->SPECIAL2_UNTIL > $todaysdate or
@@ -188,7 +158,44 @@ class PagesController extends \BaseController {
 			 {
 			 	$course->SPECIAL_OFFER = null;
 			 }
+			 
+			 //MEMBERSHIP AVAILABLE
+			if($course->CLUB_MEMBER == "0") {$course->CLUB_MEMBER = null;}
+			
+			 
+			 //FORMAT COURSE PRICE IF ZERO
+			 if($course->COURSE_LOW_WEEK==0){$course->COURSE_LOW_WEEK="-";}
+			 
+			//FIND PACKAGES FOR CLUB
+			 
+			$datenow = date('d-m-Y');		 
 		
+			$packages = DB::table('HOTELS')			
+			->leftJoin('PACKAGES', 'HOTELS.HOTEL_ID', '=', 'PACKAGES.PACKAGE_HOTEL_ID')
+			->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
+			->where('HOTELS.HOTEL_CLUB_ID','=',$course->CLUB_ID)
+			->whereRaw('DATE(PACKAGES.PACKAGE_VALID_TO) > ?', [$datenow])
+			->groupBy('HOTEL_ID')->get();
+			
+			$package_array[$i]['COURSE_HOTEL_IMAGE'] = "";
+			
+			foreach($packages as $package)
+			{
+				
+				$package_array[$i]['COURSE_HOTEL_IMAGE'] = $package->IMG_SEARCH1;
+				
+			}
+			
+			$i++;
+			
+			
+					//SQL DEBUG OUTPUT
+		//$queries = DB::getQueryLog();
+		//$last_query = end($queries);
+		//dd($last_query);
+		//echo $last_query['query'];
+		//die;
+		//exit;
 			
 		}
 		
@@ -199,8 +206,13 @@ class PagesController extends \BaseController {
 		return View::make('courses.search')->with('courses',$courses)
 										   ->with('venues_per_page',$selected_venues_per_page)
 										   ->with('obo1',$orderby_opt1)
-										   ->with('place',$place);
-		
+										   ->with('place',$place)
+										   ->with('region',$search_region)
+										   ->with('country',$search_country)
+										   ->with('postcode',$search_postcode)
+										   ->with('town',$search_town)
+										   ->with('packages',$package_array);
+
 	}
 	
 	

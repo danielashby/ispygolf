@@ -42,7 +42,7 @@ $(document).ready(function() {
 	{
 		//Search Options Submit
 		$("#filter_options").change(function() {
-		   $(this).submit();
+		   $("#searchheadform").submit();
 		
 		});
 	};
