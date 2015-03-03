@@ -127,12 +127,15 @@
                                     		<div class="col-md-8">                                   
                                 				
                                                	
-                                               
+                                                @if (isset($course->PACKAGE_IMG))
                                                 <h4>Golf Breaks Available</h4>
+                                                <h4>View Latest</h4>
                                                 
-                                                <img src="/hotelimages/" />
-                                           
-        
+                                                <div id="search-package-img">
+                                                <img src="/hotelimages/{{$course->PACKAGE_IMG}}" />
+                                                </div>
+                    							@endif                       
+        			
                                                 
                                            </div>
                                             <div class="col-md-4">

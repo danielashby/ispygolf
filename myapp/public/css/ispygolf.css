@@ -184,6 +184,22 @@ a:focus, a:hover
 		
 	}
 	
+	#search-package-img
+	{
+		position: absolute;
+		left: 210px;
+		bottom: 20px;
+		
+	}
+	
+	#search-package-img img
+	{
+		/*width:95%;*/
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		border:rgba(255,255,255,1.00) solid 3px;
+	}
 	
 	.largepad
 	{

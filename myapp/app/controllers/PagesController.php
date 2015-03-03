@@ -116,13 +116,13 @@ class PagesController extends \BaseController {
 		//->whereRaw('\'DISTANCE\' < 10'	, []) 
 									
 		$courses = DB::table('CLUBS')			
-		->leftJoin('SERVICES', 'CLUBS.CLUB_ID', '=', 'SERVICES.SERV_ID')
-		->leftJoin('COURSES', 'CLUBS.CLUB_ID', '=', 'COURSES.CLUB_ID')
+		->leftJoin('SERVICES', 'CLUBS.CLUBS_ID', '=', 'SERVICES.SERV_ID')
+		->leftJoin('COURSES', 'CLUBS.CLUBS_ID', '=', 'COURSES.CLUB_ID')
 		->leftJoin('IMAGEREFS', 'COURSES.COURSE_ID', '=', 'IMAGEREFS.IMG_COURSE_ID')
 		->leftJoin('SPECOFFERS', 'COURSES.CLUB_ID', '=', 'SPECOFFERS.OFFER_ID')
-		->leftJoin('FACILITIES', 'CLUBS.CLUB_ID', '=', 'FACILITIES.FAC_ID')				
-		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUB_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
-		->leftJoin('ISPYCARD', 'COURSES.CLUB_ID', '=', 'ISPYCARD.CLUB_ID')		
+		->leftJoin('FACILITIES', 'CLUBS.CLUBS_ID', '=', 'FACILITIES.FAC_ID')				
+		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUBS_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
+		->leftJoin('ISPYCARD', 'COURSES.CLUB_ID', '=', 'ISPYCARD.CLUB_ID')	
 		->where('SYS_CLUBS_USERS.COURSES','1')
 		->where('CLUBS.CLUB_ADD1','like','%'.$search_name."%")
 		->where('CLUBS.CLUB_COUNTRY','like','%'.$search_country."%")
@@ -131,7 +131,9 @@ class PagesController extends \BaseController {
 		->orderBy('SYS_CLUBS_USERS.ONSTOP','ASC')->orderBy($orderby_colname_1,$orderby_colsort_1)
 		->paginate($selected_venues_per_page);
 	
-
+		//->leftJoin('HOTELS','COURSES.CLUB_ID','=','HOTELS.HOTEL_CLUB_ID')	
+		//->leftJoin('PACKAGES','COURSES.CLUB_ID','=','PACKAGES.PACKAGE_HOTEL_ID')
+		//->leftJoin('HOTELS_IMAGEREFS','COURSES.CLUB_ID','=','HOTELS_IMAGEREFS.IMG_HOTEL_ID')
 		
 		/*		->havingRaw("'DISTANCE' < 100"	, []) */
 		
@@ -139,6 +141,9 @@ class PagesController extends \BaseController {
 		//SET STANDARD FIELD OPTIONS FOR VIEW
 		foreach($courses as $course)
 		{
+			
+			$clubid = $course->CLUBS_ID;
+			
 			//SET DEFAULT IMAGE
 			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}
 			
@@ -173,31 +178,32 @@ class PagesController extends \BaseController {
 			$packages = DB::table('HOTELS')			
 			->leftJoin('PACKAGES', 'HOTELS.HOTEL_ID', '=', 'PACKAGES.PACKAGE_HOTEL_ID')
 			->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
-			->where('HOTELS.HOTEL_CLUB_ID','=',$course->CLUB_ID)
-			->whereRaw('DATE(PACKAGES.PACKAGE_VALID_TO) > ?', [$datenow])
-			->groupBy('HOTEL_ID')->get();
+			->where('HOTELS.HOTEL_CLUB_ID','=',$clubid)
+			->get();
 			
-			$package_array[$i]['COURSE_HOTEL_IMAGE'] = "";
 			
+			$course->PACKAGE_IMG = null;
+			
+			//->whereRaw('DATE(PACKAGES.PACKAGE_VALID_TO) > ?', [$datenow])
+									
 			foreach($packages as $package)
 			{
 				
-				$package_array[$i]['COURSE_HOTEL_IMAGE'] = $package->IMG_SEARCH1;
+				$course->PACKAGE_IMG =  $package->IMG_IMAGE1_THUMB;
+				if($course->PACKAGE_IMG == "") { $course->PACKAGE_IMG = null; }
 				
 			}
+						
+		}
+		
 			
-			$i++;
-			
-			
-					//SQL DEBUG OUTPUT
+	    //SQL DEBUG OUTPUT
 		//$queries = DB::getQueryLog();
 		//$last_query = end($queries);
 		//dd($last_query);
 		//echo $last_query['query'];
 		//die;
 		//exit;
-			
-		}
 		
 		
 
@@ -210,8 +216,7 @@ class PagesController extends \BaseController {
 										   ->with('region',$search_region)
 										   ->with('country',$search_country)
 										   ->with('postcode',$search_postcode)
-										   ->with('town',$search_town)
-										   ->with('packages',$package_array);
+										   ->with('town',$search_town);
 
 	}
 	

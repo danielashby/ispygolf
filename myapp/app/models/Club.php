@@ -29,7 +29,7 @@ class Club extends Eloquent {
 	/* Has one to many relationship with courses */
 	public function courses()
     {
-        return $this->hasMany('Course','CLUB_ID','CLUB_ID');
+        return $this->hasMany('Course','CLUB_ID','CLUBS_ID');
     }
 
 }
