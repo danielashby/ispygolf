@@ -7,6 +7,10 @@
 
 <script type="text/javascript">
 
+
+                        
+
+
 $(document).ready(function() {
 
 
@@ -47,7 +51,7 @@ $(document).ready(function() {
 		});
 	};
     
-	$('#content').infinitescroll({
+	$('.listing').infinitescroll({
 		navSelector  : ".pagination",            
 		nextSelector : ".pagination li:last a:last",    
 		itemSelector : "#content .listing",
