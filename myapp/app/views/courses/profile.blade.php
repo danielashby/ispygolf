@@ -2,40 +2,651 @@
 
 @section('content')
 
-			<div class="row">
-
-   
-
-                <div class="col-md-12">
-                    <div  class="row">
+<div  class="row profile-main-banner">
                         
-                        <div class="col-md-12">
+      <div class="col-md-9 profile-main-banner-images">
+                                
+              <img class="img-responsive"  src="/clubimages/0000000034_0001_large.jpg" />
                     
-                            <h1 >{{ $club->CLUB_ADD1 }}</h1>
-                         
-                         
-                                                  
-                         	@foreach ($club->courses as $course)
-                            
-                            
-                            	
-                                <h3>{{$course->COURSE_NAME}}</h3>
+       </div>
+                           
+       <div class="col-md-3 profile-main-banner-info">
+                    		
+		  <div class="col-md-12 largepad" style="text-align:center;padding-top:30px;"> <img src="/images/testlogo.jpg" /></div>
                                 
-                                <?php //var_dump($course); die; exit; ?>
-                                <img src="{{$course->courseimages()->first()->IMG_SEARCH2}}" />
-                                
+          <div class="col-md-8 profile-main-banner-bx largepad"><h2>0845 303 38367</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
                             
-                            @endforeach
+          <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="#">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="#"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
+                            
+          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a href="#">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a href="#"><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
+
+       </div>
                          
-                         
-                         </div>
-                         
+    </div>
+                    
+                    
+                <div class="row">
+
+                    <div class="col-md-12"> 
+                        
+                        <nav class="navbar profile-navbar navbar-default">
+                             
+                          <div class="container-fluid">
+                                  
+                               <div class="navbar-header">
+              
+                                   <a class="navbar-brand selected noleftmargin" href="#">OVERVIEW</a>
+                                   <a class="navbar-brand" href="#">COURSE DETAILS</a>
+                                   <a class="navbar-brand" href="#">GREEN FEES</a>
+                                   <a class="navbar-brand" href="#">GOLF DAYS</a>
+                                   <a class="navbar-brand" href="#">MEMBERSHP</a>
+                                   <a class="navbar-brand" href="#">GOLF BREAKS</a>
+                                   <a class="navbar-brand" href="#">REVIEWS</a>
+                                   <a class="navbar-brand" href="#">LOCATION</a>
+              
+                             </div>
+                              
+                          </div>
+                            
+                        </nav>
+    
                     </div>
                     
                 </div>
                     
+                    
+                <div class="row top-buffer">
+	
+                    <div class="col-md-6">
+                        
+                        <h3>GLEANEAGLES GOLF COUNTRY CLB SPA</h3>
+            
+                        <p><i>Host venue for The 2014 Ryder Cup Matches, the PGA Centenary 
+                            Course, created by Jack Nicklaus, is a modern classic. The course 
+                            begins by playing southeast towards the glen, sweeping up the 
+                            Ochil Hills to the summit of the pass below Ben Shee which joins 
+                            it to Glendevon. A feature of the PGA Centenary Course is the feast 
+                            of views of the spectacular countryside in which Gleneagles is set. 
+                            Putting on the two-tier second green, you are distracted by the lush 
+                            panorama of the rich Perthshire straths. As you move westwards 
+                            over the next few holes, the rugged Grampians come into view on 
+                            the right, then distantly purple ahead, Ben Vorlich and the 
+                        mountains above the Trossachs.</i></p>
+                        
+                    </div>
+                        
+                        
+                    <div class="col-md-3">                   
+                           
+                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
+                         <p>LOW SEASON GREEN FROM</p>
+                         <h2>£110.00</h2>
+                       </div>   
+                           
+                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
+                         <p>HIGH SEASON GREEN FROM</p>
+                         <h2>£140.00</h2>
+                       </div>  
+                           
+                      <div class="profile-headline-bx largepad col-sm-2 col-md-12">
+                        <p>AVAILABLE</p>
+                        <h2>ISPY EXTRA</h2>                      
+                       </div>  
+                       
+                       
+                   </div>
+                       
+                       
+                   <div class="col-md-3">                   
+                           
+                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
+                         <p>BEST RATES</p>
+                         <h2>GOLF DAYS</h2>
+                       </div>   
+                           
+                       <div class="col-sm-2 col-md-4">
+                            <a class="btn btn-default profile-headline-bx-btn" href="#">ENQUIRE </a>
+                       </div>  
+                           
+                           
+                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
+                         <p>BOOK ONLINE</p>
+                         <h2>TEE TIMES</h2>
+                       </div>  
+                           
+                           
+                       <div class="col-sm-2 col-md-4">
+                            <a class="btn btn-default profile-headline-bx-btn" href="#"> BOOK  </a>
+                       </div>  
+    
+                       
+                       
+                   </div>
+                    
+               </div>
+                   
+                   
+               <div class="row  top-buffer-lg">
+                   
+               	 
+<div class="col-md-4">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>Two Play for the Price of One <br>
+                                  Available to 31 March 2015</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
 
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>
+                 
+<div class="col-md-4">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>Two Play for the Price of One <br>
+                                  Available to 31 March 2015</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
 
-            </div> 
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>
+                 
+ <div class="col-md-4">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>Two Play for the Price of One <br>
+                                  Available to 31 March 2015</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>                                                     
+                    
+                     
+                    
+                                	 
+                   	
+                   
+                   
+               </div>
+               
+               
+               <div class="row">
+               
+               <div class="col-md-12  top-buffer-lg text-center">
+               	 
+                   <img src="/images/icon_video.png" />
+                   
+                   <h2>WATCH THE VIDEO</h2>
+                   
+                   <h3><i>GLENEAGLES</i></h3>
+               
+               </div>
+               
+               
+               </div>
+               
+               
+               <div class="row top-buffer-lg">
+               
+                   <div class="col-md-12">
+                   
+                       <div class="embed-responsive embed-responsive-16by9">
+                       
+                            <iframe src="https://www.youtube.com/embed/V_f4pqtQOFQ"></iframe>
+                       
+                       </div>
+                   
+                   </div>
+    
+               </div>
+               
+               
+               <div class="row top-buffer-lg">
+               
+                   <div class="col-md-6 text-center">
+                   
+                       <img src="/images/icon_trophy.png" alt=""/>
+                       
+                       <h3>2015 OPEN COMPETETIONS AT GLENEAGLES</h3>
+                       <h5> <i>FOR FURTHER INFORMATION CALL 0845 303 8367</i> </h5>
+                       
+                       <h3><strong>MENS OPEN</strong> - 25/07/2015</h3>
+                       <h3><strong>WOMENS OPEN</strong> - 26/07/2015</h3>
+                       <h3><strong>JNIORS OPEN</strong> - 28/07/2015</h3>
+     
+                   </div>
+                   
+                   <div class="col-md-6 text-center">
+    
+                       <img src="/images/icon_facilities.png" width="99" height="100" alt=""/>
+                       
+                       <h3> THE FOLLOWING FACILITIES ARE AVAILABLE AT </h3>
+                       <h5> <i>GLENEAGLES GOLF & COUNTRY CLUB</i> </h5>
+                   
+                   </div>
+
+               </div>
+               
+               <div class="row top-buffer-lg">
+               
+               		<div class="col-md-9">
+                    
+                    	<img src="/images/golf_breaks.png"  alt=""/>
+
+                    </div>
+                    
+                    <div class="col-md-3">
+                    
+                    	 <div class="profile-headline-bx col-md-12 col-sm-2  largepad">
+                             <p>STAY & PLAY GOLF BREAKS</p>
+                             <h2>AVAILABLE</h2>   
+                          </div>
+ 						  <div class="col-md-12 col-sm-2 ">
+                             <p class="text-left">
+                                 FOR ALL THE LATEST GOLF 
+                                 BREAKS AT GLENEAGLES GOLF 
+                                 & COUNTRY CLUB PLEASE 
+                                 CLICK BELOW.
+                             </p>
+                             
+                          </div>
+                         
+                         
+                         <div class="offset8 col-md-4">
+                         	<a class="btn">VIEW</a>
+                         </div>
+                    
+                    </div>
+               
+               </div>
+               
+               <div class="row top-buffer-lg">
+               
+               		<div class="col-md-9">
+                    
+                    	<img src="/images/golf_days.png"  alt=""/>
+
+                    </div>
+                    
+                    <div class="col-md-3">
+                    
+                         <div class="search-result-bx col-md-12 largepad">
+                             <p>GOLF DAYS FROM</p>
+                             <h2>£110</h2>   
+                             <p class="text-left">
+                                GLENEAGLES GOLF & COUNTRY 
+                                CLUB WELCOMES SOCIETY AND 
+                                CORPORTE GOLF DAYS. FOR 
+                                MORE INFORMATION AND A 
+                                QUOTATION CLICK BELOW.
+                             </p>
+                             
+                         </div>   
+                         
+                         	
+                         
+                         <div class="offset8 col-md-4">
+                            <a class="btn">QUOTE</a>
+                         </div>
+                    
+                    </div>
+               
+               </div>
+               
+               <div class="row top-buffer-lg">
+               
+               		<div class="col-md-9">
+                    
+                    	<img src="/images/membership.png"  alt=""/>
+
+                    </div>
+                    
+                    <div class="col-md-3">
+                    
+                         <div class="search-result-bx col-md-12 largepad">
+                             <p>MEMBERSHIPS ARE CURRENTLYM</p>
+                             <h2>AVAILABLE</h2>   
+                             <p class="text-left">
+                                FOR MORE INFORMATION, ON
+                                MEMBERSHIP AT GLENEAGLES 
+                                GOLF & COUNTRY CLUB PLEASE
+                                ENQUIRE BELOW.
+                             </p>
+                             
+                         </div>   
+                         
+                         	
+                         
+                         <div class="offset8 col-md-4">
+                            <a class="btn">ENQUIRE</a>
+                         </div>
+                    
+                    </div>
+               
+               </div>
+               
+               <div class="row">
+               
+               <div class="col-md-12  top-buffer-lg text-center">
+               	 
+                   <img src="/images/icon_course.png" />
+                   
+                   <h2>THE KINGS COURSE</h2>
+                   
+                   <h3>GLENEAGLES</h3>
+               
+               </div>
+               
+               
+               </div>
+               
+               
+<div class="row top-buffer-lg">
+               
+               		<div class="col-md-9">
+                    
+                    	<img src="/images/course_image.png"  alt=""/>
+
+                    </div>
+                    
+                    <div class="col-md-3">
+                    
+                         <div class="col-md-12 largepad" style="background-color:#cdde54;">
+                             
+                             <h3> VISITORS WELCOME </h3>
+                             
+                         </div>                 
+                    </div>
+               
+               </div>
+               
+               
+				<div class="row">
+
+					
+                    <div class="col-md-12">				
+				
+                	<div class="col-md-12"  style="background-color:#ececec;" >	
+
+                    <div class="col-md-6">
+                        
+                        <h3>THE KING'S COURSE</h3>
+            
+                        <p>The King's Course, opened in 1919, is a masterpiece of design, which 
+                            has tested the aristocracy of golf, both professional and amateur.
+                            James Braid's plan for the King's Course was to test even the best 
+                            players' shot-making skills over the eighteen holes. Selecting the 
+                            right club for each approach shot is the secret on the King's. It is 
+                            certainly one of the most beautiful and exhilarating places to play 
+                            golf in the world, with the springy moorland turf underfoot, the 
+                            sweeping views from the tees all around, the rock-faced mountains 
+                            to the north, the green hills to the south, and the peaks of the 
+                            Trossachs and Ben Vorlich on the western horizon.</p>
+                        
+                    </div>
+                        
+                        
+                    <div class="col-md-3">                   
+                           
+                       <div class="search-result-bx largepad col-sm-2 col-md-12">
+                         <p>LOW SEASON GREEN FROM</p>
+                         <h2>£110.00</h2>
+                       </div>   
+                           
+                       <div class="search-result-bx largepad col-sm-2 col-md-12">
+                         <p>HIGH SEASON GREEN FROM</p>
+                         <h2>£140.00</h2>
+                       </div>  
+                           
+                      <div class="search-result-bx largepad col-sm-2 col-md-12">
+                        <p>AVAILABLE</p>
+                        <h2>ISPY EXTRA</h2>                      
+                       </div>  
+                       
+                       
+                   </div>
+                       
+                       
+                   <div class="col-md-3">                   
+                           
+                       <div class="search-result-bx largepad col-sm-2 col-md-8">
+                         <p>BEST RATES</p>
+                         <h2>GOLF DAYS</h2>
+                       </div>   
+                           
+                       <div class="col-sm-2 col-md-4">
+                            <a class="btn">  ENQUIRE </a>
+                       </div>  
+                           
+                           
+                       <div class="search-result-bx largepad col-sm-2 col-md-8">
+                         <p>BOOK ONLINE</p>
+                         <h2>TEE TIMES</h2>
+                       </div>  
+                           
+                           
+                       <div class="col-sm-2 col-md-4">
+                            <a class="btn">  BOOK  </a>
+                       </div>  
+    
+                       
+                       
+                   </div>
+                   
+                   
+                   </div>
+                   
+                   </div>
+                    
+               </div>
+               
+               
+               <div class="row">
+               
+               <div class="col-md-12  top-buffer-lg text-center">
+               	 
+                   <img src="/images/icon_course.png" />
+                   
+                   <h2>OUR REVIEW</h2>
+                   
+                   <h3>THE KINGS COURSE</h3>
+                   
+                   <h4>GLEANEAGLES</h4>
+                   
+                    <a class="btn">  READ  </a>
+               
+               </div>
+               
+               
+               </div>
+               
+               <div class="row">
+               
+               <div class="col-md-12">
+               
+               <div class="col-md-12  top-buffer-lg text-center" style="background-image: url(/images/golf_monthly_back.png); background-size: 100%;">
+               	 
+                   <img src="/images/icon_golfmonthly.png" />
+                
+                   <h3>TOP 100 COURSES UK&amp;I</h3>
+                   
+                    <h3><i>NO 36</i></h3>
+                    
+                    <p><i>"A MASTERPIECE OF MAVERICK ROUTING BY JAMES BRAID OVER SUBLIME SCOTTISH MOORLAND"; 
+"STILL A GOOD PLACE TO PLAY GOLF SET IN FABULOUS SCENERY"; 
+"SCOTLAND'S ICONIC INLAND MASTERPIECE"; "A GOLF COURSE FIT FOR A KING."</i></p>
+               
+               </div>
+               
+               </div>
+               
+               
+               </div>
+               
+
+				<div class="row">
+               
+                   <div class="col-md-12  top-buffer-lg text-center">
+                     
+                       <img src="/images/icon_map.png" />
+                       
+                       <h4>GLENEAGLES
+                            GOLF CLUB LANE
+                            AUCHTERADER
+                            PERTHSHIRE
+                            SCOTLAND
+                            PY2 3HT</h4>
+                   
+                   </div>
+
+               </div>    
+               
+               
+			  <div class="row">
+               
+                   <div class="col-md-12  top-buffer-lg ">
+                        
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+  function initialize() {
+	  
+	//TODO - ADD IN CLUB LAT AND LONG FOR MAP
+	var clublat =0;
+	var clublon =0; 
+	  
+	var map_canvas = document.getElementById('map-canvas');
+	var map_options = {
+	  center: new google.maps.LatLng(1,2),
+	  zoom: 8,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(map_canvas, map_options)
+	
+	
+    var latLng = new google.maps.LatLng(1,2);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+       labelContent: "{tag_club name}",
+       labelAnchor: new google.maps.Point(22, 0),
+       labelClass: "labels", // the CSS class for the label
+       labelStyle: {opacity: 0.75},
+	   labelInBackground: true	 
+    });	
+	
+	 //TODO - ADD IN CLUB DETAILS TO POPUP
+     var iw = new google.maps.InfoWindow({
+       content: "<strong>club name</strong>line1<br>line2"
+     });
+     google.maps.event.addListener(marker, "click", function (e) { iw.open(map, marker); });	
+	
+	 iw.open(map,marker);
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  
+  </script>
+                        
+                        
+                        <div id="map-canvas" style="height:350px;width:100%"></div>
+                   
+                   </div>
+
+               </div>             
+
+               
+			   <div class="col-md-12  top-buffer-lg">
+               <!-- SPACING DIV -->
+               </div>
+               
+               
+                    
+
+                    
+  
     
 @stop

@@ -4,6 +4,17 @@ body {
 }
 
 
+h3
+{
+	font-size:20px;
+}
+
+p
+{
+	font-size:18px;
+	margin-top:20px;
+}
+
 a
 {
 	color: #333;
@@ -183,12 +194,22 @@ a:focus, a:hover
 		font-size: 21px;
 		
 	}
+  
+  	.search-mainimage
+	{
+	  /*border-radius: 6px;*/
+	  border: solid;
+	  border-width: 1px;
+	  border-color: rgb(216, 215, 215) !important;
+	  width:100%;
+	  border-radius: 6px;
+	}
 	
 	#search-package-img
 	{
 		position: absolute;
 		left: 210px;
-		bottom: 20px;
+		bottom: 0px;
 		
 	}
 	
@@ -226,32 +247,165 @@ a:focus, a:hover
 		
 	}
 	
-	.search-result-bx-black
+/* PROFILE PAGE */
+	
+	.profile-navbar
 	{
-		background-color:rgba(51,51,51,1);
+	
+		border-radius:0px;
+		background-color:#999999 !important;
+		min-height:50px;
 	}
 	
-	.search-result-bx-red
+	.profile-navbar .navbar-brand
 	{
-		background-color:rgba(158,11,15,1);
+		margin-left:10px !important;
 	}
 	
-	.search-result-bx-green
+	.profile-navbar .noleftmargin
 	{
-		background-color:rgba(140,154,39,1);
+		margin-left:0px !important;
+	}
+	
+	.profile-navbar  a:hover
+	{
+		color:#000 !important;
 	}
 	
 	
-	.search-result-bx-brown
+	.profile-navbar  .selected
 	{
-		background-color:rgba(156,117,23,1);
+		background-color:#a6b445;
 	}
-	.search-result-bx-blue
+	
+	
+	.profile-video-title
 	{
-		background-color:rgba(0,33,87,1);
+		text-align:center;
+		padding-top:100px;
+		padding-bottom:100px;
 	}
+	
+	
+	.profile-main-banner-bx
+	{
+		font-size:12px;color:#FFF;
+		color:#333333;
+		text-align:center;
+		
+		border-bottom: #000;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		
+		padding-left:0px;
+		padding-right:0px;
+		
+	}
+	
+	
+	.profile-main-banner-bx-last
+	{
+		border-bottom:none;
+	}
+	
+	.profile-main-banner-bx h2
+	{
+		font-size: 20px;
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+	
+	.profile-headline-bx
+	{
+		font-size:12px;color:#FFF;
+		color:#333333;
+		text-align:center;
+		
+		border-bottom: #000;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		
+		padding-left:0px;
+		padding-right:0px;
+		
+	}
+	
+	.profile-headline-bx-btn
+	{
+		width:85px;
+		margin-top:30px;
+	}
+	
+	.profile-offers-bx-btn
+	{
+		width:85px;
+		margin-top:0px;
+		margin-bottom:10px;
+	}
+
+	.profile-headline-bx-last
+	{
+		border-bottom:none;
+	}
+	
+	.profile-headline-bx h2
+	{
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+	
+	.profile-main-banner-info img
+	{
+		margin-top:5px;
+	}
+	
+	
 	
 	/* misc */
+	
+	
+	/* PADDINGS */
+	
+	.top-buffer-lg { margin-top:70px; }
+	.bottom-buffer-lg { margin-bottom:70px; }
+	
+	.top-buffer { margin-top:35px; }
+	.bottom-buffer { margin-bottom:35px; }
+
+	/* FROMS */
+	
+	label
+	{
+	font-weight: normal !important;
+	}
+
+
+	/* TEXT OPTIONS */
+	
+	.dark-heading
+	{
+		color:#333333 !important;
+	}
+	
+	.light-heading
+	{
+		color:#999999 !important;
+	}
+	
+	.small-lineheight
+	{
+		line-height:0px;	
+	}
+	
+	.text-center
+	{
+		text-align:center;
+	}
+	
+	.text-left
+	{
+		text-align:left;
+	}
 
 	/* Shadow options */
 	.shadow-big
@@ -260,3 +414,106 @@ a:focus, a:hover
 	}
 	
 	.text_white {color:#FFF !important;}
+	
+	
+
+		@media (min-width: 350px)
+	{
+			#search-package-img
+		{
+		  right: 12px;
+		  left:initial;
+		  width:65px;
+		}
+		
+		.search-result-bx h2 {
+		  font-size: 25px;
+		}
+	
+	
+		#search-package-img img
+		{
+			width:100%;
+		}
+	
+		.search-result-bx h3
+		{
+		
+			font-size:14px;
+			padding-bottom:6px;
+		
+		}
+		
+		.search-result-bx
+		{
+			padding:0px;
+		}
+		
+		
+		
+	}
+	
+	
+
+	
+	@media (min-width: 768px)
+	{
+			#search-package-img
+		{
+		  right: 12px;
+		  left:initial;
+		  width:65px;
+		}
+	
+	
+		#search-package-img img
+		{
+			width:100%;
+		}
+	
+		
+		
+		
+	}
+	
+	
+		@media (min-width: 992px){
+		
+		
+		.nav > li > a {
+			padding: 10px 12px;
+		}
+	
+		#search-package-img
+		{
+		  left: 200px;
+		  width:70px;
+		}
+	
+	
+		#search-package-img img
+		{
+			width:100%;
+		}
+	
+	
+	}
+	
+		@media (min-width: 1200px)
+	{
+		#search-package-img
+		{
+		  position: absolute;
+		  left: 220px;
+		  bottom: 0px;
+		  width:auto;
+		}
+		
+		#search-package-img img
+		{
+			width:inherit;
+		}
+	
+		
+		
+	}

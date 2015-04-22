@@ -51,6 +51,15 @@ class PagesController extends \BaseController {
 		$search_postcode ="";
 		$place = "";
 		
+		$adv_filter_coursetype = "";
+		$adv_filter_coursedesigner = "";
+		$adv_filter_coursedif = ""; 
+		$adv_filter_courseaccom = "";
+		$adv_filter_coursechamp = "";
+		$adv_filter_coursemulti = "";
+		$adv_filter_coursebuggy = "";
+		$adv_filter_coursedriving = "";
+		
 
 		
 		
@@ -64,6 +73,17 @@ class PagesController extends \BaseController {
 		if (Input::has('town')){$search_town = 	Input::get( 'town' );}
 		if (Input::has('postcode')){$search_postcode = 	Input::get( 'postcode' );}
 		if (Input::has('place')){$place = 	Input::get( 'place' );}
+		if (Input::has('adv_filter_coursetype')){$adv_filter_coursetype = 	Input::get( 'adv_filter_coursetype' );}
+		if (Input::has('adv_filter_coursedesigner')){$adv_filter_coursedesigner = 	Input::get( 'adv_filter_coursedesigner' );}
+		if (Input::has('adv_filter_coursedif')){$adv_filter_coursedif = 	Input::get( 'adv_filter_coursedif' );}
+		if (Input::has('adv_filter_courseaccom')){$adv_filter_courseaccom = 	Input::get( 'adv_filter_courseaccom' );}
+		if (Input::has('adv_filter_coursechamp')){$adv_filter_coursechamp = 	Input::get( 'adv_filter_coursechamp' );}
+		if (Input::has('adv_filter_coursebuggy')){$adv_filter_coursebuggy = 	Input::get( 'adv_filter_coursebuggy' );}
+		if (Input::has('adv_filter_coursedriving')){$adv_filter_coursedriving = 	Input::get( 'adv_filter_coursedriving' );}
+		
+		
+		
+
 		
 		//SETUP SORT ORDER
 		if($orderby_opt1=="PLH") 
@@ -158,6 +178,8 @@ class PagesController extends \BaseController {
 			//SET DEFAULT IMAGE
 			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}
 			
+			if(trim($course->COURSE_NAME)==trim($course->CLUB_ADD1)){$course->COURSE_NAME = null;}
+			
 			//CHECK FOR SPECIAL OFFERS 
 			$todaysdate = date("Y-m-d");	
 	
@@ -227,7 +249,15 @@ class PagesController extends \BaseController {
 										   ->with('region',$search_region)
 										   ->with('country',$search_country)
 										   ->with('postcode',$search_postcode)
-										   ->with('town',$search_town);
+										   ->with('town',$search_town)
+										   ->with('adv_filter_coursetype',$adv_filter_coursetype)
+										   ->with('adv_filter_coursedesigner',$adv_filter_coursedesigner)
+										   ->with('adv_filter_coursedif',$adv_filter_coursedif)
+										   ->with('adv_filter_courseaccom',$adv_filter_courseaccom)
+										   ->with('adv_filter_coursechamp',$adv_filter_coursechamp)
+										   ->with('adv_filter_coursemulti',$adv_filter_coursemulti)
+										   ->with('adv_filter_coursebuggy',$adv_filter_coursebuggy)
+										   ->with('adv_filter_coursedriving',$adv_filter_coursedriving);
 
 	}
 	
