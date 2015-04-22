@@ -63,8 +63,48 @@ $(document).ready(function() {
 		bufferPx: 80
 	 });
 
+
+	<!-- sticky nav bars -->
+
+	$("#sticker").sticky({topSpacing:50});
+	
+	
+	$('#profile-slider').bjqs({
+		'height' : 325,
+		'width' : 808,
+		'responsive' : true,
+animtype : 'fade', // accepts 'fade' or 'slide'
+animduration : 450, // how fast the animation are
+animspeed : 4000, // the delay between each slide
+automatic : true, // automatic
+showcontrols : false,
+showmarkers: false
+	});
+	
+	
+	<!-- smooth scrolling --> 
+	
+	  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 150
+        }, 1000);
+        return false;
+      }
+    }
+  });
+
+
 	if( $('#main-search').length )  
 	{	
+	
+	
+
+
+	
 	// Start Background Image Swap on homepage
 	function startSlider() {
 		

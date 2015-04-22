@@ -25,7 +25,6 @@
     <!-- ispygolf customs -->
     <link href="/css/ispygolf.css" rel="stylesheet">
     
-    
     <link rel="stylesheet" type="text/css" href="/css/awesome-bootstrap-checkbox.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,6 +44,12 @@
     
     <!-- infinite scroll -->
 	<script src="/js/jquery.infinitescroll.min.js"></script>
+    
+    <!-- Sticky Menu --> 
+    <script src="/js/jquery.sticky.js"> </script>
+    
+    <!-- Simple Slider -->
+    <script src="/js/bjqs.js"></script>
     
     <!-- Maps js -->
     <script src="https://maps.googleapis.com/maps/api/js"></script>
