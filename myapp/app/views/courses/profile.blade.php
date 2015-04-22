@@ -5,14 +5,26 @@
 <div  class="row profile-main-banner">
                         
       <div class="col-md-9 profile-main-banner-images">
+      
+      		  <div id="profile-slider">
+              
+              	<ul class="bjqs">
+                	
+                 	<li> <img class="img-responsive"  src="/clubimages/0000000034_0001_large.jpg" /> </li>
+                    <li> <img class="img-responsive"  src="/clubimages/0000000034_0002_large.jpg" /> </li>
+                    <li> <img class="img-responsive"  src="/clubimages/0000000034_0003_large.jpg" /> </li>
+                
+                </ul>
+              
+              </div>
                                 
-              <img class="img-responsive"  src="/clubimages/0000000034_0001_large.jpg" />
+              
                     
        </div>
                            
        <div class="col-md-3 profile-main-banner-info">
                     		
-		  <div class="col-md-12 largepad" style="text-align:center;padding-top:30px;"> <img src="/images/testlogo.jpg" /></div>
+		  <div class="col-md-12 largepad profile-logo"> <img src="/images/testlogo.jpg" /></div>
                                 
           <div class="col-md-8 profile-main-banner-bx largepad"><h2>0845 303 38367</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
                             
@@ -25,7 +37,9 @@
     </div>
                     
                     
-                <div class="row">
+                <div class="row" id="sticker" style="z-index:500;">
+                  
+                   <a name="link_overview"></a>
 
                     <div class="col-md-12"> 
                         
@@ -35,14 +49,14 @@
                                   
                                <div class="navbar-header">
               
-                                   <a class="navbar-brand selected noleftmargin" href="#">OVERVIEW</a>
-                                   <a class="navbar-brand" href="#">COURSE DETAILS</a>
-                                   <a class="navbar-brand" href="#">GREEN FEES</a>
-                                   <a class="navbar-brand" href="#">GOLF DAYS</a>
-                                   <a class="navbar-brand" href="#">MEMBERSHP</a>
-                                   <a class="navbar-brand" href="#">GOLF BREAKS</a>
-                                   <a class="navbar-brand" href="#">REVIEWS</a>
-                                   <a class="navbar-brand" href="#">LOCATION</a>
+                                   <a class="navbar-brand selected noleftmargin" href="#link_overview">OVERVIEW</a>
+                                   <a class="navbar-brand" href="#link_course_details">COURSE DETAILS</a>
+                                   <a class="navbar-brand" href="#lnk_green_fees">GREEN FEES</a>
+                                   <a class="navbar-brand" href="#lnk_golf_days">GOLF DAYS</a>
+                                   <a class="navbar-brand" href="#lnk_membership">MEMBERSHP</a>
+                                   <a class="navbar-brand" href="#lnk_golfbreaks">GOLF BREAKS</a>
+                                   <a class="navbar-brand" href="#lnk_reviews">REVIEWS</a>
+                                   <a class="navbar-brand" href="#lnk_location">LOCATION</a>
               
                              </div>
                               
@@ -60,6 +74,8 @@
                     <div class="col-md-6">
                         
                         <h3>GLEANEAGLES GOLF COUNTRY CLB SPA</h3>
+                        
+                       
             
                         <p><i>Host venue for The 2014 Ryder Cup Matches, the PGA Centenary 
                             Course, created by Jack Nicklaus, is a modern classic. The course 
@@ -314,18 +330,23 @@
                
                <div class="row top-buffer-lg">
                
+               		
+               
                		<div class="col-md-9">
                     
-                    	<img src="/images/golf_breaks.png"  alt=""/>
+                    	<img  class="img-responsive"  src="/images/golf_breaks.png"  alt="" />
 
                     </div>
                     
-                    <div class="col-md-3">
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
                     
-                    	 <div class="profile-headline-bx col-md-12 col-sm-2  largepad">
-                             <p>STAY & PLAY GOLF BREAKS</p>
-                             <h2>AVAILABLE</h2>   
-                          </div>
+                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
+                         <a name="lnk_golfbreaks"></a>
+                             <h5>STAY & PLAY GOLF BREAKS</h5>
+                           
+                             <h2>AVAILABLE</h2> 
+                               <hr class="feature-hr">  
+
  						  <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
                                  FOR ALL THE LATEST GOLF 
@@ -335,11 +356,15 @@
                              </p>
                              
                           </div>
+                          
                          
                          
-                         <div class="offset8 col-md-4">
-                         	<a class="btn">VIEW</a>
-                         </div>
+                             <div class="col-md-12 text-right" style="margin-bottom">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+                    
+                    	</div>
+                    	
                     
                     </div>
                
@@ -349,15 +374,20 @@
                
                		<div class="col-md-9">
                     
-                    	<img src="/images/golf_days.png"  alt=""/>
+                    	<img  class="img-responsive" src="/images/golf_days.png"  alt=""/>
 
                     </div>
                     
-                    <div class="col-md-3">
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
                     
-                         <div class="search-result-bx col-md-12 largepad">
-                             <p>GOLF DAYS FROM</p>
-                             <h2>£110</h2>   
+                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
+                         <a name="lnk_golf_days"></a>
+                             <h5>GOLF DAYS FROM</h5>
+                           
+                             <h2>£110.00</h2> 
+                               <hr class="feature-hr">  
+
+ 						  <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
                                 GLENEAGLES GOLF & COUNTRY 
                                 CLUB WELCOMES SOCIETY AND 
@@ -366,13 +396,16 @@
                                 QUOTATION CLICK BELOW.
                              </p>
                              
-                         </div>   
+                          </div>
+                          
                          
-                         	
                          
-                         <div class="offset8 col-md-4">
-                            <a class="btn">QUOTE</a>
-                         </div>
+                             <div class="col-md-12 text-right" style="margin-bottom">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+                    
+                    	</div>
+                    	
                     
                     </div>
                
@@ -382,29 +415,36 @@
                
                		<div class="col-md-9">
                     
-                    	<img src="/images/membership.png"  alt=""/>
+                    	<img class="img-responsive" src="/images/membership.png"  alt=""/>
 
                     </div>
                     
-                    <div class="col-md-3">
+                   <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
                     
-                         <div class="search-result-bx col-md-12 largepad">
-                             <p>MEMBERSHIPS ARE CURRENTLYM</p>
-                             <h2>AVAILABLE</h2>   
+                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
+                         <a name="lnk_membership"></a>
+                             <h5>MEMBERSHIPS ARE CURRENTLY</h5>
+                           
+                             <h2>AVAILABLE</h2> 
+                               <hr class="feature-hr">  
+
+ 						  <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
-                                FOR MORE INFORMATION, ON
+                               FOR MORE INFORMATION, ON
                                 MEMBERSHIP AT GLENEAGLES 
                                 GOLF & COUNTRY CLUB PLEASE
                                 ENQUIRE BELOW.
                              </p>
-                             
-                         </div>   
+                          </div>
+                          
                          
-                         	
                          
-                         <div class="offset8 col-md-4">
-                            <a class="btn">ENQUIRE</a>
-                         </div>
+                             <div class="col-md-12 text-right" style="margin-bottom">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+                    
+                    	</div>
+                    	
                     
                     </div>
                
@@ -418,7 +458,7 @@
                    
                    <h2>THE KINGS COURSE</h2>
                    
-                   <h3>GLENEAGLES</h3>
+                   <h5><i>GLENEAGLES</i></h5>
                
                </div>
                
@@ -436,9 +476,22 @@
                     
                     <div class="col-md-3">
                     
-                         <div class="col-md-12 largepad" style="background-color:#cdde54;">
+                         <div class="col-md-12 vertical-fill" style="background-color:#cdde54;">
                              
                              <h3> VISITORS WELCOME </h3>
+                             
+                             <p>
+                                 <strong>NO. HOLES </strong>18 <br>
+                                 <strong>YEAR OPEN </strong>1919<br>
+                                 <strong>DESIGNER</strong> JAMES BRAID<br>
+                                 STYLE MOORLAND<br>
+                                
+                                 <strong>LENGTH (MAX)</strong> 6,767<br>
+                                 <strong>PAR</strong> 72<br>
+                                 <strong>SSS</strong> 74<br>
+                                 <strong>ISPY DIFFICULTY RATING</strong><br>
+                                 <strong>DRESS CODE</strong><br>
+                             </p>
                              
                          </div>                 
                     </div>
@@ -446,16 +499,19 @@
                </div>
                
                
-				<div class="row">
+				<div class="row ">
 
 					
                     <div class="col-md-12">				
 				
-                	<div class="col-md-12"  style="background-color:#ececec;" >	
+                	<div class="col-md-12"  style="background-color:#ececec; padding-top:35px;padding-bottom:35px;" >	
 
                     <div class="col-md-6">
                         
                         <h3>THE KING'S COURSE</h3>
+                        
+                        <a name="link_course_details"></a>
+                         <a name="lnk_green_fees"></a>
             
                         <p>The King's Course, opened in 1919, is a masterpiece of design, which 
                             has tested the aristocracy of golf, both professional and amateur.
@@ -473,17 +529,17 @@
                         
                     <div class="col-md-3">                   
                            
-                       <div class="search-result-bx largepad col-sm-2 col-md-12">
+                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>LOW SEASON GREEN FROM</p>
                          <h2>£110.00</h2>
                        </div>   
                            
-                       <div class="search-result-bx largepad col-sm-2 col-md-12">
+                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>HIGH SEASON GREEN FROM</p>
                          <h2>£140.00</h2>
                        </div>  
                            
-                      <div class="search-result-bx largepad col-sm-2 col-md-12">
+                      <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                         <p>AVAILABLE</p>
                         <h2>ISPY EXTRA</h2>                      
                        </div>  
@@ -494,24 +550,24 @@
                        
                    <div class="col-md-3">                   
                            
-                       <div class="search-result-bx largepad col-sm-2 col-md-8">
+                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
                          <p>BEST RATES</p>
                          <h2>GOLF DAYS</h2>
                        </div>   
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn">  ENQUIRE </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="#">ENQUIRE </a>
                        </div>  
                            
                            
-                       <div class="search-result-bx largepad col-sm-2 col-md-8">
+                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
                          <p>BOOK ONLINE</p>
                          <h2>TEE TIMES</h2>
                        </div>  
                            
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn">  BOOK  </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="#">BOOK </a>
                        </div>  
     
                        
@@ -536,9 +592,9 @@
                    
                    <h3>THE KINGS COURSE</h3>
                    
-                   <h4>GLEANEAGLES</h4>
+                   <h4><i>GLEANEAGLES</i></h4>
                    
-                    <a class="btn">  READ  </a>
+                    <a class="btn btn-default ">  READ  </a>
                
                </div>
                
@@ -549,10 +605,10 @@
                
                <div class="col-md-12">
                
-               <div class="col-md-12  top-buffer-lg text-center" style="background-image: url(/images/golf_monthly_back.png); background-size: 100%;">
+               <div class="col-md-12  top-buffer-lg text-center" style="background-image: url(/images/golf_monthly_back.png); background-size: 100%; padding-top:35px;padding-bottom:35px;">
                	 
                    <img src="/images/icon_golfmonthly.png" />
-                
+                <a name="lnk_reviews"></a>
                    <h3>TOP 100 COURSES UK&amp;I</h3>
                    
                     <h3><i>NO 36</i></h3>
@@ -575,11 +631,11 @@
                      
                        <img src="/images/icon_map.png" />
                        
-                       <h4>GLENEAGLES
-                            GOLF CLUB LANE
-                            AUCHTERADER
-                            PERTHSHIRE
-                            SCOTLAND
+                       <h4>GLENEAGLES<br>
+                            GOLF CLUB LANE<br>
+                            AUCHTERADER<br>
+                            PERTHSHIRE<br>
+                            SCOTLAND<br>
                             PY2 3HT</h4>
                    
                    </div>
@@ -590,6 +646,8 @@
 			  <div class="row">
                
                    <div class="col-md-12  top-buffer-lg ">
+                   
+                   <a name="lnk_location"></a>
                         
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
