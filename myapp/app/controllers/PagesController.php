@@ -147,12 +147,12 @@ class PagesController extends \BaseController {
 		//->whereRaw('\'DISTANCE\' < 10'	, []) 
 									
 		$courses = DB::table('CLUBS')			
-		->leftJoin('SERVICES', 'CLUBS.CLUBS_ID', '=', 'SERVICES.SERV_ID')
-		->leftJoin('COURSES', 'CLUBS.CLUBS_ID', '=', 'COURSES.CLUB_ID')
+		->leftJoin('SERVICES', 'CLUBS.CLUB_ID', '=', 'SERVICES.SERV_ID')
+		->leftJoin('COURSES', 'CLUBS.CLUB_ID', '=', 'COURSES.CLUB_ID')
 		->leftJoin('IMAGEREFS', 'COURSES.COURSE_ID', '=', 'IMAGEREFS.IMG_COURSE_ID')
 		->leftJoin('SPECOFFERS', 'COURSES.CLUB_ID', '=', 'SPECOFFERS.OFFER_ID')
-		->leftJoin('FACILITIES', 'CLUBS.CLUBS_ID', '=', 'FACILITIES.FAC_ID')				
-		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUBS_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
+		->leftJoin('FACILITIES', 'CLUBS.CLUB_ID', '=', 'FACILITIES.FAC_ID')				
+		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUB_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
 		->leftJoin('ISPYCARD', 'COURSES.CLUB_ID', '=', 'ISPYCARD.CLUB_ID')	
 		->where('SYS_CLUBS_USERS.COURSES','1')
 		->where('CLUBS.CLUB_ADD1','like','%'.$search_name."%")
@@ -173,7 +173,7 @@ class PagesController extends \BaseController {
 		foreach($courses as $course)
 		{
 			
-			$clubid = $course->CLUBS_ID;
+			$clubid = $course->CLUB_ID;
 			
 			//SET DEFAULT IMAGE
 			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}

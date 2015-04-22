@@ -36,5 +36,8 @@ Route::get('about', 'PagesController@about');
 /* News Page */
 Route::get('news', 'NewsController@news');
 
+/* Maps Page */
+Route::get('maps', 'MapsController@maps');
+
 /* ALL AJAX ROUTES */
 Route::get('ajax/coursesearch','AjaxController@coursesearch');
