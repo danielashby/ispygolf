@@ -41,7 +41,7 @@
                <li><a href="/golfdays/">GOLF DAYS</a></li>
                <li><a href="/golf-offers/search/search.php">OFFERS</a></li>
                <li><a class="grey" href="/news/">NEWS</a></li>
-               <li><a class="grey" href="/maps/isgmap.php">MAP</a></li>
+               <li><a class="grey" href="/maps/">MAP</a></li>
                <li><a class="grey" href="/blog/">BLOG</a></li>
           </ul>
         </div><!--/.nav-collapse -->

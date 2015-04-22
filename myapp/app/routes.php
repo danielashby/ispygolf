@@ -33,5 +33,8 @@ Route::get('golfcourses/profile/{urlid}', 'PagesController@course_show');
 /* About Page */
 Route::get('about', 'PagesController@about');
 
+/* News Page */
+Route::get('news', 'NewsController@news');
+
 /* ALL AJAX ROUTES */
 Route::get('ajax/coursesearch','AjaxController@coursesearch');

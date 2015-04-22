@@ -17,6 +17,17 @@ class PagesController extends \BaseController {
 		return View::make('pages.about');
 	}
 
+	public function news()
+	{
+	
+		return View::make('news.news');
+	}
+
+	public function maps()
+	{
+	
+		return View::make('maps.maps');
+	}
 
 	public function courses()
 	{
