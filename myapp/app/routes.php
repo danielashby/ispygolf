@@ -34,7 +34,7 @@ Route::get('golfcourses/profile/{urlid}', 'PagesController@course_show');
 Route::get('about', 'PagesController@about');
 
 /* News Page */
-Route::get('news', 'NewsController@news');
+//Route::get('news', 'NewsController@news');
 
 /* Maps Page */
 Route::get('maps', 'MapsController@maps');

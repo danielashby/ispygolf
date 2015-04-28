@@ -7,6 +7,10 @@
 
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
+	
+	RewriteCond $1 !^(blog)
+	RewriteCond $1 !^(news)
+	RewriteCond $1 !^(pants)
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
