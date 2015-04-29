@@ -37,7 +37,7 @@
     </div>
                     
                     
-                <div class="row" id="sticker" style="z-index:500;">
+                <div class="row menu"  style="z-index:500;">
                   
                    <a name="link_overview"></a>
 
@@ -46,6 +46,8 @@
                         <nav class="navbar profile-navbar navbar-default">
                              
                           <div class="container-fluid">
+                              
+                              <div class="hidden-title-conatiner"><h3 class="hidden-title">CLUB NAME HIDDEN</h3></div>
                                   
                                <div class="navbar-header">
               

@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 
-                        
+var titleDisplayed = false;     
 
 
 $(document).ready(function() {
@@ -66,7 +66,51 @@ $(document).ready(function() {
 
 	<!-- sticky nav bars -->
 
-	$("#sticker").sticky({topSpacing:50});
+	<!-- $("#sticker").sticky({topSpacing:50}); -->
+        
+        
+$('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
+
+scrollIntervalID = setInterval(stickIt, 10);
+
+
+function stickIt() {
+
+  var orgElementPos = $('.original').offset();
+  orgElementTop = orgElementPos.top;               
+
+  if ($(window).scrollTop()+50 >= (orgElementTop)) {
+    // scrolled past the original position; now only show the cloned, sticky element.
+
+    // Cloned element should always have same left position and width as original element.     
+    orgElement = $('.original');
+    coordsOrgElement = orgElement.offset();
+    leftOrgElement = coordsOrgElement.left;  
+    widthOrgElement = orgElement.css('width');
+    
+	if(titleDisplayed==false)
+	{
+    	$('.hidden-title-conatiner').show();
+		titleDisplayed = true;
+	}
+    $('.cloned').css('left',leftOrgElement+'px'+10).css('top',55).css('width',widthOrgElement).show();
+    $('.original').css('visibility','hidden');
+  } else {
+    // not scrolled past the menu; only show the original menu.
+    $('.cloned').hide();
+    $('.original').css('visibility','visible');
+	
+	
+	$('.hidden-title-conatiner').hide();
+	titleDisplayed = false;
+      
+      
+  }
+}        
+        
+        
+        
+        
 	
 	
 	$('#profile-slider').bjqs({
@@ -90,7 +134,7 @@ showmarkers: false
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html,body').animate({
-          scrollTop: target.offset().top - 150
+          scrollTop: target.offset().top - 200
         }, 1000);
         return false;
       }

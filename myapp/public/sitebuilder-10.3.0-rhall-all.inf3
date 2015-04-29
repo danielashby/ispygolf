@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<build confver="3.0" os_name="Linux" os_vendor="RedHat" os_version="all" os_arch="all" environment="" build_dir="dist-rpm-RedHat-all-all" ez-template-suffix="" send_feedback="false" repodata="no" headers_file="build-10.3.0-rhall-all.hdr.gz">
+    <product id="sitebuilder">
+        <keypackages>
+            <keypackage>pp-sitebuilder</keypackage>
+        </keypackages>
+        <release id="SITEBUILDER_10_3_0" name="SITEBUILDER 10.3.0" version="10.3.0" upgrade_allowed_from="5.0.0" />
+    </product>
+    <component name="sitebuilder" description="Web Presence Builder">
+        <package name="pp-sitebuilder" version="10.3.0" release="35814.11063001" file="base/pp-sitebuilder-10.3.0-35814.11063001.noarch.rpm" size="135540471" buildtime="1309372553" md5="a7c663b87a21f9da712210f59f859d02" arch="noarch" />
+        <package name="pp-sitebuilder-default-templates" version="10.3.0" release="35814.11063001" file="base/pp-sitebuilder-default-templates-10.3.0-35814.11063001.noarch.rpm" size="652618" buildtime="1309372488" md5="d8402646d52fdf336030f6f2e37f24f3" arch="noarch" />
+        <package name="pp-sitebuilder-skins" version="10.3.0" release="35814.11063001" file="base/pp-sitebuilder-skins-10.3.0-35814.11063001.noarch.rpm" size="418655" buildtime="1309372496" md5="7313fd645902d5b61bad2aebe65f4e31" arch="noarch" />
+        <eztemplate name="plesk10" />
+    </component>
+    <updates updates_dir="update-rpm-RedHat-all-all" headers_file="update-10.3.0-rhall-all.hdr.gz" />
+    <thirdparty thirdparty_dir="thirdparty-rpm-RedHat-all-all" headers_file="thirdparty-10.3.0-rhall-all.hdr.gz" />
+    <removable_packages />
+    <preferred_packages />
+    <force_remove_packages />
+    <diskspace>
+        <directory_use path="/usr/local" value="300M" />
+    </diskspace>
+</build>
