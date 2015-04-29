@@ -21,30 +21,23 @@ Route::get('users/{id}', function($id)
 
 Route::get('/', 'PagesController@index');
 
+/* Default Course Listing */
+Route::any('golfcourses', 'PagesController@courses');
 
+/* Course Listing With A Posted Search 'place' */
+/* Route::post('golfcourses', 'PagesController@courses');*/
 
-/*============================= COURSE SEARCH AND PROFILE PAGE ROUTES ============================= 
-
-/* Course Search Page*/
-Route::any('golfcourses', 'CourseSearchController@courses');
 /* Course Profile Page */
-Route::get('golfcourses/profile/{urlid}', 'CourseProfileController@profile');
-
-
-/* Offers Search Page */
-Route::get('offers', 'OffersController@offers');
-
-
+Route::get('golfcourses/profile/{urlid}', 'PagesController@course_show');
 
 /* About Page */
-Route::get('about', 'AboutController@about');
+Route::get('about', 'PagesController@about');
+
 /* News Page */
-Route::get('news', 'NewsController@news');
+//Route::get('news', 'NewsController@news');
+
 /* Maps Page */
 Route::get('maps', 'MapsController@maps');
-
-
-
 
 /* ALL AJAX ROUTES */
 Route::get('ajax/coursesearch','AjaxController@coursesearch');
