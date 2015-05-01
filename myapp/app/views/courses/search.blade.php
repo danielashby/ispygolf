@@ -3,7 +3,7 @@
 
 @section('searchbar')
 
-					<div class="search-header full-width">
+					<div class="search-header full-width menu">
 						
         				
                         <div class="container"> 
@@ -21,7 +21,7 @@
                                         <input type="hidden" value="{{$town}}" name="town" id="town" >
                                         <input type="hidden" value="{{$postcode}}" name="postcode" id="postcode" >
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-primary" onClick="document.forms['search-form'].submit();">Go!</button>
+                                            <button type="button" class="btn btn-primary" onClick="document.forms['search-form'].submit();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Go</button>
                                         </span>
                                     </div>
                                          
@@ -46,8 +46,14 @@
                                     </div>
                                     
                                     <div class="col-md-2">
-                                    <a class="btn btn-default" data-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="filters">More Filters...</a>
+                                    
+                                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#filters" aria-expanded="false" aria-controls="filters">
+ <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter Results 
+</button>
+                                    
+                                    <!--<a class="btn btn-default" data-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="filters">More Filters...</a>-->
                                     </div>
+                              
                                 
                                
                                 

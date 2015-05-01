@@ -22,13 +22,13 @@ Route::get('users/{id}', function($id)
 Route::get('/', 'PagesController@index');
 
 /* Default Course Listing */
-Route::any('golfcourses', 'PagesController@courses');
+Route::any('golfcourses', 'CourseSearchController@courses');
 
 /* Course Listing With A Posted Search 'place' */
 /* Route::post('golfcourses', 'PagesController@courses');*/
 
 /* Course Profile Page */
-Route::get('golfcourses/profile/{urlid}', 'PagesController@course_show');
+Route::get('golfcourses/profile/{urlid}',  'CourseProfileController@profile');
 
 /* About Page */
 Route::get('about', 'PagesController@about');

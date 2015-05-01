@@ -10,10 +10,10 @@
               
               	<ul class="bjqs">
                 	
-                 	<li> <img class="img-responsive"  src="/clubimages/0000000034_0001_large.jpg" /> </li>
-                    <li> <img class="img-responsive"  src="/clubimages/0000000034_0002_large.jpg" /> </li>
-                    <li> <img class="img-responsive"  src="/clubimages/0000000034_0003_large.jpg" /> </li>
-                
+                     @foreach ($profimages as $profimage)   
+                 	    @if ($profimage!="") <li> <img class="img-responsive"  src="/clubimages/{{ $profimage }}" /> </li> @endif 
+					 @endforeach
+                     
                 </ul>
               
               </div>
@@ -26,18 +26,18 @@
                     		
 		  <div class="col-md-12 largepad profile-logo"> <img src="/images/testlogo.jpg" /></div>
                                 
-          <div class="col-md-8 profile-main-banner-bx largepad"><h2>0845 303 38367</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
+          <div class="col-md-8 profile-main-banner-bx largepad"><h2>{{ $profdetail['PROF_TELNO'] }}</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
                             
-          <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="#">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="#"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
+          <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="mailto:{{ $profdetail['PROF_EMAIL'] }}">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="mailto:{{ $profdetail['PROF_EMAIL'] }}"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
                             
-          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a href="#">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a href="#"><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
+          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
 
        </div>
                          
     </div>
                     
                     
-                <div class="row" id="sticker" style="z-index:500;">
+                <div class="row menu"  style="z-index:500;">
                   
                    <a name="link_overview"></a>
 
@@ -46,6 +46,8 @@
                         <nav class="navbar profile-navbar navbar-default">
                              
                           <div class="container-fluid">
+                              
+                              <div class="hidden-title-conatiner"><h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }}</h3></div>
                                   
                                <div class="navbar-header">
               
@@ -73,21 +75,11 @@
 	
                     <div class="col-md-6">
                         
-                        <h3>GLEANEAGLES GOLF COUNTRY CLB SPA</h3>
+                        <h3>{{ $profdetail['PROF_CLUBNAME'] }}</h3>
                         
                        
             
-                        <p><i>Host venue for The 2014 Ryder Cup Matches, the PGA Centenary 
-                            Course, created by Jack Nicklaus, is a modern classic. The course 
-                            begins by playing southeast towards the glen, sweeping up the 
-                            Ochil Hills to the summit of the pass below Ben Shee which joins 
-                            it to Glendevon. A feature of the PGA Centenary Course is the feast 
-                            of views of the spectacular countryside in which Gleneagles is set. 
-                            Putting on the two-tier second green, you are distracted by the lush 
-                            panorama of the rich Perthshire straths. As you move westwards 
-                            over the next few holes, the rugged Grampians come into view on 
-                            the right, then distantly purple ahead, Ben Vorlich and the 
-                        mountains above the Trossachs.</i></p>
+                        <p><i>{{ $profdetail['PROF_CLUBDESC'] }}</i></p>
                         
                     </div>
                         
@@ -96,18 +88,26 @@
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>LOW SEASON GREEN FROM</p>
-                         <h2>£110.00</h2>
+                         <h2>{{ $profdetail['PROF_COURSE_GF_LOW_WEEK']}}</h2>
                        </div>   
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>HIGH SEASON GREEN FROM</p>
-                         <h2>£140.00</h2>
+                         <h2>{{ $profdetail['PROF_COURSE_GF_HIGH_WEEK']}}</h2>
                        </div>  
                            
+                       @if ($profdetail['CARD_DESC'] !="")      
+                      
+                      {{-- ISPY EXTRA OFFERS --}}
+                      
                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                         <p>AVAILABLE</p>
                         <h2>ISPY EXTRA</h2>                      
                        </div>  
+                       
+                       @endif
+                       
+                       {{-- ISPY EXTRA OFFERS END --}}
                        
                        
                    </div>
@@ -145,13 +145,17 @@
                <div class="row  top-buffer-lg">
                    
                	 
-<div class="col-md-4">
+                 
+               @foreach ($profpackages as $profpackage)   
+					 
+                 
+				<div class="col-md-4">
                     
                    	 <div class="row">
                      
                      	 <div class="col-md-12">
                         
-                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
+                       	 <img  class="img-responsive"  src="/hotelimages/{{ $profpackage['PACKAGE_IMG'] }}"/>
                          
                          </div>
                         
@@ -165,8 +169,7 @@
                        	 
                              <div class="col-md-12">
                                 
-                               <p>Two Play for the Price of One <br>
-                                  Available to 31 March 2015</p>
+                               <p>{{ $profpackage['PACKAGE_DESCRIPTION'] }}</p>
                                 
                              </div>
                                 
@@ -184,83 +187,9 @@
                     
                  </div>
                  
-<div class="col-md-4">
-                    
-                   	 <div class="row">
-                     
-                     	 <div class="col-md-12">
-                        
-                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
-                         
-                         </div>
-                        
-                     </div>
-                     
-                     <div class="row">
-                        
-                     <div class="col-md-12">
-                        
-                        <div class="col-md-12" style="background-color:#ececec;">
-                       	 
-                             <div class="col-md-12">
-                                
-                               <p>Two Play for the Price of One <br>
-                                  Available to 31 March 2015</p>
-                                
-                             </div>
-                                
-                                
-                             <div class="col-md-12 text-right">
-                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
-                             </div>
 
-                     	  </div>
-                     
-                     </div>
-                     
-                     </div>
-                        
-                    
-                 </div>
-                 
- <div class="col-md-4">
-                    
-                   	 <div class="row">
-                     
-                     	 <div class="col-md-12">
-                        
-                       	 <img  class="img-responsive"  src="/images/special_offer.jpg"/>
-                         
-                         </div>
-                        
-                     </div>
-                     
-                     <div class="row">
-                        
-                     <div class="col-md-12">
-                        
-                        <div class="col-md-12" style="background-color:#ececec;">
-                       	 
-                             <div class="col-md-12">
-                                
-                               <p>Two Play for the Price of One <br>
-                                  Available to 31 March 2015</p>
-                                
-                             </div>
-                                
-                                
-                             <div class="col-md-12 text-right">
-                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
-                             </div>
-
-                     	  </div>
-                     
-                     </div>
-                     
-                     </div>
-                        
-                    
-                 </div>                                                     
+                 @endforeach
+                                                      
                     
                      
                     
@@ -653,24 +582,21 @@
 <script>
   function initialize() {
 	  
-	//TODO - ADD IN CLUB LAT AND LONG FOR MAP
-	var clublat =0;
-	var clublon =0; 
 	  
 	var map_canvas = document.getElementById('map-canvas');
 	var map_options = {
-	  center: new google.maps.LatLng(1,2),
+	  center: new google.maps.LatLng('{{ $profdetail['PROF_LAT'] }}','{{ $profdetail['PROF_LON'] }}'),
 	  zoom: 8,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	var map = new google.maps.Map(map_canvas, map_options)
 	
 	
-    var latLng = new google.maps.LatLng(1,2);
+    var latLng = new google.maps.LatLng('{{ $profdetail['PROF_LAT'] }}','{{ $profdetail['PROF_LON'] }}');
     var marker = new google.maps.Marker({
       position: latLng,
       map: map,
-       labelContent: "{tag_club name}",
+       labelContent: "{{ $profdetail['PROF_CLUBNAME'] }}",
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
        labelStyle: {opacity: 0.75},
@@ -679,7 +605,7 @@
 	
 	 //TODO - ADD IN CLUB DETAILS TO POPUP
      var iw = new google.maps.InfoWindow({
-       content: "<strong>club name</strong>line1<br>line2"
+       content: "<strong>{{ $profdetail['PROF_CLUBNAME'] }}</strong>"
      });
      google.maps.event.addListener(marker, "click", function (e) { iw.open(map, marker); });	
 	
