@@ -458,7 +458,27 @@ a:focus, a:hover
 	
 	.text_white {color:#FFF !important;}
 	
+	/* Privacy and Terms */
 	
+	.terms p {
+		font-size:14px;
+	}
+	
+	.terms h1 {
+		font-size:20px;
+	}
+	
+	.terms h2 {
+		font-size:18px;
+	}		
+
+	.terms h3 {
+		font-size:16px;
+	}	
+	
+	.terms article {
+		margin-bottom:30px;
+	}			
 
 		@media (min-width: 350px)
 	{

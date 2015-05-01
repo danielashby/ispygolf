@@ -71,6 +71,8 @@ $(document).ready(function() {
         
 $('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
+
+/*
 scrollIntervalID = setInterval(stickIt, 10);
 
 
@@ -80,9 +82,7 @@ function stickIt() {
   orgElementTop = orgElementPos.top;               
 
   if ($(window).scrollTop()+50 >= (orgElementTop)) {
-    // scrolled past the original position; now only show the cloned, sticky element.
-
-    // Cloned element should always have same left position and width as original element.     
+   
     orgElement = $('.original');
     coordsOrgElement = orgElement.offset();
     leftOrgElement = coordsOrgElement.left;  
@@ -96,7 +96,7 @@ function stickIt() {
     $('.cloned').css('left',leftOrgElement+'px'+10).css('top',55).css('width',widthOrgElement).show();
     $('.original').css('visibility','hidden');
   } else {
-    // not scrolled past the menu; only show the original menu.
+    
     $('.cloned').hide();
     $('.original').css('visibility','visible');
 	
@@ -108,7 +108,7 @@ function stickIt() {
   }
 }        
         
-        
+    */    
         
         
 	
