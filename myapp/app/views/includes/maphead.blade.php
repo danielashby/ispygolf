@@ -51,6 +51,11 @@
     <!-- Simple Slider -->
     <script src="/js/bjqs.js"></script>
     
-    <!-- Maps js  -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <!-- Maps js 
+    <script src="https://maps.googleapis.com/maps/api/js"></script> -->
     
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="/js/markerclusterer.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="/js/jquery.cookie.js"></script> 
+	<script type="text/javascript" src="/js/ispymap.js"></script>    
