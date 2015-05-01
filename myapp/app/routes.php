@@ -36,6 +36,18 @@ Route::get('about', 'PagesController@about');
 /* News Page */
 //Route::get('news', 'NewsController@news');
 
+/* Golf Breaks Page */
+Route::get('golfbreaks', 'GolfbreaksController@golfbreaks');
+
+/* golfdays Page */
+Route::get('golfdays', 'GolfdaysController@golfdays');
+
+/* golfmembership Page */
+Route::get('golfmembership', 'GolfmembershipController@golfmembership');
+
+/* Offers Page */
+Route::get('offers', 'OffersController@offers');
+
 /* Terms Page */
 Route::get('terms', 'TermsController@terms');
 
