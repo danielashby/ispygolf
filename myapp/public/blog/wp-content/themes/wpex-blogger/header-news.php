@@ -21,28 +21,120 @@
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
+    
+<!-- Bootstrap core CSS -->
+	<!-- load bootstrap from a cdn -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+    
+    <!-- jquery autocomplete thems -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    
+    <!-- the font -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    
+    
+    
+    <!-- ispygolf customs -->
+    <link href="/css/ispygolf.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/awesome-bootstrap-checkbox.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- The one and only JQ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+	<!-- bootstrap responsive s -->
+	<script src="/js/bootstrap.min.js"></script>
+    
+    <!-- query ui -->
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    
+    <!-- infinite scroll -->
+	<script src="/js/jquery.infinitescroll.min.js"></script>
+    
+    <!-- Sticky Menu --> 
+    <script src="/js/jquery.sticky.js"> </script>
+    
+    <!-- Simple Slider -->
+    <script src="/js/bjqs.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	if( $('#filter_options').length )  
+	{
+		//Search Options Submit
+		$("#filter_options").change(function() {
+		   $("#searchheadform").submit();
+		
+		});
+	};
+    
+	<!-- sticky nav bars -->
+
+	$("#sticker").sticky({topSpacing:50});
+
+
+});
+
+</script>      
 </head>
 
 <body <?php body_class(); ?> style="background-image: url('/blog/wp-content/themes/wpex-blogger/images/bg-news-sized.jpg');background-repeat: no-repeat;background-position: top center;background-attachment: fixed;">
 
-	<?php if ( '1' == get_theme_mod( 'wpex_nav', '1' ) ) { ?>
-		<div id="site-navigation-wrap">
-			<div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
-            
-			<nav id="site-navigation" class="navigation main-navigation clr container" role="navigation">
-				<a href="#sidr-main" id="navigation-toggle"><span class="fa fa-bars"></span><?php echo __( 'Menu', 'wpex' ); ?></a>
-				<div id="logo_img" ><a href="/"><img src="/blog/wp-content/uploads/2014/08/new_logo1.png" />	</a></div>
-				<?php	
-				// Display main menu
-				wp_nav_menu( array(
-					'theme_location'	=> 'main_menu',
-					'sort_column'		=> 'menu_order',
-					'menu_class'		=> 'dropdown-menu sf-menu',
-					'fallback_cb'		=> false
-				) ); ?>
-			</nav><!-- #site-navigation -->
-		</div><!-- #site-navigation-wrap -->
-	<?php } ?>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="/">
+        		<img alt="Brand" style="height:30px;" src="/images/logo.png">
+      		</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+               <li><a href="/golfcourses">GOLF COURSES</a></li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">COURSES<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/courses/search/search.php?country=England">ENGLAND<img class="pull-right" src="/images/flag_england_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Scotland">SCOTLAND<img class="pull-right" src="/images/flag_scotland_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Wales">WALES<img class="pull-right" src="/images/flag_wales_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Ireland">IRELAND<img class="pull-right" src="/images/flag_ireland_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=France">FRANCE<img class="pull-right" src="/images/flag_france_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Portugal">PORTUGAL<img class="pull-right" src="/images/flag_portugal_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Spain">SPAIN<img class="pull-right" src="/images/flag_spain_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Bulgaria">BULGARIA<img class="pull-right" src="/images/flag_bulgaria_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Greece">GREECE<img class="pull-right" src="/images/flag_greece.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Egypt">EGYPT<img class="pull-right" src="/images/flag_egypt.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Morocco">MOROCCO<img class="pull-right" src="/images/flag_morocco.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=South+Affrica">SOUTH AFRICA<img class="pull-right" src="/images/flag_sa_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=UAE">UAE<img class="pull-right" src="/images/flag_uae_small.png" /></a></li>
+                    <li><a href="/courses/search/search.php?country=Mauritius">MAURITIUS<img class="pull-right" src="/images/flag_mauritius_small.png" /></a></li>
+                    
+                  </ul>
+               </li>
+               <li><a href="/destination/search/venuesearch.php">GOLF BREAKS</a></li>
+               <li><a href="/membership/">GOLF MEMBERSHIP</a></li>
+               <li><a href="/golfdays/">GOLF DAYS</a></li>
+               <li><a href="/golf-offers/search/search.php">OFFERS</a></li>
+               <li><a class="grey" href="/news/">NEWS</a></li>
+               <li><a class="grey" href="/maps/">MAP</a></li>
+               <li><a class="grey" href="/blog/">BLOG</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
 	<div id="wrap" class="clr">
 

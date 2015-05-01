@@ -36,6 +36,12 @@ Route::get('about', 'PagesController@about');
 /* News Page */
 //Route::get('news', 'NewsController@news');
 
+/* Terms Page */
+Route::get('terms', 'TermsController@terms');
+
+/* Privacy Page */
+Route::get('privacy', 'PrivacyController@privacy');
+
 /* Maps Page */
 Route::get('maps', 'MapsController@maps');
 
