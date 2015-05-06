@@ -72,7 +72,7 @@ $(document).ready(function() {
 $('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
 
-/*
+
 scrollIntervalID = setInterval(stickIt, 10);
 
 
@@ -108,7 +108,7 @@ function stickIt() {
   }
 }        
         
-    */    
+       
         
         
 	

@@ -30,7 +30,7 @@
                             
           <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="mailto:{{ $profdetail['PROF_EMAIL'] }}">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="mailto:{{ $profdetail['PROF_EMAIL'] }}"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
                             
-          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
+          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
 
        </div>
                          
@@ -141,14 +141,13 @@
                     
                </div>
                    
+               
+               @if($profdetail['PROF_HASPACKAGES']==true)
                    
-               <div class="row  top-buffer-lg">
-                   
-               	 
+               <div class="row  top-buffer-lg">                             	 
                  
                @foreach ($profpackages as $profpackage)   
-					 
-                 
+					           
 				<div class="col-md-4">
                     
                    	 <div class="row">
@@ -188,17 +187,14 @@
                  </div>
                  
 
-                 @endforeach
-                                                      
-                    
-                     
-                    
-                                	 
-                   	
-                   
+                 @endforeach    
                    
                </div>
                
+               @endif
+               
+               
+               @if ($profdetail['PROF_HASVIDEO'] == true) 
                
                <div class="row">
                
@@ -208,7 +204,7 @@
                    
                    <h2>WATCH THE VIDEO</h2>
                    
-                   <h3><i>GLENEAGLES</i></h3>
+                   <h3><i>{{ $profdetail['PROF_CLUBNAME_UPPER'] }}</i></h3>
                
                </div>
                
@@ -222,13 +218,27 @@
                    
                        <div class="embed-responsive embed-responsive-16by9">
                        
-                            <iframe src="https://www.youtube.com/embed/V_f4pqtQOFQ"></iframe>
+
+             
+                            @if ($profdetail['PROF_VIDEO_VZAAR'] !="")     
+							
+                            	<iframe allowFullScreen allowTransparency="true" class="vzaar-video-player" frameborder="0" src="http://view.vzaar.com/{{ $profdetail['PROF_VIDEO_VZAAR'] }}/player" title="vzaar video player" type="text/html"></iframe>
+                       		
+                            @endif
                        
+                       		@if ($profdetail['PROF_VIDEO_YOUTUBE'] !="")
+                            
+                           		 <iframe src="https://www.youtube.com/embed/{{ $profdetail['PROF_VIDEO_YOUTUBE'] }}"></iframe>
+                       		
+                       		@endif 
+                            
                        </div>
                    
                    </div>
     
                </div>
+               
+               @endif
                
                
                <div class="row top-buffer-lg">
@@ -237,12 +247,11 @@
                    
                        <img src="/images/icon_trophy.png" alt=""/>
                        
-                       <h3>2015 OPEN COMPETETIONS AT GLENEAGLES</h3>
-                       <h5> <i>FOR FURTHER INFORMATION CALL 0845 303 8367</i> </h5>
+                       <h3>OPEN COMPETITIONS AT  {{ $profdetail['PROF_CLUBNAME_UPPER'] }}</h3>
+                       <h5> <i>FOR FURTHER INFORMATION CALL {{$profdetail['PROF_OPEN_TEL']}}</i> </h5>
+                       <h5> <i>OR CONTACT <a href="mailto:{{$profdetail['PROF_OPEN_EMAIL']}}">{{$profdetail['PROF_OPEN_EMAIL']}}</a></i></h5>        
                        
-                       <h3><strong>MENS OPEN</strong> - 25/07/2015</h3>
-                       <h3><strong>WOMENS OPEN</strong> - 26/07/2015</h3>
-                       <h3><strong>JNIORS OPEN</strong> - 28/07/2015</h3>
+                       {{$profdetail['PROF_OPENS_HTML']}}
      
                    </div>
                    
@@ -250,12 +259,15 @@
     
                        <img src="/images/icon_facilities.png" width="99" height="100" alt=""/>
                        
-                       <h3> THE FOLLOWING FACILITIES ARE AVAILABLE AT </h3>
-                       <h5> <i>GLENEAGLES GOLF & COUNTRY CLUB</i> </h5>
+                       <h3> THE FOLLOWING FACILITIES ARE AVAILABLE AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }}</h3>
+                       <h5> <ul class="profile_fac_list">{{ $profdetail['PROF_SERVICES_HTML'] }}</ul></h5>
                    
                    </div>
 
                </div>
+               
+               
+               @if ($profdetail['PROF_HASPACKAGES']==true)
                
                <div class="row top-buffer-lg">
                
@@ -263,7 +275,7 @@
                
                		<div class="col-md-9">
                     
-                    	<img  class="img-responsive"  src="/images/golf_breaks.png"  alt="" />
+                    	<img  class="img-responsive"  src="/hotelimages/{{ $profdetail['PROF_PACKAGE_IMAGE'] }}"  alt="" />
 
                     </div>
                     
@@ -298,6 +310,8 @@
                     </div>
                
                </div>
+               
+               @endif
                
                <div class="row top-buffer-lg">
                

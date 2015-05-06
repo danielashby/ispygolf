@@ -130,6 +130,8 @@ class CourseSearchController extends \BaseController {
 		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUB_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
 		->leftJoin('ISPYCARD', 'COURSES.CLUB_ID', '=', 'ISPYCARD.CLUB_ID')	
 		->where('SYS_CLUBS_USERS.COURSES','1')
+		->where('SYS_CLUBS_USERS.SOCIETY','1')
+		->where('SYS_CLUBS_USERS.CORPORATE','1')
 		->where('CLUBS.CLUB_ADD1','like','%'.$search_name."%")
 		->where('CLUBS.CLUB_COUNTRY','like','%'.$search_country."%")
 		->where('CLUBS.CLUB_CITY','like','%'.$search_town."%")
