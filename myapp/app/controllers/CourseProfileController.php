@@ -27,30 +27,32 @@ class CourseProfileController extends \BaseController {
 		
 		$i=0;
 		
-		//SET STANDARD FIELD OPTIONS FOR PROFILE 
+		//START - GET ALL COURSES FOR CLUB
 		foreach($courses as $course)
 		{
+			
+			//GET INDIVIDUAL ITEMS LINKED TO EACH COURSE  (PACKAGES,GOLFDAYS...)
 			
 			$clubid = $course->CLUB_ID;
 			
 			//SET DEFAULT IMAGE
-			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}
+			if($course->IMG_IMAGE1 == "") {"/clubimages/".$course->IMG_IMAGE1 = "noimage.jpg";}
 			
 			if(trim($course->COURSE_NAME)==trim($course->CLUB_ADD1)){$course->COURSE_NAME = null;}
 	
 			if($course->IMG_DEFAULT==1)
 			{
 				$profimages = array(
-					'PROF_BANNER_IMAGE1'  => $course->IMG_IMAGE1,
-					'PROF_BANNER_IMAGE2'  => $course->IMG_IMAGE2,
-					'PROF_BANNER_IMAGE3'  => $course->IMG_IMAGE3,
-					'PROF_BANNER_IMAGE4'  => $course->IMG_IMAGE4,
-					'PROF_BANNER_IMAGE5'  => $course->IMG_IMAGE5,
-					'PROF_BANNER_IMAGE6'  => $course->IMG_IMAGE6,
-					'PROF_BANNER_IMAGE7'  => $course->IMG_IMAGE7,
-					'PROF_BANNER_IMAGE8'  => $course->IMG_IMAGE8,
-					'PROF_BANNER_IMAGE9'  => $course->IMG_IMAGE9,
-					'PROF_BANNER_IMAGE10'  => $course->IMG_IMAGE10
+					'PROF_BANNER_IMAGE1'  => "/clubimages/".$course->IMG_IMAGE1,
+					'PROF_BANNER_IMAGE2'  => "/clubimages/".$course->IMG_IMAGE2,
+					'PROF_BANNER_IMAGE3'  => "/clubimages/".$course->IMG_IMAGE3,
+					'PROF_BANNER_IMAGE4'  => "/clubimages/".$course->IMG_IMAGE4,
+					'PROF_BANNER_IMAGE5'  => "/clubimages/".$course->IMG_IMAGE5,
+					'PROF_BANNER_IMAGE6'  => "/clubimages/".$course->IMG_IMAGE6,
+					'PROF_BANNER_IMAGE7'  => "/clubimages/".$course->IMG_IMAGE7,
+					'PROF_BANNER_IMAGE8'  => "/clubimages/".$course->IMG_IMAGE8,
+					'PROF_BANNER_IMAGE9'  => "/clubimages/".$course->IMG_IMAGE9,
+					'PROF_BANNER_IMAGE10'  => "/clubimages/".$course->IMG_IMAGE10
 					
 				);
 			}
@@ -99,21 +101,24 @@ class CourseProfileController extends \BaseController {
 			$i = 0;
 			$profpackages = array();
 			$club_has_packages = false;
-			$package_image = "";
+			
+			//SET TO DEFAULT IMAGE SO IF NO HOTEL PACKAGES THEN USE COURSE IMAGE AND DISPLAY 'NOT AVAILABLE'
+			$package_image = "/clubimages/".$course->IMG_IMAGE3;
 									
 			foreach($packages as $package)
 			{
-				
+				//LIMIT TO THREE PACKAGES FOR PROFILE PAGE
 				if($i<3)
 				{
 					
 					if($i==0)
 					{
-						$package_image = $package->IMG_IMAGE1;
+						//GET DEFAULT PACKAGE IMAGE
+						$package_image = "/hotelimages/".$package->IMG_IMAGE1;
 					}
 					
-					$profpackages[$i]['PACKAGE_IMG'] =  $package->IMG_SEARCH2;
-					$profpackages[$i]['PACKAGE_IMG_LARGE'] = 	$package->IMG_IMAGE1;
+					$profpackages[$i]['PACKAGE_IMG'] =  "/hotelimages/".$package->IMG_SEARCH2;
+					$profpackages[$i]['PACKAGE_IMG_LARGE'] = 	"/hotelimages/".$package->IMG_IMAGE1;
 					$profpackages[$i]['PACKAGE_DESCRIPTION'] = 	str_limit($package->PACKAGE_DESCRIPTION, $limit = 100, $end = '...');
 					$profpackages[$i]['PACKAGE_NAME'] = 	$package->PACKAGE_NAME;
 					
@@ -129,77 +134,139 @@ class CourseProfileController extends \BaseController {
 						
 		}
 		
+		//END - GET ALL COURSES FOR CLUB
+	
 		
+		///// ---- THINGS THAT NEED ADDING TO DATABASE ----- //////
+		
+		$PROF_HASLOGO = false;
+		$PROF_LOGO_IMG = "";
+		
+		
+		///////////////////////////////////////////////////////////
+		
+		
+		// START - FORMATING OF STANDARD DATA ITEMS -------------------------------
+		
+			//FORMAT RE-USABLE ADDRESS IN ONE LINE
+			$PROF_CLUB_ADDRESS = $course->CLUB_ADD2;
+			if($course->CLUB_ADD3!="") { $PROF_CLUB_ADDRESS .= ", ".$course->CLUB_ADD3; }
+			if($course->CLUB_CITY!="") { $PROF_CLUB_ADDRESS .= ", ".$course->CLUB_CITY; }
+			if($course->CLUB_COUNTY!="") { $PROF_CLUB_ADDRESS .= ", ".$course->CLUB_COUNTY; }
+			if($course->CLUB_COUNTRY!="") { $PROF_CLUB_ADDRESS .= ", ".$course->CLUB_COUNTRY;}
+			if($course->CLUB_POSTCODE!="") { $PROF_CLUB_ADDRESS.= ", ".$course->CLUB_POSTCODE; }
+			if( substr($PROF_CLUB_ADDRESS,0,1)==","){ $PROF_CLUB_ADDRESS = substr($PROF_CLUB_ADDRESS,1); }
+			
+			//FORMAT DIAL CODE
+			
+			
+			if ($course->INT_DIAL_CODE=="")
+			{
+				$course->INT_DIAL_CODE=="+44";
+			}
+			
+			//FORMAT COURSE DESCRIPTION
+			
+			if(trim($course->COURSE_DESC)=="")
+			{
+				//COURSE NAME IS BLANK SO USE CLUB DESC
+				$course->COURSE_DESC = $course->CLUB_DESC;
+			}
+			
+			//TEST FOR REVIEW
+			$course->COURSE_HASCOURSEREVIEW = false;
+			if(trim($course->COURSE_REVIEW)!="")
+			{
+				$course->COURSE_HASCOURSEREVIEW = true;
+			}
+			else
+			{
+				$course->COURSE_REVIEW = "This course currently has no review...";
+			}
+			
+			
+			//START CURRENCY SYMBOL
+				
+			$PROF_MONEY_SYMBOL = $course -> MONETARY_SYMBOL;	
+				
+			if ($PROF_MONEY_SYMBOL=="")
+			{       	
+			  $PROF_MONEY_SYMBOL="&pound;";
+			}
+			else if ($PROF_MONEY_SYMBOL=="P")
+			{
+			  $PROF_MONEY_SYMBOL="&pound;";
+			}
+			else if ($PROF_MONEY_SYMBOL=="E")
+			{
+			  $PROF_MONEY_SYMBOL="&euro;";
+			}	
+			else if ($PROF_MONEY_SYMBOL=="D")
+			{
+			  $PROF_MONEY_SYMBOL="US$";
+			}	
+			else if ($PROF_MONEY_SYMBOL=="U")
+			{
+			  //This will need changing to AED once new layout is done for profile
+			  $PROF_MONEY_SYMBOL="AED";
+			}
+			else if ($PROF_MONEY_SYMBOL=="R")
+			{
+			  //This will need changing to AED once new layout is done for profile
+			  $PROF_MONEY_SYMBOL="R";
+			}
+			
+			//END CURRENCY SYMBOL
+			
+			//START COURSE T PRICE
+			
+			if($course->COURSE_HIGH_WEEK=="") { $course_high_week = "-"; } else {$course_high_week = $PROF_MONEY_SYMBOL.$course->COURSE_HIGH_WEEK;}
+			if($course->COURSE_LOW_WEEK=="") { $course_low_week = "-"; } else {$course_low_week = $PROF_MONEY_SYMBOL.$course->COURSE_LOW_WEEK;}
+			
+			//END T PRICE
+			
+			if($course->MEMBERSHIP==true)
+			{
+				$PROF_MEMBERSHIP_AVAILABLE = "AVAILABLE";
+			}
+			else
+			{
+				$PROF_MEMBERSHIP_AVAILABLE = "NOT AVAILABLE";
+			}
+			
+			
+		// START - FORMATING OF STANDARD DATA ITEMS -------------------------------
+				
 		//START GOLF DAYS 
-		
-		//	->where('SYS_CLUBS_USERS.SOCIETY','1')
-		// ->where('SYS_CLUBS_USERS.CORPORATE','1')
-		
 		
 		$PROF_HASGOLFDAYS = false;
 		$PROF_GOLFDAY_IMAGE = "";
 		$PROF_GOLFDAY_PRICE_FROM = "";
 		
-		if($courses->SOCIETY==true && $courses->CORPORATE==true )
+		if($course->SOCIETY==true && $course->CORPORATE==true )
 		{
 			$PROF_HASGOLFDAYS = true;
-			$PROF_GOLFDAY_IMAGE = $course->IMG_IMAGE1;
-			$PROF_GOLFDAY_PRICE_FROM = "TBC";
+			$PROF_GOLFDAY_IMAGE = "/clubimages/".$course->IMG_IMAGE1;
+			$PROF_GOLFDAY_PRICE_FROM = $PROF_MONEY_SYMBOL."TBC";
 		}
 		
-		//END GOLF DAYS
 		
 		
-		//START CURRENCY SYMBOL
-			
-		$PROF_MONEY_SYMBOL = $course -> MONETARY_SYMBOL;	
-			
-		if ($PROF_MONEY_SYMBOL=="")
-		{       	
-		  $PROF_MONEY_SYMBOL="&pound;";
-		}
-		else if ($PROF_MONEY_SYMBOL=="P")
-		{
-		  $PROF_MONEY_SYMBOL="&pound;";
-		}
-		else if ($PROF_MONEY_SYMBOL=="E")
-		{
-		  $PROF_MONEY_SYMBOL="&euro;";
-		}	
-		else if ($PROF_MONEY_SYMBOL=="D")
-		{
-		  $PROF_MONEY_SYMBOL="US$";
-		}	
-		else if ($PROF_MONEY_SYMBOL=="U")
-		{
-		  //This will need changing to AED once new layout is done for profile
-		  $PROF_MONEY_SYMBOL="AED";
-		}
-		else if ($PROF_MONEY_SYMBOL=="R")
-		{
-		  //This will need changing to AED once new layout is done for profile
-		  $PROF_MONEY_SYMBOL="R";
-		}
+	
+
 		
-		//END CURRENCY SYMBOL
-		
-		//START COURSE T PRICE
-		
-		if($course->COURSE_HIGH_WEEK=="") { $course_high_week = "-"; } else {$course_high_week = $PROF_MONEY_SYMBOL.$course->COURSE_HIGH_WEEK;}
-		if($course->COURSE_LOW_WEEK=="") { $course_low_week = "-"; } else {$course_low_week = $PROF_MONEY_SYMBOL.$course->COURSE_LOW_WEEK;}
-		
-		//END T PRICE
-					
-		//START COURSE VIDEO
+		//END GOLF DAYS				
+						
+		// START COURSE VIDEO
 		
 		$club_has_video = false;
 
 		if($course->CLUB_VIDEO_YOUTUBE!="" || $course->CLUB_VIDEO_VZAAR!="") {$club_has_video = true;}
 
-		//END COURSE VIDEO
+		// END COURSE VIDEO
 
 
-		//START OPENS FORMAT
+		// START OPENS FORMAT
 
 		$PROF_OPEN_MEN = $course->CLUB_OPEN_MEN;
 		$PROF_OPEN_LADIES = $course->CLUB_OPEN_LADIES;
@@ -256,7 +323,7 @@ class CourseProfileController extends \BaseController {
 		//START FACILITIES FORMAT //
 		
 		$PROF_SERVICES_HTML = "";
-					
+		
 		$fac_practice=$course->FAC_PRACTICE;
 		$fac_driving_range=$course->FAC_DRIVING_RANGE;
 		$fac_driving_public=$course->FAC_DRIVING_PUBLIC;
@@ -275,42 +342,58 @@ class CourseProfileController extends \BaseController {
 		$fac_lunch=$course->FAC_LUNCH;
 		$fac_dinner=$course->FAC_DINNER;
 	
-		
-		
-		
 					
-	      if ($fac_practice==1) { $PROF_SERVICES_HTML = $PROF_SERVICES_HTML . "<li>Practice Facilities</li>"; }
-          if ($fac_driving_range==1) {  $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Driving Range</li>"; } 
-          if ($fac_driving_public==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Public Driving Range</li>"; } 
-          if ($fac_driving_floodlit==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Floodlit Driving Range</li>"; }
-          if ($fac_pro_shop==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Pro Shop</li>"; }
-          if ($serv_clubs_hire==1)	{ $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Club Hire</li>"; } 
-          if ($serv_cart_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Buggy Hire</li>"; } 
-          if ($serv_motor_hire==1)	{ $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Motorized Trolley Hire</li>"; } 
-          if ($serv_pull_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Trolley Hire</li>"; }
-          if ($serv_caddy_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Caddy Service</li>"; }
-          if ($fac_changing==1) {  $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Changing Facilities</li>"; }
-          if ($fac_bar_spike==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Spike Bar</li>"; } 
-          if ($fac_club_bar==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Bar</li>"; } 
-          if ($fac_rest==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Restaurant</li>"; } 
-          if ($fac_breakfast==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Breakfast Service</li>"; } 
-          if ($fac_lunch==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Lunch Service</li>"; } 
-          if ($fac_dinner==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Dinner Service</li>"; } 
+		if ($fac_practice==1) { $PROF_SERVICES_HTML = $PROF_SERVICES_HTML . "<li>Practice Facilities</li>"; }
+		if ($fac_driving_range==1) {  $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Driving Range</li>"; } 
+		if ($fac_driving_public==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Public Driving Range</li>"; } 
+		if ($fac_driving_floodlit==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Floodlit Driving Range</li>"; }
+		if ($fac_pro_shop==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Pro Shop</li>"; }
+		if ($serv_clubs_hire==1)	{ $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Club Hire</li>"; } 
+		if ($serv_cart_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Buggy Hire</li>"; } 
+		if ($serv_motor_hire==1)	{ $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Motorized Trolley Hire</li>"; } 
+		if ($serv_pull_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Trolley Hire</li>"; }
+		if ($serv_caddy_hire==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Caddy Service</li>"; }
+		if ($fac_changing==1) {  $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Changing Facilities</li>"; }
+		if ($fac_bar_spike==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Spike Bar</li>"; } 
+		if ($fac_club_bar==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Bar</li>"; } 
+		if ($fac_rest==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Restaurant</li>"; } 
+		if ($fac_breakfast==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Breakfast Service</li>"; } 
+		if ($fac_lunch==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .   "<li>Lunch Service</li>"; } 
+		if ($fac_dinner==1) { $PROF_SERVICES_HTML  = $PROF_SERVICES_HTML .  "<li>Dinner Service</li>"; } 
 			
 		//END FACILITIES FORMAT
 		
+		
+		//POPULATE PROFILE ARRAY TO PASS TO COURSE PROFILE VIEW 
+		
+		if($course->CLUB_ADD1==""){$course->CLUB_ADD1 = $course->CLUB_NAME; }
+
 		$profdetail = array(
+					'PROF_DIAL_CODE' => $course->INT_DIAL_CODE,
 					'PROF_TELNO'  => $course->CLUB_TELEPHONE,
 					'PROF_EMAIL' => $course->CLUB_EMAIL,
 					'PROF_WEBSITE' => $course->CLUB_WEBSITE,
 					'PROF_CLUBNAME' => $course->CLUB_ADD1,
 					'PROF_CLUBNAME_UPPER' => strtoupper($course->CLUB_ADD1),
+					'PROF_CLUB_ADDRESS' => $PROF_CLUB_ADDRESS,
+					'PROF_CLUB_ADD2' => $course->CLUB_ADD2,
+					'PROF_CLUB_ADD3' => $course->CLUB_ADD3,
+					'PROF_CLUB_COUNTY' => $course->CLUB_COUNTY,
+					'PROF_CLUB_CITY' => $course->CLUB_CITY,	
+					'PROF_CLUB_POSTCODE' => $course->CLUB_POSTCODE,		
+					'PROF_CLUB_COUNTRY' => $course->CLUB_COUNTRY,	
+				    'PROF_HASLOGO' => $PROF_HASLOGO,
+					'PROF_LOGO_IMG' => $PROF_LOGO_IMG,
+					'PROF_COURSENAME' => $course->COURSE_NAME,
+					'PROF_COURSEDESC' => $course->COURSE_DESC,
+					'PROF_HASCOURSEREVIEW' => $course->COURSE_HASCOURSEREVIEW,
+					'PROF_COURSEREVIEW' => $course->COURSE_REVIEW,
 					'PROF_CLUBDESC' => $course->CLUB_DESC,
 					'PROF_LON' => $course->CLUB_LAT,
 					'PROF_LAT' => $course->CLUB_LON,
 					'PROF_COURSE_GF_HIGH_WEEK' => $course_high_week,
 					'PROF_COURSE_GF_LOW_WEEK' => $course_low_week,
-					'CARD_DESC' => $course->CARD_DESC,
+					'PROF_CARD_DESC' => $course->CARD_DESC,
 					'PROF_HASVIDEO' => $club_has_video,
 					'PROF_VIDEO_YOUTUBE' => $course->CLUB_VIDEO_YOUTUBE,
 					'PROF_VIDEO_VZAAR' => $course->CLUB_VIDEO_VZAAR,
@@ -324,7 +407,9 @@ class CourseProfileController extends \BaseController {
 					'PROF_MONEY_SYMBOL' => $PROF_MONEY_SYMBOL,
 					'PROF_HASGOLFDAYS' => $PROF_HASGOLFDAYS,
 					'PROF_GOLFDAY_IMAGE' => $PROF_GOLFDAY_IMAGE,
-					'PROF_GOLFDAY_PRICE_FROM' => $PROF_GOLFDAY_PRICE_FROM
+					'PROF_GOLFDAY_PRICE_FROM' => $PROF_GOLFDAY_PRICE_FROM,
+					'PROF_HASMEMBERS' => $course->MEMBERSHIP,
+					'PROF_MEMBERSHIP_AVAILABLE' => $PROF_MEMBERSHIP_AVAILABLE
 					
 					
 		);
@@ -338,8 +423,6 @@ class CourseProfileController extends \BaseController {
 		//exit;
 		
 		//dd($profpackages);
-		
-		//prof_packages = ($prof_packages;
 	
 		return View::make('courses.profile')->with('courses',$courses)
 									 		->with('profimages',$profimages)

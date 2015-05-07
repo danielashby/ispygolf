@@ -291,6 +291,14 @@ a:focus, a:hover
 		
 	}
 	
+	.profile-logo-none
+	{
+	
+		text-align:center;padding-top:60px;
+		
+	}
+	
+	
 		
 	.profile-navbar
 	{
@@ -318,7 +326,12 @@ a:focus, a:hover
 	
 	.profile-navbar  .selected
 	{
-		background-color:#a6b445;
+		background-color:#a6b445 !important;
+	}
+	
+	.profile-navbar  .selected :hover, .profile-navbar  .selected :focus
+	{
+		background-color:#a6b445 !important;
 	}
 	
 	
@@ -375,8 +388,15 @@ a:focus, a:hover
 	
 	.profile-headline-bx-btn
 	{
-		width:85px;
-		margin-top:30px;
+	   width: 70px;
+	  margin-top: 43px;
+	  padding: 6px 5px;
+	}
+	
+	.profile_overlayimg {
+		position: absolute;
+		top: 0;
+		width: 100%;
 	}
 	
 	.profile-offers-bx-btn
@@ -411,6 +431,18 @@ a:focus, a:hover
 	}
 	
 	/* misc */
+	
+	.btn-default
+	{
+		background-color:#a6b445 !important;
+		color:#FFF !important;
+	}
+	
+	.btn-default:hover
+	{
+		background-color:#a6b445 !important;
+		color:#000 !important;
+	}
 	
 	
 	/* PADDINGS */
