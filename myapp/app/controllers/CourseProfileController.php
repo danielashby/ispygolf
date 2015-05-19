@@ -140,12 +140,12 @@ class CourseProfileController extends \BaseController {
 		$PROF_GOLFDAY_IMAGE = "";
 		$PROF_GOLFDAY_PRICE_FROM = "";
 		
-		if($courses->SOCIETY==true && $courses->CORPORATE==true )
-		{
-			$PROF_HASGOLFDAYS = true;
-			$PROF_GOLFDAY_IMAGE = $course->IMG_IMAGE1;
-			$PROF_GOLFDAY_PRICE_FROM = "TBC";
-		}
+		//if($courses->SOCIETY==true && $courses->CORPORATE==true )
+		//{
+		//	$PROF_HASGOLFDAYS = true;
+		//	$PROF_GOLFDAY_IMAGE = $course->IMG_IMAGE1;
+		//	$PROF_GOLFDAY_PRICE_FROM = "TBC";
+		//}
 		
 		//END GOLF DAYS
 		
