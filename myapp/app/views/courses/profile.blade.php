@@ -11,7 +11,7 @@
               	<ul class="bjqs">
                 	
                      @foreach ($profimages as $profimage)   
-                 	    @if ($profimage!="") <li> <img class="img-responsive"  src="/clubimages/{{ $profimage }}" /> </li> @endif 
+                 	    @if ($profimage!="") <li> <img class="img-responsive"  src="{{ $profimage }}" /> </li> @endif 
 					 @endforeach
                      
                 </ul>
@@ -24,18 +24,24 @@
                            
        <div class="col-md-3 profile-main-banner-info">
                     		
-		  <div class="col-md-12 largepad profile-logo"> <img src="/images/testlogo.jpg" /></div>
-                                
-          <div class="col-md-8 profile-main-banner-bx largepad"><h2>{{ $profdetail['PROF_TELNO'] }}</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
+          @if ($profdetail['PROF_HASLOGO']==true)                 
+		  <div class="col-md-12 largepad profile-logo"> <img src="/clublogos/{{$profdetail['PROF_LOGO_IMG']}}" /></div>
+          @endif   
+          @if ($profdetail['PROF_HASLOGO']==false)                 
+		  <div class="col-md-12 largepad profile-logo-none"></div>
+          @endif     
+                             
+          <div class="col-md-8 profile-main-banner-bx largepad"><h2>{{ $profdetail['PROF_DIAL_CODE'] }} {{ $profdetail['PROF_TELNO'] }}</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
                             
           <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="mailto:{{ $profdetail['PROF_EMAIL'] }}">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="mailto:{{ $profdetail['PROF_EMAIL'] }}"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
-                            
+                
+          @if($profdetail['PROF_WEBSITE']  !="")       
           <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
+          @endif
 
        </div>
                          
     </div>
-                    
                     
                 <div class="row menu"  style="z-index:500;">
                   
@@ -47,18 +53,19 @@
                              
                           <div class="container-fluid">
                               
-                              <div class="hidden-title-conatiner"><h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }}</h3></div>
+                              <div class="hidden-title-conatiner"><h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }} - {{ $profdetail['PROF_CLUB_ADDRESS'] }}
+                              </h3></div>
                                   
-                               <div class="navbar-header">
+                               <div class="navbar-header profile-nav">
               
-                                   <a class="navbar-brand selected noleftmargin" href="#link_overview">OVERVIEW</a>
-                                   <a class="navbar-brand" href="#link_course_details">COURSE DETAILS</a>
-                                   <a class="navbar-brand" href="#lnk_green_fees">GREEN FEES</a>
-                                   <a class="navbar-brand" href="#lnk_golf_days">GOLF DAYS</a>
-                                   <a class="navbar-brand" href="#lnk_membership">MEMBERSHP</a>
-                                   <a class="navbar-brand" href="#lnk_golfbreaks">GOLF BREAKS</a>
-                                   <a class="navbar-brand" href="#lnk_reviews">REVIEWS</a>
-                                   <a class="navbar-brand" href="#lnk_location">LOCATION</a>
+                                   <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_overview">OVERVIEW</a>
+                                   <a class="navbar-brand" id="navdetails" href="#link_course_details">COURSE DETAILS</a>
+                                   <a class="navbar-brand" id="navgreenfees" href="#lnk_green_fees">GREEN FEES</a>
+                                   <a class="navbar-brand" id="navgolfdays" href="#lnk_golf_days">GOLF DAYS</a>
+                                   <a class="navbar-brand" id="navmembership" href="#lnk_membership">MEMBERSHP</a>
+                                   <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a>
+                                   <a class="navbar-brand" id="navreviews" href="#lnk_reviews">REVIEWS</a>
+                                   <a class="navbar-brand" id="navlocation" href="#lnk_location">LOCATION</a>
               
                              </div>
                               
@@ -75,7 +82,8 @@
 	
                     <div class="col-md-6">
                         
-                        <h3>{{ $profdetail['PROF_CLUBNAME'] }}</h3>
+                        <h2>{{ $profdetail['PROF_CLUBNAME'] }}</h2>
+                        <P>{{ $profdetail['PROF_CLUB_ADDRESS'] }}</P>
                         
                        
             
@@ -96,7 +104,7 @@
                          <h2>{{ $profdetail['PROF_COURSE_GF_HIGH_WEEK']}}</h2>
                        </div>  
                            
-                       @if ($profdetail['CARD_DESC'] !="")      
+                       @if ($profdetail['PROF_CARD_DESC'] !="")      
                       
                       {{-- ISPY EXTRA OFFERS --}}
                       
@@ -154,7 +162,13 @@
                      
                      	 <div class="col-md-12">
                         
-                       	 <img  class="img-responsive"  src="/hotelimages/{{ $profpackage['PACKAGE_IMG'] }}"/>
+                       	 <img  class="img-responsive"  src="{{ $profpackage['PACKAGE_IMG'] }}"/>
+                         
+                         <div class="profile_overlayimg" >
+                         
+                         	<img src="/images/special_offer_banner.png" />
+                         
+                         </div>
                          
                          </div>
                         
@@ -248,7 +262,7 @@
                        <img src="/images/icon_trophy.png" alt=""/>
                        
                        <h3>OPEN COMPETITIONS AT  {{ $profdetail['PROF_CLUBNAME_UPPER'] }}</h3>
-                       <h5> <i>FOR FURTHER INFORMATION CALL {{$profdetail['PROF_OPEN_TEL']}}</i> </h5>
+                       <h5> <i>FOR FURTHER INFORMATION CALL {{ $profdetail['PROF_DIAL_CODE'] }} {{$profdetail['PROF_OPEN_TEL']}}</i> </h5>
                        <h5> <i>OR CONTACT <a href="mailto:{{$profdetail['PROF_OPEN_EMAIL']}}">{{$profdetail['PROF_OPEN_EMAIL']}}</a></i></h5>        
                        
                        {{$profdetail['PROF_OPENS_HTML']}}
@@ -267,7 +281,7 @@
                </div>
                
                
-               @if ($profdetail['PROF_HASPACKAGES']==true)
+               
                
                <div class="row top-buffer-lg">
                
@@ -275,7 +289,7 @@
                
                		<div class="col-md-9">
                     
-                    	<img  class="img-responsive"  src="/hotelimages/{{ $profdetail['PROF_PACKAGE_IMAGE'] }}"  alt="" />
+                    	<img  class="img-responsive"  src="{{ $profdetail['PROF_PACKAGE_IMAGE'] }}"  alt="" />
 
                     </div>
                     
@@ -285,15 +299,67 @@
                          <a name="lnk_golfbreaks"></a>
                              <h5>STAY & PLAY GOLF BREAKS</h5>
                            
+                          @if ($profdetail['PROF_HASPACKAGES']==true) 
+                           
                              <h2>AVAILABLE</h2> 
                                <hr class="feature-hr">  
 
  						  <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
                                  FOR ALL THE LATEST GOLF 
-                                 BREAKS AT GLENEAGLES GOLF 
-                                 & COUNTRY CLUB PLEASE 
-                                 CLICK BELOW.
+                                 BREAKS AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }}
+                                 PLEASE CLICK BELOW.
+                             </p>
+                             
+                          </div>
+                          
+                         
+                         
+                             <div class="col-md-12 text-right" style="margin-bottom">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+                             
+                             @endif
+                             
+                             @if ($profdetail['PROF_HASPACKAGES']==false) 
+                             
+                             	<h2>NOT AVAILABLE</h2> 
+                             
+                             @endif
+                    
+                    	</div>
+                    	
+                    
+                    </div>
+               
+               </div>
+               
+               
+               
+
+					
+               
+               @if ($profdetail['PROF_HASGOLFDAYS']==true)
+               <div class="row top-buffer-lg">
+               
+               		<div class="col-md-9">
+                    
+                    	<img  class="img-responsive" style="width:100%;" src="{{$profdetail['PROF_GOLFDAY_IMAGE']}}"  alt=""/>
+
+                    </div>
+                    
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
+                    
+                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
+                         <a name="lnk_golf_days"></a>
+                             <h5>GOLF DAYS FROM</h5>
+                           
+                             <h2>{{$profdetail['PROF_GOLFDAY_PRICE_FROM']}}</h2> 
+                               <hr class="feature-hr">  
+
+ 						  <div class="col-md-12 col-sm-2 ">
+                             <p class="text-left"> 
+                                {{ $profdetail['PROF_CLUBNAME_UPPER'] }} WELCOMES SOCIETY AND CORPORTE GOLF DAYS. FOR MORE INFORMATION AND A QUOTATION CLICK BELOW.
                              </p>
                              
                           </div>
@@ -317,47 +383,6 @@
                
                		<div class="col-md-9">
                     
-                    	<img  class="img-responsive" src="/images/golf_days.png"  alt=""/>
-
-                    </div>
-                    
-                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
-                    
-                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
-                         <a name="lnk_golf_days"></a>
-                             <h5>GOLF DAYS FROM</h5>
-                           
-                             <h2>£110.00</h2> 
-                               <hr class="feature-hr">  
-
- 						  <div class="col-md-12 col-sm-2 ">
-                             <p class="text-left">
-                                GLENEAGLES GOLF & COUNTRY 
-                                CLUB WELCOMES SOCIETY AND 
-                                CORPORTE GOLF DAYS. FOR 
-                                MORE INFORMATION AND A 
-                                QUOTATION CLICK BELOW.
-                             </p>
-                             
-                          </div>
-                          
-                         
-                         
-                             <div class="col-md-12 text-right" style="margin-bottom">
-                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
-                             </div>
-                    
-                    	</div>
-                    	
-                    
-                    </div>
-               
-               </div>
-               
-               <div class="row top-buffer-lg">
-               
-               		<div class="col-md-9">
-                    
                     	<img class="img-responsive" src="/images/membership.png"  alt=""/>
 
                     </div>
@@ -368,15 +393,14 @@
                          <a name="lnk_membership"></a>
                              <h5>MEMBERSHIPS ARE CURRENTLY</h5>
                            
-                             <h2>AVAILABLE</h2> 
+                             <h2>{{ $profdetail['PROF_MEMBERSHIP_AVAILABLE'] }}</h2> 
                                <hr class="feature-hr">  
 
  						  <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
-                               FOR MORE INFORMATION, ON
-                                MEMBERSHIP AT GLENEAGLES 
-                                GOLF & COUNTRY CLUB PLEASE
-                                ENQUIRE BELOW.
+                               @if ($profdetail['PROF_HASMEMBERS'] == true)
+                               FOR MORE INFORMATION, ON MEMBERSHIP AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }} PLEASE ENQUIRE BELOW.
+                               @endif
                              </p>
                           </div>
                           
@@ -399,9 +423,9 @@
                	 
                    <img src="/images/icon_course.png" />
                    
-                   <h2>THE KINGS COURSE</h2>
+                   <h2></h2>
                    
-                   <h5><i>GLENEAGLES</i></h5>
+                   <h5><i></i></h5>
                
                </div>
                
@@ -451,21 +475,12 @@
 
                     <div class="col-md-6">
                         
-                        <h3>THE KING'S COURSE</h3>
+                        <h3>{{ $profdetail['PROF_COURSENAME'] }}</h3>
                         
                         <a name="link_course_details"></a>
                          <a name="lnk_green_fees"></a>
             
-                        <p>The King's Course, opened in 1919, is a masterpiece of design, which 
-                            has tested the aristocracy of golf, both professional and amateur.
-                            James Braid's plan for the King's Course was to test even the best 
-                            players' shot-making skills over the eighteen holes. Selecting the 
-                            right club for each approach shot is the secret on the King's. It is 
-                            certainly one of the most beautiful and exhilarating places to play 
-                            golf in the world, with the springy moorland turf underfoot, the 
-                            sweeping views from the tees all around, the rock-faced mountains 
-                            to the north, the green hills to the south, and the peaks of the 
-                            Trossachs and Ben Vorlich on the western horizon.</p>
+                        <p>{{ $profdetail['PROF_COURSEDESC'] }}</p>
                         
                     </div>
                         
@@ -474,18 +489,26 @@
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>LOW SEASON GREEN FROM</p>
-                         <h2>£110.00</h2>
+                         <h2>{{ $profdetail['PROF_COURSE_GF_LOW_WEEK']}}</h2>
                        </div>   
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>HIGH SEASON GREEN FROM</p>
-                         <h2>£140.00</h2>
+                         <h2>{{ $profdetail['PROF_COURSE_GF_HIGH_WEEK']}}</h2>
                        </div>  
                            
+                       @if ($profdetail['PROF_CARD_DESC'] !="")      
+                      
+                      {{-- ISPY EXTRA OFFERS --}}
+                      
                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                         <p>AVAILABLE</p>
                         <h2>ISPY EXTRA</h2>                      
                        </div>  
+                       
+                       @endif
+                       
+                       {{-- ISPY EXTRA OFFERS END --}}
                        
                        
                    </div>
@@ -525,6 +548,8 @@
                </div>
                
                
+                 
+               
                <div class="row">
                
                <div class="col-md-12  top-buffer-lg text-center">
@@ -533,9 +558,9 @@
                    
                    <h2>OUR REVIEW</h2>
                    
-                   <h3>THE KINGS COURSE</h3>
+                   <h3>{{ $profdetail['PROF_COURSENAME'] }}</h3>
                    
-                   <h4><i>GLEANEAGLES</i></h4>
+                   <h4><i>{{ $profdetail['PROF_CLUBNAME_UPPER'] }}</i></h4>
                    
                     <a class="btn btn-default ">  READ  </a>
                
@@ -552,13 +577,14 @@
                	 
                    <img src="/images/icon_golfmonthly.png" />
                 <a name="lnk_reviews"></a>
-                   <h3>TOP 100 COURSES UK&amp;I</h3>
-                   
-                    <h3><i>NO 36</i></h3>
+                	
+                    <h3> <i>TOP 100 COURSES UK&I </i> </h3>
+                
+                    <p><i>
+                                
+                    {{ $profdetail['PROF_COURSEREVIEW'] }}
                     
-                    <p><i>"A MASTERPIECE OF MAVERICK ROUTING BY JAMES BRAID OVER SUBLIME SCOTTISH MOORLAND"; 
-"STILL A GOOD PLACE TO PLAY GOLF SET IN FABULOUS SCENERY"; 
-"SCOTLAND'S ICONIC INLAND MASTERPIECE"; "A GOLF COURSE FIT FOR A KING."</i></p>
+                    </i></p>
                
                </div>
                
@@ -566,6 +592,8 @@
                
                
                </div>
+               
+               
                
 
 				<div class="row">
@@ -573,13 +601,13 @@
                    <div class="col-md-12  top-buffer-lg text-center">
                      
                        <img src="/images/icon_map.png" />
-                       
-                       <h4>GLENEAGLES<br>
-                            GOLF CLUB LANE<br>
-                            AUCHTERADER<br>
-                            PERTHSHIRE<br>
-                            SCOTLAND<br>
-                            PY2 3HT</h4>
+            
+                       <h4>{{ $profdetail['PROF_CLUBNAME'] }}<br>
+                           {{ $profdetail['PROF_CLUB_ADD2'] }}<br>
+                           {{ $profdetail['PROF_CLUB_COUNTY'] }}<br>
+                           {{ $profdetail['PROF_CLUB_CITY'] }}<br>
+                           {{ $profdetail['PROF_CLUB_POSTCODE'] }}<br>
+                           {{ $profdetail['PROF_CLUB_COUNTRY'] }}</h4>
                    
                    </div>
 
