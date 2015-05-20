@@ -11,9 +11,12 @@
               	<ul class="bjqs">
                 	
                      {{-- Only show if has images. i.e if not just /clubimages/ --}}
+                     
                      @foreach ($profimages as $profimage)   
-                 	    @if ($profimage!="/clubimages/") <li> <img class="img-responsive"  src="{{ $profimage }}" /> </li> @endif 
-					 @endforeach
+                 	    
+                        @if ($profimage!="/clubimages/") <li> <img class="img-responsive"  src="{{ $profimage }}" /> </li> @endif 
+					 
+                     @endforeach
                      
                 </ul>
               
@@ -48,11 +51,11 @@
                   
                    <a name="link_overview"></a>
 
-                    <div class="col-md-12"> 
+                    <div class="col-md-12 profilemenu"> 
                         
                         <nav class="navbar profile-navbar navbar-default">
                              
-                          <div class="container-fluid">
+                          <div class="container">
                               
                               <div class="hidden-title-conatiner"><h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }} - {{ $profdetail['PROF_CLUB_ADDRESS'] }}
                               </h3></div>
@@ -498,8 +501,6 @@
                                  <strong>PAR</strong>  {{ $course->COURSE_PAR_MEN }}<br>
                                  <strong>SSS</strong> {{ $course->COURSE_SSS_MEN }}<br>
                                  <strong>ISPY DIFFICULTY RATING</strong><br>
-                                 <strong>DRESS CODE</strong>
-                                 <p>{{ $course->CLUB_COURSE_DRESS_DETAIL }}</p>
                             
                              </p>
                              
@@ -524,6 +525,9 @@
                          <a name="lnk_green_fees"></a>
             
                         <p>{{ $course->COURSE_DESC}}</p>
+                        
+                        <h3>Dress Code</h3>
+                        <p>{{ $course->CLUB_COURSE_DRESS_DETAIL }}</p>
                         
                     </div>
                         
@@ -670,26 +674,28 @@
                    
                    <a name="lnk_location"></a>
                         
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
   function initialize() {
 	  
-	  
+	
+	var club_lat = {{ $profdetail['PROF_LON'] }};
+	var club_lon = {{ $profdetail['PROF_LAT'] }};
+	
 	var map_canvas = document.getElementById('map-canvas');
 	var map_options = {
-	  center: new google.maps.LatLng('{{ $profdetail['PROF_LAT'] }}','{{ $profdetail['PROF_LON'] }}'),
+	  center: new google.maps.LatLng(club_lat,club_lon),
 	  zoom: 8,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
 	var map = new google.maps.Map(map_canvas, map_options)
 	
 	
-    var latLng = new google.maps.LatLng('{{ $profdetail['PROF_LAT'] }}','{{ $profdetail['PROF_LON'] }}');
+    var latLng = new google.maps.LatLng(club_lat,club_lon);
     var marker = new google.maps.Marker({
       position: latLng,
       map: map,
        labelContent: "{{ $profdetail['PROF_CLUBNAME'] }}",
-       labelAnchor: new google.maps.Point(22, 0),
+       labelAnchor: new google.maps.Point(club_lat,club_lon),
        labelClass: "labels", // the CSS class for the label
        labelStyle: {opacity: 0.75},
 	   labelInBackground: true	 

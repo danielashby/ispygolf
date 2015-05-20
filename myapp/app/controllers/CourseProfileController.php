@@ -13,6 +13,10 @@ class CourseProfileController extends \BaseController {
 	public function profile($urlid)
 	{
 		
+		
+		$urlid = str_replace('-', ' ',$urlid);
+		
+		
 		//SYS_CLUBS_USERS.SOCIETY = '1' and SYS_CLUBS_USERS.CORPORATE = '1' " 
 		
 	    $courses = DB::table('CLUBS')			
@@ -248,7 +252,7 @@ class CourseProfileController extends \BaseController {
 		{
 			$PROF_HASGOLFDAYS = true;
 			$PROF_GOLFDAY_IMAGE = "/clubimages/".$course->IMG_IMAGE2;
-			$PROF_GOLFDAY_PRICE_FROM = $PROF_MONEY_SYMBOL."TBC";
+			$PROF_GOLFDAY_PRICE_FROM = $PROF_MONEY_SYMBOL."ADD TO DB";
 		}
 		
 		

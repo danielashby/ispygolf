@@ -69,7 +69,7 @@ $(document).ready(function() {
 	<!-- $("#sticker").sticky({topSpacing:50}); -->
         
         
-$('.menu').addClass('original').clone().insertAfter('.menu').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
+$('.menu').addClass('original').clone().insertAfter('.navbar').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
 
 
@@ -124,7 +124,7 @@ function stickIt() {
 		
 	});
 	
-    $('.cloned').css('left',leftOrgElement+'px'+10).css('top',55).css('width',widthOrgElement).show();
+    $('.cloned').css('left',leftOrgElement+'px'+10).css('top',55).css('width','100%').show();
 	
     $('.original').css('visibility','hidden');
 	
@@ -150,14 +150,14 @@ function stickIt() {
 	
 	
 	$('#profile-slider').bjqs({
-		'height' : 325,
-		'width' : 808,
+		'height' : 341,
+		'width' : 848,
 		'responsive' : true,
 animtype : 'fade', // accepts 'fade' or 'slide'
 animduration : 450, // how fast the animation are
 animspeed : 4000, // the delay between each slide
 automatic : true, // automatic
-showcontrols : false,
+showcontrols : true,
 showmarkers: false
 	});
 	

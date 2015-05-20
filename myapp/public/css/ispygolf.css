@@ -281,6 +281,42 @@ a:focus, a:hover
 	ol.bjqs-markers li a{display:inline-block;}
 	p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
 	
+	
+#banner-fade,
+#banner-slide{
+	margin-bottom: 60px;
+}
+
+ul.bjqs-controls.v-centered li a{
+	display:block;
+	padding:10px;
+	background:#fff;
+	color:#000;
+	text-decoration: none;
+}
+
+ul.bjqs-controls.v-centered li a:hover{
+	background:#000;
+	color:#fff;
+}
+
+ol.bjqs-markers li a{
+	padding:5px 10px;
+	background:#000;
+	color:#fff;
+	margin:5px;
+	text-decoration: none;
+}
+
+ol.bjqs-markers li.active-marker a,
+ol.bjqs-markers li a:hover{
+	background: #999;
+}
+
+p.bjqs-caption{
+	background: rgba(255,255,255,0.5);
+}
+	
 	/* slider end */
 	
 	.profile-logo
@@ -341,6 +377,27 @@ a:focus, a:hover
 		padding-bottom:100px;
 	}
 	
+	.hidden-title-conatiner
+	{
+		padding-left:15px;
+	}
+	
+	.cloned .navbar-header
+	{
+		padding-left:15px;
+	}
+	
+	.cloned
+	{
+		margin-left:0px !important;
+		margin-right:0px !important;
+	}
+	
+	.cloned .profilemenu
+	{
+		padding-left:0px !important;
+		padding-right:0px !important;
+	}
 	
 	.profile-main-banner-bx
 	{

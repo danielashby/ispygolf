@@ -174,6 +174,12 @@ class CourseSearchController extends \BaseController {
 			 	$course->SPECIAL_OFFER = null;
 			 }
 			 
+			 
+			 //FORMAT URLID
+			 
+			 $course->CLUB_URLID = str_replace(' ', '-', $course->CLUB_URLID);
+			 
+			 
 			 //MEMBERSHIP AVAILABLE
 			if($course->CLUB_MEMBER == "0") {$course->CLUB_MEMBER = null;}
 			

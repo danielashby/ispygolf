@@ -14,16 +14,15 @@
 	<!-- load bootstrap from a cdn -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
     
-    <!-- jquery autocomplete thems -->
+    <!-- jquery autocomplete theme -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     
-    <!-- the font -->
+    <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    
-    
     
     <!-- ispygolf customs -->
     <link href="/css/ispygolf.css" rel="stylesheet">
+    
     
     <link rel="stylesheet" type="text/css" href="/css/awesome-bootstrap-checkbox.css">
 
