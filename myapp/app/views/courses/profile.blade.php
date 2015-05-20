@@ -10,8 +10,9 @@
               
               	<ul class="bjqs">
                 	
+                     {{-- Only show if has images. i.e if not just /clubimages/ --}}
                      @foreach ($profimages as $profimage)   
-                 	    @if ($profimage!="") <li> <img class="img-responsive"  src="{{ $profimage }}" /> </li> @endif 
+                 	    @if ($profimage!="/clubimages/") <li> <img class="img-responsive"  src="{{ $profimage }}" /> </li> @endif 
 					 @endforeach
                      
                 </ul>
@@ -290,10 +291,16 @@
                		<div class="col-md-9">
                     
                     	<img  class="img-responsive"  src="{{ $profdetail['PROF_PACKAGE_IMAGE'] }}"  alt="" />
+                        
+                         <div class="profile_overlayimg img-responsive" >
+                         
+                         	<img src="/images/golf_breaks_banner.png" />
+                         
+                         </div>
 
                     </div>
                     
-                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;margin-left:-15px;">
                     
                     	 <div class="col-md-12 col-sm-2  largepad text-center" >
                          <a name="lnk_golfbreaks"></a>
@@ -302,16 +309,16 @@
                           @if ($profdetail['PROF_HASPACKAGES']==true) 
                            
                              <h2>AVAILABLE</h2> 
-                               <hr class="feature-hr">  
+                                
 
- 						  <div class="col-md-12 col-sm-2 ">
-                             <p class="text-left">
-                                 FOR ALL THE LATEST GOLF 
-                                 BREAKS AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }}
-                                 PLEASE CLICK BELOW.
-                             </p>
-                             
-                          </div>
+                              <div class="col-md-12 col-sm-2 ">
+                                 <p class="text-left">
+                                     FOR ALL THE LATEST GOLF 
+                                     BREAKS AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }}
+                                     PLEASE CLICK BELOW.
+                                 </p>
+                                 
+                              </div>
                           
                          
                          
@@ -319,13 +326,13 @@
                                  <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
                              </div>
                              
-                             @endif
+                          @endif
                              
-                             @if ($profdetail['PROF_HASPACKAGES']==false) 
-                             
-                             	<h2>NOT AVAILABLE</h2> 
-                             
-                             @endif
+                         @if ($profdetail['PROF_HASPACKAGES']==false) 
+                         
+                            <h2>NOT AVAILABLE</h2> 
+                         
+                         @endif
                     
                     	</div>
                     	
@@ -339,36 +346,54 @@
 
 					
                
-               @if ($profdetail['PROF_HASGOLFDAYS']==true)
+               
                <div class="row top-buffer-lg">
                
                		<div class="col-md-9">
                     
-                    	<img  class="img-responsive" style="width:100%;" src="{{$profdetail['PROF_GOLFDAY_IMAGE']}}"  alt=""/>
+                    	<img  class="img-responsive" src="{{$profdetail['PROF_GOLFDAY_IMAGE']}}"  alt=""/>
+                        
+                         <div class="profile_overlayimg img-responsive" >
+                         
+                         	<img src="/images/golf_days_banner.png" />
+                         
+                         </div>
 
                     </div>
                     
-                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;margin-left:-15px;">
                     
                     	 <div class="col-md-12 col-sm-2  largepad text-center" >
                          <a name="lnk_golf_days"></a>
-                             <h5>GOLF DAYS FROM</h5>
+                             <h5>GOLF DAYS</h5>
+                             
+                             
+                           @if ($profdetail['PROF_HASGOLFDAYS']==true)
                            
                              <h2>{{$profdetail['PROF_GOLFDAY_PRICE_FROM']}}</h2> 
-                               <hr class="feature-hr">  
+     
 
- 						  <div class="col-md-12 col-sm-2 ">
-                             <p class="text-left"> 
-                                {{ $profdetail['PROF_CLUBNAME_UPPER'] }} WELCOMES SOCIETY AND CORPORTE GOLF DAYS. FOR MORE INFORMATION AND A QUOTATION CLICK BELOW.
-                             </p>
-                             
-                          </div>
+                              <div class="col-md-12 col-sm-2 ">
+                                 <p class="text-left"> 
+                                    {{ $profdetail['PROF_CLUBNAME_UPPER'] }} WELCOMES SOCIETY AND CORPORTE GOLF DAYS. FOR MORE INFORMATION AND A QUOTATION CLICK BELOW.
+                                 </p>
+                                 
+                              </div>
                           
                          
                          
                              <div class="col-md-12 text-right" style="margin-bottom">
                                  <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
                              </div>
+                             
+                             @endif
+                             
+                              @if ($profdetail['PROF_HASGOLFDAYS']==false)
+                              
+                              	<h2>NOT AVAILABLE</h2> 
+                              
+                              @endif
+                             
                     
                     	</div>
                     	
@@ -377,87 +402,105 @@
                
                </div>
                
-               @endif
                
                <div class="row top-buffer-lg">
                
                		<div class="col-md-9">
                     
-                    	<img class="img-responsive" src="/images/membership.png"  alt=""/>
+                    	<img class="img-responsive"  src="{{$profdetail['PROF_MEMBERSHIP_IMAGE']}}"  alt=""/>
+                        
+                        <div class="profile_overlayimg img-responsive" >
+                         
+                         	<img src="/images/membership_banner.png" />
+                         
+                         </div>
 
                     </div>
                     
-                   <div class="col-md-3 vertical-fill" style="background-color:#ececec;">
+                   <div class="col-md-3 vertical-fill" style="background-color:#ececec;margin-left:-15px;">
                     
                     	 <div class="col-md-12 col-sm-2  largepad text-center" >
                          <a name="lnk_membership"></a>
                              <h5>MEMBERSHIPS ARE CURRENTLY</h5>
                            
                              <h2>{{ $profdetail['PROF_MEMBERSHIP_AVAILABLE'] }}</h2> 
-                               <hr class="feature-hr">  
-
- 						  <div class="col-md-12 col-sm-2 ">
+                              
+						@if ($profdetail['PROF_HASMEMBERS'] == true)
+ 						  
+                          <div class="col-md-12 col-sm-2 ">
                              <p class="text-left">
-                               @if ($profdetail['PROF_HASMEMBERS'] == true)
+                               
                                FOR MORE INFORMATION, ON MEMBERSHIP AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }} PLEASE ENQUIRE BELOW.
-                               @endif
+                               
                              </p>
                           </div>
-                          
-                         
-                         
                              <div class="col-md-12 text-right" style="margin-bottom">
                                  <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
                              </div>
-                    
+                    	
+                        @endif
                     	</div>
                     	
                     
                     </div>
                
                </div>
+             
+             {{--  COURSE LISTING START --}}
                
+               
+             @foreach ($courses as $course)                
                <div class="row">
+              
                
                <div class="col-md-12  top-buffer-lg text-center">
-               	 
+               	   
+                   
+                   	
                    <img src="/images/icon_course.png" />
+                   <a name="link_course_details"></a>
+                   <h2>{{ $course->COURSE_NAME}}</h2>
                    
-                   <h2></h2>
+                    
                    
-                   <h5><i></i></h5>
+                   <h5><i>{{ $profdetail['PROF_CLUBNAME_UPPER'] }}</i></h5>
+                   
+                  
                
                </div>
                
                
                </div>
-               
+
+ 
                
 <div class="row top-buffer-lg">
                
                		<div class="col-md-9">
                     
-                    	<img src="/images/course_image.png"  alt=""/>
+                    	<img src="/clubimages/{{ $course->IMG_IMAGE1 }}"  alt=""/>
 
                     </div>
                     
-                    <div class="col-md-3">
+                    <div class="col-md-3 vertical-fill" style="background-color:#cdde54;margin-left:-15px;">
                     
-                         <div class="col-md-12 vertical-fill" style="background-color:#cdde54;">
+                         <div class="col-md-12 " >
                              
                              <h3> VISITORS WELCOME </h3>
                              
                              <p>
-                                 <strong>NO. HOLES </strong>18 <br>
-                                 <strong>YEAR OPEN </strong>1919<br>
-                                 <strong>DESIGNER</strong> JAMES BRAID<br>
-                                 STYLE MOORLAND<br>
+                                 <b>NO. HOLES </b>{{ $course->COURSE_NO_HOLES }}<br>
+                                 <strong>YEAR OPEN </strong> {{ $course->COURSE_YEAR }}<br>
+                                 <strong>DESIGNER</strong> {{ $course->COURSE_DESIGNER}}<br>
+                                 <strong>STYLE</strong> {{ $course->COURSE_STYLE }}<br>
                                 
-                                 <strong>LENGTH (MAX)</strong> 6,767<br>
-                                 <strong>PAR</strong> 72<br>
-                                 <strong>SSS</strong> 74<br>
+                                 <strong>LENGTH (MAX)</strong> {{ $course->COURSE_YARDAGE_CHAMP }}<br>
+                                 <strong>PAR</strong>  {{ $course->COURSE_PAR_MEN }}<br>
+                                 <strong>SSS</strong> {{ $course->COURSE_SSS_MEN }}<br>
                                  <strong>ISPY DIFFICULTY RATING</strong><br>
-                                 <strong>DRESS CODE</strong><br>
+                                 <strong>DRESS CODE</strong>
+                                 <p>{{ $course->CLUB_COURSE_DRESS_DETAIL }}</p>
+                            
                              </p>
                              
                          </div>                 
@@ -475,12 +518,12 @@
 
                     <div class="col-md-6">
                         
-                        <h3>{{ $profdetail['PROF_COURSENAME'] }}</h3>
+                        <h3>{{ $course->COURSE_NAME}}</h3>
                         
-                        <a name="link_course_details"></a>
+                        
                          <a name="lnk_green_fees"></a>
             
-                        <p>{{ $profdetail['PROF_COURSEDESC'] }}</p>
+                        <p>{{ $course->COURSE_DESC}}</p>
                         
                     </div>
                         
@@ -489,12 +532,12 @@
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>LOW SEASON GREEN FROM</p>
-                         <h2>{{ $profdetail['PROF_COURSE_GF_LOW_WEEK']}}</h2>
+                         <h2>{{ $profdetail['PROF_MONEY_SYMBOL']}}{{ $course->COURSE_LOW_WEEK}}</h2>
                        </div>   
                            
                        <div class="profile-headline-bx largepad col-sm-2 col-md-12">
                          <p>HIGH SEASON GREEN FROM</p>
-                         <h2>{{ $profdetail['PROF_COURSE_GF_HIGH_WEEK']}}</h2>
+                         <h2>{{ $profdetail['PROF_MONEY_SYMBOL']}}{{ $course->COURSE_HIGH_WEEK}}</h2>
                        </div>  
                            
                        @if ($profdetail['PROF_CARD_DESC'] !="")      
@@ -549,6 +592,10 @@
                
                
                  
+ 
+
+					
+               
                
                <div class="row">
                
@@ -558,7 +605,7 @@
                    
                    <h2>OUR REVIEW</h2>
                    
-                   <h3>{{ $profdetail['PROF_COURSENAME'] }}</h3>
+                   <h3>{{ $course->COURSE_NAME }}</h3>
                    
                    <h4><i>{{ $profdetail['PROF_CLUBNAME_UPPER'] }}</i></h4>
                    
@@ -582,7 +629,7 @@
                 
                     <p><i>
                                 
-                    {{ $profdetail['PROF_COURSEREVIEW'] }}
+                    {{ $course->COURSE_REVIEW }}
                     
                     </i></p>
                
@@ -593,6 +640,9 @@
                
                </div>
                
+                @endforeach
+               
+               {{--  COURSE LISTING END --}}
                
                
 

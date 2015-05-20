@@ -11,7 +11,7 @@ h3
 
 p
 {
-	font-size:18px;
+	font-size:17px;
 	margin-top:20px;
 }
 
@@ -221,7 +221,6 @@ a:focus, a:hover
 	  border-width: 1px;
 	  border-color: rgb(216, 215, 215) !important;
 	  width:100%;
-	  border-radius: 6px;
 	}
 	
 	#search-package-img
