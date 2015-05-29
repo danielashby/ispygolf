@@ -133,7 +133,7 @@
                        </div>   
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="#">ENQUIRE </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">{{ $profdetail['PROF_CLUBID']}}ENQUIRE </a>
                        </div>  
                            
                            

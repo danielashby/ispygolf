@@ -178,20 +178,10 @@
                 
                 <div role="tabpanel">
 
-                              <!-- Nav tabs -->
-                              <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#courses" aria-controls="courses" role="tab" data-toggle="tab">Home</a></li>
-                                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab">Offers</a></li>
-                                <li role="presentation"><a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a></li>
-                                <li role="presentation"><a href="#breaks" aria-controls="breaks" role="tab" data-toggle="tab">Breaks</a></li>
-                              </ul>
-  
-                              <!-- Tab panes -->
+
                               <div class="tab-content" id="content">
-                                
-                                <div role="tabpanel" class="tab-pane fade in active" id="courses">
-                                        
-                                      <div class="listing">
+
+                                   <div class="listing">
                                     @foreach ($courses as $course)    	
         
                                         <div class="row search-result">
@@ -281,102 +271,8 @@
                                   {{ $courses->appends(Input::except('page'))->links() }}                              
                                 
                                 
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade " id="offers">
-                                
-                                    <div class="listing-offers">
-                                 @foreach ($courses as $course)    	
-        
-                                        <div class="row search-result">
-                                                                   
-                                            <div class="col-md-10 col-sm-12">
-            
-                                                   <?php //	dd($course); ?>
-                                                    <a href="/golfcourses/profile/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
-            
-        
-                                            </div>
-                                            
-                                        <div class="col-md-2 col-sm-12" >
-                                                    
-        
-                                                    
-                                                    <div class="search-result-bx col-sm-2 col-md-12 " >
-                                                    <p>GREEN FEES FROM</p>
-                                                    <h2>£{{$course->COURSE_LOW_WEEK}}</h2>
-                                                    </div>	
-                                                    <div class="search-result-bx col-sm-2 col-md-12">
-                                                    <p>GOLF DAYS FROM</p>
-                                                    <h2>£TBC</h2>
-                                                    </div>
-                                                   @if (isset($course->CLUB_MEMBER))
-                                                   <div class="search-result-bx largepad col-sm-2 col-md-12">
-                                                   <p>AVAILABLE</p>
-                                                   <h3>MEMBERSHIP</h3>
-                                                   </div>                                         
-                                                   @endif
-                                                   @if (isset($course->SPECIAL_OFFER))
-                                                       <div class="search-result-bx largepad col-sm-2 col-md-12">
-                                                       <p>AVAILABLE</p>
-                                                       <h3>SPECIAL OFFER</h3>
-                                                       </div>
-                                                    @endif
-                                                    @if (isset($course->CARD_DESC))
-                                                        <div class="search-result-bx largepad col-sm-2 col-md-12">
-                                                        <p>AVAILABLE</p>
-                                                        <h3>ISPY GOLF EXTRA</h3></div>
-                                                    @endif
-                                                    
-                                            
-                                            </div>
-                                            
-                                            
-                                            <div class="col-md-6  col-sm-6 ">
-                                        
-                                                <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
-                                                <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
-                                                
-                                            </div>
-                                            
-                                            
-    
-                                            
-                                            <div class="col-md-4  col-sm-6 ">    
-                                                                                   
-                                                        
-                                                        
-                                                        @if (isset($course->PACKAGE_IMG))
-                                                        <a href="/golfcourses/profile/{{$course->CLUB_URLID}}">
-                                                        <h4 class="dark-heading">Golf Breaks Available</h4>
-                                                        <h4 class="light-heading  small-lineheight">View Latest</h4>
-                                                        
-                                                        <div id="search-package-img">
-                                                        <img src="/hotelimages/{{$course->PACKAGE_IMG}}" />
-                                                        </div>
-                                                        </a>
-                                                        @endif                       
-                            
-                                                        
-                                            </div>
-                                        
-                                        </div>
-                                        
-                                        <div class="row">
-                                        
-        
-                                         
-                                         </div>
-                                    
-                                    @endforeach
-                                    </div>
-                                  
-        
-                                  {{ $courses->appends(Input::except('page'))->links() }}                              
-                                
-                                
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade " id="hotels">HOTELS</div>
-                                <div role="tabpanel" class="tab-pane fade " id="breaks">BREAKS</div>
+                               
+
                               </div>
                             
                             

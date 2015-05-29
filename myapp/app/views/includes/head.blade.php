@@ -22,9 +22,6 @@
     
     <!-- ispygolf customs -->
     <link href="/css/ispygolf.css" rel="stylesheet">
-    
-    
-    <link rel="stylesheet" type="text/css" href="/css/awesome-bootstrap-checkbox.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

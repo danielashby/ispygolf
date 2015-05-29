@@ -374,6 +374,7 @@ class CourseProfileController extends \BaseController {
 		if($course->CLUB_ADD1==""){$course->CLUB_ADD1 = $course->CLUB_NAME; }
 
 		$profdetail = array(
+					'PROF_CLUBID' => $clubid,
 					'PROF_DIAL_CODE' => $course->INT_DIAL_CODE,
 					'PROF_TELNO'  => $course->CLUB_TELEPHONE,
 					'PROF_EMAIL' => $course->CLUB_EMAIL,

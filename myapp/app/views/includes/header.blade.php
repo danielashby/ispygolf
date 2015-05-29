@@ -22,13 +22,13 @@
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="/golfcourses?country=England">ENGLAND
                     <img class="pull-right" src="/images/flag_england_small.png" /></a></li>
-                    <li><a href="/courses/search/search.php?country=Scotland">SCOTLAND
+                    <li><a href="/golfcourses?country=Scotland">SCOTLAND
                     <img class="pull-right" src="/images/flag_scotland_small.png" /></a></li>
                     <li><a href="/golfcourses?country=Wales">WALES
                     <img class="pull-right" src="/images/flag_wales_small.png" /></a></li>
                     <li><a href="/golfcourses?country=Ireland">IRELAND
                     <img class="pull-right" src="/images/flag_ireland_small.png" /></a></li>
-                    <li><a href="/courses/search/search.php?country=France">FRANCE
+                    <li><a href="/golfcourses?country=France">FRANCE
                     <img class="pull-right" src="/images/flag_france_small.png" /></a></li>
                     <li><a href="/golfcourses?country=Portugal">PORTUGAL
                     <img class="pull-right" src="/images/flag_portugal_small.png" /></a></li>
@@ -42,11 +42,11 @@
                     <img class="pull-right" src="/images/flag_egypt.png" /></a></li>
                     <li><a href="/golfcourses?country=Morocco">MOROCCO
                     <img class="pull-right" src="/images/flag_morocco.png" /></a></li>
-                    <li><a href="/golfcourses?country=South+Affrica">SOUTH AFRICA
+                    <li><a href="/golfcourses?country=South+Africa">SOUTH AFRICA
                     <img class="pull-right" src="/images/flag_sa_small.png" /></a></li>
                     <li><a href="/golfcourses?country=UAE">UAE
                     <img class="pull-right" src="/images/flag_uae_small.png" /></a></li>
-                    <li><a href="/golfcourses?country=Mauritius">MAURITIUS
+                    <li><a href="/golfcourses	?country=Mauritius">MAURITIUS
                     <img class="pull-right" src="/images/flag_mauritius_small.png" /></a></li>
                   </ul>
                </li>

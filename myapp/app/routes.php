@@ -30,6 +30,9 @@ Route::any('golfcourses', 'CourseSearchController@courses');
 /* Course Profile Page */
 Route::get('golfcourses/profile/{urlid}',  'CourseProfileController@profile');
 
+/* Course Enquiries Page */
+Route::get('enquiries', 'EnquiriesController@enquiries');
+
 /* About Page */
 Route::get('about', 'PagesController@about');
 

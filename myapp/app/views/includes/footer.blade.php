@@ -51,6 +51,8 @@ $(document).ready(function() {
 		});
 	};
     
+	if( $('.listing').length )  
+	{ 
 	$('.listing').infinitescroll({
 		navSelector  : ".pagination",            
 		nextSelector : ".pagination li:last a:last",    
@@ -62,12 +64,14 @@ $(document).ready(function() {
 		},
 		bufferPx: 80
 	 });
+	}
 
 
 	<!-- sticky nav bars -->
 
 	<!-- $("#sticker").sticky({topSpacing:50}); -->
-        
+    if( $('.menu').length )  
+	{ 
         
 $('.menu').addClass('original').clone().insertAfter('.navbar').addClass('cloned').css('position','fixed').css('top','0').css('margin-top','0').css('z-index','500').removeClass('original').hide();
 
@@ -144,7 +148,7 @@ function stickIt() {
   }
 }        
         
-       
+	}
         
         
 	
