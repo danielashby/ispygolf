@@ -2,7 +2,7 @@
 
 @section('content')
 
-      <div  class="row contentpage">
+      <div  class="row contentpage bottom-buffer-lg" >
       
       	  <div class="col-md-12">
       
@@ -184,10 +184,10 @@
                                 Please untick this box if you DO NOT want news of golf offers &amp; prizes by email
                 
                 
-                	<input name="offers" type="checkbox" value="1" >
+                	<input name="offers" type="checkbox" value="1" checked >
                 </div>
                 
-                <div class="col=md-10">
+                <div class="col=md-2 text-right r-padding-15 bottom-buffer">
                 
                 <input type="submit" value="Submit" class="btn btn-default" alt="Submit" onClick="return checkForm();">
                 
@@ -209,6 +209,10 @@
             <p> This is going to be the sidebar </p>
           
           </div>
+          
+         
+          
+          
               
 
 </div>

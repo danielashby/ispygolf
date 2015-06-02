@@ -48,6 +48,7 @@ a:focus, a:hover
   
 }
 
+/*   HOME PAGE */
 
 
 .navbar
@@ -74,7 +75,16 @@ a:focus, a:hover
 	.navbar .grey:hover { color: #666 !important; }
 
 
-/*   HOME PAGE */
+/* HOME PAGE */
+/* MISC */
+/* SEARCH PAGE */
+/* PROFILE PAGE */
+/* CONTENT PAGE LAYOUT */
+/* PADDINGS */
+/* FORMS */
+/* TEXT OPTIONS */
+/* SHADOW OPTIONS */
+/* PRIVACY AND TERMS PAGE */
 
  	#main-search
 	{
@@ -139,6 +149,19 @@ a:focus, a:hover
 	
 	/* MISC */
 	
+
+	.btn-default
+	{
+		background-color:#a6b445 !important;
+		color:#FFF !important;
+	}
+	
+	.btn-default:hover
+	{
+		background-color:#a6b445 !important;
+		color:#000 !important;
+	}	
+	
 	
 	/*FIXES COLUMN HEIGHTS TO MATCH PARENT CONTAINER OR ROW */
 	
@@ -177,6 +200,15 @@ a:focus, a:hover
 	
     .ui-autocomplete-loading{background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
 	}
+	
+	.cf
+	{
+		
+		clear:both;
+		
+	}
+	
+	
 	
 	
 /* SEARCH PAGE */
@@ -500,28 +532,6 @@ p.bjqs-caption{
 	}
 	
 	
-	
-	
-	
-	/* misc */
-	
-	.btn-default
-	{
-		background-color:#a6b445 !important;
-		color:#FFF !important;
-	}
-	
-	.btn-default:hover
-	{
-		background-color:#a6b445 !important;
-		color:#000 !important;
-	}
-	
-	
-	
-	
-	
-	
 	/* PADDINGS */
 	
 	.top-buffer-lg { margin-top:70px; }
@@ -529,6 +539,12 @@ p.bjqs-caption{
 	
 	.top-buffer { margin-top:35px; }
 	.bottom-buffer { margin-bottom:35px; }
+	
+	
+	.r-padding-15
+	{
+		padding-right:15px;
+	}
 
 	/* FORMS */
 	
@@ -564,8 +580,15 @@ p.bjqs-caption{
 	{
 		text-align:left;
 	}
+	
+	.text-right
+	{
+		text-align:right;
+	}
+	
+	
 
-	/* Shadow options */
+	/* SHADOW OPTIONS */
 	.shadow-big
 	{
 		text-shadow: 1px 1px 2px rgba(48, 48, 48, 0.68);
@@ -573,7 +596,7 @@ p.bjqs-caption{
 	
 	.text_white {color:#FFF !important;}
 	
-	/* Privacy and Terms */
+	/* PRIVACY AND TERMS PAGE */
 	
 	.terms p {
 		font-size:14px;

@@ -22,6 +22,9 @@
     
     <!-- ispygolf customs -->
     <link href="/css/ispygolf.css" rel="stylesheet">
+    
+    <!-- ispygolf customs -->
+    <link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -49,4 +52,7 @@
     
     <!-- Maps js  -->
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+    
+    <!-- Datepciker -->
+    <script src="/js/bootstrap-datepicker.min.js"></script>
     

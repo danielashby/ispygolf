@@ -41,6 +41,14 @@ $(document).ready(function() {
 	
 	};
 	
+if( $('#datepicker').length )       
+	{
+		
+		$('#datepicker').datepicker({orientation : "bottom",autoclose:"true",todayHighlight:"true"})
+
+	};
+	
+	
 
 	if( $('#filter_options').length )  
 	{
