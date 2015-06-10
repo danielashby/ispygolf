@@ -21,7 +21,8 @@
                            
                             <form action="/golfcourses" method="post">
                             <div class="col-md-9">
-                                <input type="text" value="" id="mainsearch_input" class="homesearch_input" autocorrect="off" name="place" placeholder="Where do you want to play?" />                
+                                <input type="text" value="" id="mainsearch_input" class="homesearch_input" autocorrect="off" name="search_val" placeholder="Where do you want to play?" />    
+                                <input type="hidden" value="" name="name" id="name" >            
                                 <input type="hidden" value="" name="country" id="country" >                       
                                 <input type="hidden" value="" name="region" id="region" >
                                 <input type="hidden" value="" name="town" id="town" >

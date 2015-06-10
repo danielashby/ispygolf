@@ -500,7 +500,7 @@
                                  <strong>LENGTH (MAX)</strong> {{ $course->COURSE_YARDAGE_CHAMP }}<br>
                                  <strong>PAR</strong>  {{ $course->COURSE_PAR_MEN }}<br>
                                  <strong>SSS</strong> {{ $course->COURSE_SSS_MEN }}<br>
-                                 <strong>ISPY DIFFICULTY RATING</strong><br>
+                                 <strong>ISPY DIFFICULTY RATING</strong><span class="prof-difficulty prof-difficulty{{$course->COURSE_IDR_CHAMP}}"></span><br>
                             
                              </p>
                              

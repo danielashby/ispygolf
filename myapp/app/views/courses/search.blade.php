@@ -3,7 +3,7 @@
 
 @section('searchbar')
 
-					<div class="search-header full-width menu">
+					<div class="search-header full-width">
 						
         				
                         <div class="container"> 
@@ -12,14 +12,17 @@
                            
                                 <div class="row">
         
+        							
+        
                                     <div class="col-md-6">
         
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="{{$place}}" id="mainsearch_input" autocorrect="off" name="place" placeholder="COUNTRY, CITY OR VENUE NAME" />                
-                                        <input type="hidden" value="{{$country}}" name="country" id="country" >                       
-                                        <input type="hidden" value="{{$region}}" name="region" id="region" >
-                                        <input type="hidden" value="{{$town}}" name="town" id="town" >
-                                        <input type="hidden" value="{{$postcode}}" name="postcode" id="postcode" >
+                                        <input type="text" class="form-control" value="{{$search_val}}" id="mainsearch_input" autocorrect="off" name="search_val" placeholder="COUNTRY, CITY OR VENUE NAME" />              
+                                        {{ Form::hidden('name', $name,array('id'=>'name')) }}
+                                         {{ Form::hidden('country', $country,array('id'=>'country')) }}
+                                         {{ Form::hidden('region', $region,array('id'=>'region')) }}
+                                         {{ Form::hidden('town', $town,array('id'=>'town')) }}
+                                         {{ Form::hidden('postcode', $postcode,array('id'=>'postcode')) }}  
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-primary" onClick="document.forms['search-form'].submit();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Go</button>
                                         </span>
@@ -37,8 +40,10 @@
                                                             'VAZ' => 'Venue - A to Z',  
                                                             'VZA' => 'Venue - Z to A'), 
                                                             $obo1,array('class'=>'form-control','id'=>'filter_options')) }}
-                                                            
-                                             {{ Form::hidden('place', $place) }}
+
+                                             
+                                             
+                                             
                                         </div>
                                 
                                     
@@ -116,7 +121,7 @@
                                                 <div class="form-group">
                                                  
                                                  <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_courseaccom',$adv_filter_courseaccom,array('class'=>'form-control','id'=>'adv_filter_courseaccom')) }}
+                                                 {{ Form::checkbox('adv_filter_courseaccom',1,$adv_filter_courseaccom,array('class'=>'form-control','id'=>'adv_filter_courseaccom')) }}
                                                  
                                                  {{ Form::label('adv_filter_courseaccom', 'Accommodation On Site'); }}
                     							</div>
@@ -126,21 +131,21 @@
                                                 <div class="form-group">
                                                  <div class="checkbox">
                                                  
-                                                 {{ Form::checkbox('adv_filter_coursechamp',$adv_filter_coursechamp,array('class'=>'form-control ','id'=>'adv_filter_coursechamp')) }}
+                                                 {{ Form::checkbox('adv_filter_coursechamp',1,$adv_filter_coursechamp,array('class'=>'form-control ','id'=>'adv_filter_coursechamp')) }}
                                                  {{ Form::label('adv_filter_coursechamp', 'Championship Course'); }}
                             					</div>
                                                 </div>
                                                 
                                                  <div class="form-group">
                                                  <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_coursemulti',$adv_filter_coursemulti,array('class'=>'form-control','id'=>'adv_filter_coursemulti')) }}
+                                                 {{ Form::checkbox('adv_filter_coursemulti',1,$adv_filter_coursemulti,array('class'=>'form-control','id'=>'adv_filter_coursemulti')) }}
                                                  {{ Form::label('adv_filter_coursemulti', 'Multiple Courses'); }}
                             					</div>
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                  <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_coursebuggy',$adv_filter_coursebuggy,array('class'=>'form-control','id'=>'adv_filter_coursebuggy')) }}
+                                                 {{ Form::checkbox('adv_filter_coursebuggy',1,$adv_filter_coursebuggy,array('class'=>'form-control','id'=>'adv_filter_coursebuggy')) }}
                                                  {{ Form::label('adv_filter_coursebuggy', 'Buggy Hire'); }}
                                                  
                             					</div>
@@ -149,7 +154,8 @@
                                                  <div class="form-group">
                                                  <div class="checkbox">
                                                  
-                                                 {{ Form::checkbox('adv_filter_coursedriving',$adv_filter_coursedriving,array('class'=>'form-control','id'=>'adv_filter_coursedriving')) }}												 {{ Form::label('adv_filter_coursedriving', 'Driving Range'); }}
+                                                 {{ Form::checkbox('adv_filter_coursedriving',1,$adv_filter_coursedriving,array('class'=>'form-control','id'=>'adv_filter_coursedriving')) }}												 
+                                                 {{ Form::label('adv_filter_coursedriving', 'Driving Range'); }}
                                                  </div>
                             
                                                 </div>
@@ -170,6 +176,8 @@
 
 @section('content')
 
+		<?php $mid_column=FALSE; ?>
+
 		<div class="row" >              	
                      
                     
@@ -182,7 +190,73 @@
                               <div class="tab-content" id="content">
 
                                    <div class="listing">
-                                    @foreach ($courses as $course)    	
+                                   
+                                    <?php 
+									
+									if($mid_column==TRUE)
+									{
+										$i=2;
+									}
+									else
+									{
+										$i=1; 
+									}
+									?>
+                                    
+                                   
+                                    @foreach ($courses as $course)   
+                                     	
+                                        @if ($course->ONSTOP=="1")
+                                        
+                                        
+                                        
+                                        {{-- NON PAYING CLUB LISTING START --}}
+                                        
+                                        {{-- CHRIS -- THIS NEEDS TO BE SORTED AS THE INFINITE SCROLL AT THE END OF THE RECORDS CUTS THROUGH COLUMN AND STARTS A NEW 'listing' CONTAINER.. TO SORT. --}}
+                                        
+                                       <?php if($i==1){ ?>
+                                         <div class="row search-result">
+                                        <?php } ?>           
+                                            <div class="col-md-6 col-sm-12 nopadding-sides">               
+                                                                   
+                                                    <div class="col-md-12 col-sm-12">
+                    
+                                                           
+                                                            <a href="/golfcourses/profile/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
+                    
+                
+                                                    </div>
+                                                     
+                                                    <div class="col-md-12  col-sm-12 ">
+
+                                                        <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
+                                                        <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
+                                                        
+                                                    </div>
+                                                    
+                                                    <?php $mid_column = TRUE; ?>
+                                                
+                                            </div>
+                                       <?php if($i==2){ ?>
+                                         </div>
+                                        <?php 
+										$i=1; 
+										}
+										else
+										{
+                                        
+										 $i = $i+1;
+										}
+										 ?>
+
+                                         
+                                         {{-- PAYING CLUB END --}}
+                                         
+                                         @endif
+                                        
+                                        @if ($course->ONSTOP=="0")
+                                        
+                                        {{-- PAYING CLUB LISTING START --}}
         
                                         <div class="row search-result">
                                                                    
@@ -194,77 +268,80 @@
         
                                             </div>
                                             
-                                        <div class="col-md-2 col-sm-12" >
-                                                    
-        
-                                                    
-                                                    <div class="search-result-bx col-sm-2 col-md-12 " >
-                                                    <p>GREEN FEES FROM</p>
-                                                    <h2>£{{$course->COURSE_LOW_WEEK}}</h2>
-                                                    </div>	
-                                                    <div class="search-result-bx col-sm-2 col-md-12">
-                                                    <p>GOLF DAYS FROM</p>
-                                                    <h2>£TBC</h2>
-                                                    </div>
-                                                   @if (isset($course->CLUB_MEMBER))
-                                                   <div class="search-result-bx largepad col-sm-2 col-md-12">
-                                                   <p>AVAILABLE</p>
-                                                   <h3>MEMBERSHIP</h3>
-                                                   </div>                                         
-                                                   @endif
-                                                   @if (isset($course->SPECIAL_OFFER))
+                                            <div class="col-md-2 col-sm-12" >
+         
+                                                        <div class="search-result-bx col-sm-2 col-md-12 " >
+                                                        <p>GREEN FEES FROM</p>
+                                                        <h2>£{{$course->COURSE_LOW_WEEK}}</h2>
+                                                        </div>	
+                                                        <div class="search-result-bx col-sm-2 col-md-12">
+                                                        <p>GOLF DAYS FROM</p>
+                                                        <h2>£TBC</h2>
+                                                        </div>
+                                                       @if (isset($course->CLUB_MEMBER))
                                                        <div class="search-result-bx largepad col-sm-2 col-md-12">
                                                        <p>AVAILABLE</p>
-                                                       <h3>SPECIAL OFFER</h3>
-                                                       </div>
-                                                    @endif
-                                                    @if (isset($course->CARD_DESC))
-                                                        <div class="search-result-bx largepad col-sm-2 col-md-12">
-                                                        <p>AVAILABLE</p>
-                                                        <h3>ISPY GOLF EXTRA</h3></div>
-                                                    @endif
-                                                    
-                                            
-                                            </div>
-                                            
-                                            
-                                            <div class="col-md-6  col-sm-6 ">
-                                        
-                                                <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
-                                                <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
+                                                       <h3>MEMBERSHIP</h3>
+                                                       </div>                                         
+                                                       @endif
+                                                       @if (isset($course->SPECIAL_OFFER))
+                                                           <div class="search-result-bx largepad col-sm-2 col-md-12">
+                                                           <p>AVAILABLE</p>
+                                                           <h3>SPECIAL OFFER</h3>
+                                                           </div>
+                                                        @endif
+                                                        @if (isset($course->CARD_DESC))
+                                                            <div class="search-result-bx largepad col-sm-2 col-md-12">
+                                                            <p>AVAILABLE</p>
+                                                            <h3>ISPY GOLF EXTRA</h3></div>
+                                                        @endif
+                                                        
                                                 
-                                            </div>
+                                                </div>
+                                            
+                                            
+                                                <div class="col-md-6  col-sm-6 ">
+                                            
+                                                    <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
+                                                    <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
+                                                    
+                                                </div>
                                             
                                             
     
                                             
-                                            <div class="col-md-4  col-sm-6 ">    
-                                                                                   
-                                                        
-                                                        
-                                                        @if (isset($course->PACKAGE_IMG))
-                                                        <a href="/golfcourses/profile/{{$course->CLUB_URLID}}">
-                                                        <h4 class="dark-heading">Golf Breaks Available</h4>
-                                                        <h4 class="light-heading  small-lineheight">View Latest</h4>
-                                                        
-                                                        <div id="search-package-img">
-                                                        <img src="/hotelimages/{{$course->PACKAGE_IMG}}" />
-                                                        </div>
-                                                        </a>
-                                                        @endif                       
-                            
-                                                        
-                                            </div>
+                                                <div class="col-md-4  col-sm-6 ">    
+                                                                                       
+                                                            
+                                                            
+                                                            @if (isset($course->PACKAGE_IMG))
+                                                            <a href="/golfcourses/profile/{{$course->CLUB_URLID}}">
+                                                            <h4 class="dark-heading">Golf Breaks Available</h4>
+                                                            <h4 class="light-heading  small-lineheight">View Latest</h4>
+                                                            
+                                                            <div id="search-package-img">
+                                                            <img src="/hotelimages/{{$course->PACKAGE_IMG}}" />
+                                                            </div>
+                                                            </a>
+                                                            @endif                       
+                                
+                                                            
+                                                </div>
                                         
                                         </div>
-                                        
+
                                         <div class="row">
                                         
         
                                          
                                          </div>
+                                         
+                                         @endif
+                                         
+                                         {{-- PAYING CLUB END --}}
                                     
                                     @endforeach
+                                    
                                     </div>
                                   
         

@@ -369,7 +369,8 @@ class CourseProfileController extends \BaseController {
 		//END FACILITIES FORMAT
 		
 		
-		//POPULATE PROFILE ARRAY TO PASS TO COURSE PROFILE VIEW 
+		//POPULATE VENUE DETAILS ARRAY TO PASS TO PROFILE VIEW 
+		//We also send courses for the venue as seperate object for the club
 		
 		if($course->CLUB_ADD1==""){$course->CLUB_ADD1 = $course->CLUB_NAME; }
 

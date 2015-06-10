@@ -26,6 +26,7 @@ $(document).ready(function() {
 			 $("#country").val("");
 			 $("#region").val("");
 			 $("#town").val("");
+			 $("#postcode").val("");
 			 $("#name").val("");
 			 
 			 $("#"+ui.item.type).val(ui.item.value);
@@ -208,7 +209,7 @@ showmarkers: false
 		var pop_image1 = "/images/pop-mach-dunes.png";
 		var pop_image2 = "/images/pop-praia-del-rey.png"
 		
-		var pop_url1 = "/destination/search/search.php?name=Machrihanish%20Dunes";
+		var pop_url1 = "/golfcourses/profile/Machrihanish-Dunes";
 		var pop_url2 = "/destination/search/search.php?name=Praia%20D%27El%20Rey";
 		
 		//Setup initial displayed images

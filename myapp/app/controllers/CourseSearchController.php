@@ -7,7 +7,7 @@ class CourseSearchController extends \BaseController {
 	public function courses()
 	{
 		
-		$selected_venues_per_page = 10;
+		$selected_venues_per_page = 11;
 		$search_distance = "10";
 		
 		$orderby_opt1 = "PHL";
@@ -18,13 +18,14 @@ class CourseSearchController extends \BaseController {
 		$orderby_colname_2 = "";
 		$orderby_colsort_2 = "";		
 		
-		$search_term = "";
+		
 		$search_name = "";
 		$search_town = "";
 		$search_region = "";
 		$search_country = "";
 		$search_postcode ="";
-		$place = "";
+		
+		$search_val = "";
 		
 		$adv_filter_coursetype = "";
 		$adv_filter_coursedesigner = "";
@@ -41,24 +42,27 @@ class CourseSearchController extends \BaseController {
 		//if (Input::has('place')) {$search_term = Input::get( 'place' );}
 		
 		//Get post variables if passed from search
-		if (Input::has('vpp')){$selected_venues_per_page = 	Input::get( 'vpp' );}
+		//if (Input::has('vpp')){$selected_venues_per_page = 	Input::get( 'vpp' );}
 		if (Input::has('ob1')){$orderby_opt1 = 	Input::get( 'ob1' );}	
 		if (Input::has('country')){$search_country = 	Input::get( 'country' );}
 		if (Input::has('region')){$search_region= 	Input::get( 'region' );}
 		if (Input::has('town')){$search_town = 	Input::get( 'town' );}
 		if (Input::has('postcode')){$search_postcode = 	Input::get( 'postcode' );}
-		if (Input::has('place')){$place = 	Input::get( 'place' );}
+		if (Input::has('name')){$search_name = 	Input::get( 'name' );}
 		if (Input::has('adv_filter_coursetype')){$adv_filter_coursetype = 	Input::get( 'adv_filter_coursetype' );}
 		if (Input::has('adv_filter_coursedesigner')){$adv_filter_coursedesigner = 	Input::get( 'adv_filter_coursedesigner' );}
 		if (Input::has('adv_filter_coursedif')){$adv_filter_coursedif = 	Input::get( 'adv_filter_coursedif' );}
+		
 		if (Input::has('adv_filter_courseaccom')){$adv_filter_courseaccom = 	Input::get( 'adv_filter_courseaccom' );}
 		if (Input::has('adv_filter_coursechamp')){$adv_filter_coursechamp = 	Input::get( 'adv_filter_coursechamp' );}
+		if (Input::has('adv_filter_coursemulti')){$adv_filter_coursemulti = 	Input::get( 'adv_filter_coursemulti' );}
 		if (Input::has('adv_filter_coursebuggy')){$adv_filter_coursebuggy = 	Input::get( 'adv_filter_coursebuggy' );}
 		if (Input::has('adv_filter_coursedriving')){$adv_filter_coursedriving = 	Input::get( 'adv_filter_coursedriving' );}
 		
 		
+		$search_val = $search_country.$search_region.$search_town.$search_postcode.$search_name;
 		
-
+		//echo "Venue: ". $search_name;
 		
 		//SETUP SORT ORDER
 		if($orderby_opt1=="PLH") 
@@ -116,12 +120,22 @@ class CourseSearchController extends \BaseController {
 			
 		}
 
+
+
+
 		if(!isset($search_centresql)) {$search_centresql="* ";}
 							  		
 		//		->select(DB::raw($search_centresql))								
 		//->whereRaw('\'DISTANCE\' < 10'	, []) 
+		
+		//todo NEEDS TO BE IF PACKAGES?
+		//		->where('SYS_CLUBS_USERS','like', '%'.$adv_filter_courseaccom."%")
+		
+		//todo MULTIPLE COURSES 		
+		//->where('SYS_CLUBS_USERS.CHAMPIONSHIP','like', '%'.$adv_filter_coursemulti."%")
 									
-		$courses = DB::table('CLUBS')			
+		$courses = DB::table('CLUBS')		
+			
 		->leftJoin('SERVICES', 'CLUBS.CLUB_ID', '=', 'SERVICES.SERV_ID')
 		->leftJoin('COURSES', 'CLUBS.CLUB_ID', '=', 'COURSES.CLUB_ID')
 		->leftJoin('IMAGEREFS', 'COURSES.COURSE_ID', '=', 'IMAGEREFS.IMG_COURSE_ID')
@@ -129,6 +143,7 @@ class CourseSearchController extends \BaseController {
 		->leftJoin('FACILITIES', 'CLUBS.CLUB_ID', '=', 'FACILITIES.FAC_ID')				
 		->leftJoin('SYS_CLUBS_USERS', 'CLUBS.CLUB_ID', '=', 'SYS_CLUBS_USERS.CLUB_ID')
 		->leftJoin('ISPYCARD', 'COURSES.CLUB_ID', '=', 'ISPYCARD.CLUB_ID')	
+		
 		->where('SYS_CLUBS_USERS.COURSES','1')
 		->where('SYS_CLUBS_USERS.SOCIETY','1')
 		->where('SYS_CLUBS_USERS.CORPORATE','1')
@@ -136,12 +151,15 @@ class CourseSearchController extends \BaseController {
 		->where('CLUBS.CLUB_COUNTRY','like','%'.$search_country."%")
 		->where('CLUBS.CLUB_CITY','like','%'.$search_town."%")
 		->where('CLUBS.CLUB_COUNTY','like','%'.$search_region."%")
+		->where('SYS_CLUBS_USERS.CHAMPIONSHIP','like', '%'.$adv_filter_coursechamp."%")
+		->where('SERVICES.SERV_CART_HIRE','like', '%'.$adv_filter_coursebuggy."%")
+		->where('FACILITIES.FAC_DRIVING_PUBLIC','like', '%'.$adv_filter_coursedriving."%")
+		->where('COURSES.COURSE_STYLE','like', '%'.$adv_filter_coursetype."%")
+		->where('COURSES.COURSE_DESIGNER','like', '%'.$adv_filter_coursedesigner."%")
+		->where('COURSES.COURSE_IDR_CHAMP','like', '%'.$adv_filter_coursedif."%")
+			
 		->orderBy('SYS_CLUBS_USERS.ONSTOP','ASC')->orderBy($orderby_colname_1,$orderby_colsort_1)
 		->paginate($selected_venues_per_page);
-	
-		//->leftJoin('HOTELS','COURSES.CLUB_ID','=','HOTELS.HOTEL_CLUB_ID')	
-		//->leftJoin('PACKAGES','COURSES.CLUB_ID','=','PACKAGES.PACKAGE_HOTEL_ID')
-		//->leftJoin('HOTELS_IMAGEREFS','COURSES.CLUB_ID','=','HOTELS_IMAGEREFS.IMG_HOTEL_ID')
 		
 		/*		->havingRaw("'DISTANCE' < 100"	, []) */
 		
@@ -153,7 +171,7 @@ class CourseSearchController extends \BaseController {
 			$clubid = $course->CLUB_ID;
 			
 			//SET DEFAULT IMAGE
-			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "noimage.jpg";}
+			if($course->IMG_IMAGE1 == "") {$course->IMG_IMAGE1 = "search_noimg_lrg.jpg";}
 			
 			if(trim($course->COURSE_NAME)==trim($course->CLUB_ADD1)){$course->COURSE_NAME = null;}
 			
@@ -228,7 +246,8 @@ class CourseSearchController extends \BaseController {
 		return View::make('courses.search')->with('courses',$courses)
 										   ->with('venues_per_page',$selected_venues_per_page)
 										   ->with('obo1',$orderby_opt1)
-										   ->with('place',$place)
+										   ->with('search_val',$search_val)
+										   ->with('name',$search_name)
 										   ->with('region',$search_region)
 										   ->with('country',$search_country)
 										   ->with('postcode',$search_postcode)

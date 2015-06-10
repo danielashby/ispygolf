@@ -1,7 +1,23 @@
+/* MAIN CSS */
+/* HOME PAGE */
+/* MISC */
+/* SEARCH PAGE */
+/* PROFILE PAGE */
+/* CONTENT PAGE LAYOUT */
+/* PADDINGS */
+/* FORMS */
+/* TEXT OPTIONS */
+/* SHADOW OPTIONS */
+/* PRIVACY AND TERMS PAGE */
+
+
+
+/* MAIN CSS */
+
 body {
   padding-top: 55px;
   font-family: 'PT Sans', sans-serif !important;
-  background-color: #f9f7f1;
+  background-color: #fefefe;
 }
 
 
@@ -48,9 +64,6 @@ a:focus, a:hover
   
 }
 
-/*   HOME PAGE */
-
-
 .navbar
 {
 	min-height:55px;
@@ -75,16 +88,10 @@ a:focus, a:hover
 	.navbar .grey:hover { color: #666 !important; }
 
 
+
+
 /* HOME PAGE */
-/* MISC */
-/* SEARCH PAGE */
-/* PROFILE PAGE */
-/* CONTENT PAGE LAYOUT */
-/* PADDINGS */
-/* FORMS */
-/* TEXT OPTIONS */
-/* SHADOW OPTIONS */
-/* PRIVACY AND TERMS PAGE */
+
 
  	#main-search
 	{
@@ -198,7 +205,13 @@ a:focus, a:hover
 	bottom:30px;position:fixed;right:30px;
 	}
 	
-    .ui-autocomplete-loading{background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
+    .ui-autocomplete-loading
+	{
+		background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
+		background-color:#fff;
+		-moz-background-clip: padding;     
+		-webkit-background-clip: padding;  
+		background-clip: padding-box;   
 	}
 	
 	.cf
@@ -524,6 +537,41 @@ p.bjqs-caption{
 	}
 	
 	
+	.prof-difficulty
+	{
+		 border-radius: 50%;
+   		 behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+		 width:18px;
+		 height:18px;
+		 display:inline-block;
+		 margin-left:10px;
+	}
+	
+	
+	.prof-difficultyM
+	{
+		background-color:green;
+	}
+	
+
+	.prof-difficultyN
+	{
+		background-color:red;
+	}
+	
+
+	.prof-difficultyO
+	{
+		background-color:blue;
+	}
+	
+
+	.prof-difficultyP
+	{
+		background-color:black;
+	}
+	
+	
 	/* CONTENT PAGE LAYOUT */ 
 	
 	.contentpage h2
@@ -544,6 +592,12 @@ p.bjqs-caption{
 	.r-padding-15
 	{
 		padding-right:15px;
+	}
+	
+	.nopadding-sides
+	{
+		padding-left:0px;
+		padding-right:0px;
 	}
 
 	/* FORMS */
