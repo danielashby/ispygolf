@@ -190,8 +190,8 @@ a:focus, a:hover
 		
 	/*FIXES COLUMN HEIGHTS TO MATCH PARENT CONTAINER OR ROW */
 	
-	.row{
-    overflow: hidden; 
+	.no-overflow{
+    overflow: hidden;
 }
 
 .vertical-fill{

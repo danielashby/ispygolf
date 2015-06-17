@@ -21,7 +21,7 @@
             </p>
             
             
-            <form name="membenq" method="post" action="thankspage" role="form">
+            <form name="membenq" method="post" action="thankspage" role="form" class="validatedForm">
             
                 <input type="hidden" name="recipient" value="ispygolf" />
                 <input type="hidden" name="club_id" value="to add club id" />
@@ -72,15 +72,15 @@
                 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="firstname">First Name</label>
-                        <input name="firstname" class="form-control" type="text" size="30" placeholder="First Name" maxlength="150" />
+                        <label for="firstname">First Name *</label>
+                        <input name="firstname" class="form-control validate[required]" type="text" size="30" placeholder="First Name" maxlength="150" />
                     </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="lastname">Last Name</label>
-                        <input name="lastname" class="form-control" type="text"  size="30" placeholder="Last Name" maxlength="150" />
+                        <label for="lastname">Last Name *</label>
+                        <input name="lastname" class="form-control  validate[required]" type="text"  size="30" placeholder="Last Name" maxlength="150" />
                     </div>
                 </div>
                 
@@ -88,16 +88,16 @@
                 <div class="row">
                 	<div class="col-md-6">
                         <div class="form-group">
-                        <label for="telephone">Phone No</label>
-                        <input name="telephone" class="form-control" type="text" placeholder="Phone No"  size="18" maxlength="150" />
+                        <label for="telephone">Phone No *</label>
+                        <input name="telephone" class="form-control  validate[required]" type="text" placeholder="Phone No"  size="18" maxlength="150" />
                         </div>
                     </div>
                 
                 
                     <div class="col-md-6">
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input name="email" class="form-control" placeholder="Email" type="text" size="30" maxlength="150" />
+                        <label for="email">Email *</label>
+                        <input name="email" class="form-control   validate[required]" placeholder="Email" type="text" size="30" maxlength="150" />
                     </div>
                     </div>
                 </div>
@@ -106,8 +106,8 @@
                 
                     <div class="col-md-6">
                     <div class="form-group">
-                         <label for"postcode">Postcode</label>
-                        <input name="postcode" class="form-control" type="text" id="postcode" placeholder="Postcode"  size="30" maxlength="150" />               
+                         <label for"postcode">Postcode *</label>
+                        <input name="postcode" class="form-control  validate[required]" type="text" id="postcode" placeholder="Postcode"  size="30" maxlength="150" />               
                     </div>
                     </div>
                 
@@ -120,22 +120,22 @@
 
                     <div class="col-md-4">
                     <div class="form-group">
-                        <label for="date">Event Date</label>
-                        <input type="text" class="form-control" name="date" id="datepicker" placeholder="Event Date"  size="20" maxlength="150"/>
+                        <label for="date">Event Date *</label>
+                        <input type="text" class="form-control  validate[required]" name="date" id="datepicker" placeholder="Event Date"  size="20" maxlength="150"/>
                     </div>
                     </div>
                     
                     <div class="col-md-4">
                     <div class="form-group">
-                         <label for"players">No. Of Players</label>
-                        <input name="players" class="form-control" type="text" id="players"  placeholder="No. Of Players" size="15" maxlength="150" />             
+                         <label for"players">No. Of Players *</label>
+                        <input name="players" class="form-control   validate[required]" type="text" id="players"  placeholder="No. Of Players" size="15" maxlength="150" />             
                     </div>
                     </div>
                     
                     <div class="col-md-4">
                     <div class="form-group">
-                         <label for"players">No. Of Holes To Be Played</label>
-                        <input name="holes" class="form-control" type="text" id="holes"  placeholder="No. Of Holes" size="15" maxlength="150" />             
+                         <label for"players">No. Of Holes To Be Played *</label>
+                        <input name="holes" class="form-control   validate[required]" type="text" id="holes"  placeholder="No. Of Holes" size="15" maxlength="150" />             
                     </div>
                     </div>
                 
