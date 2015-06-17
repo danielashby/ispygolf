@@ -17,6 +17,9 @@
     <!-- jquery autocomplete theme -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     
+    <!-- jquery validation-->
+    <link rel="stylesheet" href="/js/validation/css/template.css">
+    <link rel="stylesheet" href="/js/validation/css/validationEngine.jquery.css">
     <!-- fonts -->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     
@@ -49,6 +52,10 @@
     
     <!-- Simple Slider -->
     <script src="/js/bjqs.js"></script>
+    
+    <!-- Validation -->
+    <script src="/js/validation/js/jquery.validationEngine.js"></script>
+    <script src="/js/validation/js/languages/jquery.validationEngine-en.js"></script>
     
     <!-- Maps js  -->
     <script src="https://maps.googleapis.com/maps/api/js"></script>

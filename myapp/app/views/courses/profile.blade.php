@@ -287,7 +287,7 @@
                
                
                
-               <div class="row top-buffer-lg">
+               <div class="row top-buffer-lg no-overflow">
                
                		
                
@@ -350,7 +350,7 @@
 					
                
                
-               <div class="row top-buffer-lg">
+               <div class="row top-buffer-lg  no-overflow">
                
                		<div class="col-md-9">
                     
@@ -406,7 +406,7 @@
                </div>
                
                
-               <div class="row top-buffer-lg">
+               <div class="row top-buffer-lg  no-overflow">
                
                		<div class="col-md-9">
                     
@@ -477,7 +477,7 @@
 
  
                
-<div class="row top-buffer-lg">
+<div class="row top-buffer-lg  no-overflow">
                
                		<div class="col-md-9">
                     

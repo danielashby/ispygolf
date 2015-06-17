@@ -42,12 +42,21 @@ $(document).ready(function() {
 	
 	};
 	
-if( $('#datepicker').length )       
+	if( $('#datepicker').length )       
 	{
 		
 		$('#datepicker').datepicker({orientation : "bottom",autoclose:"true",todayHighlight:"true"})
 
 	};
+	
+	
+	if( $('.validatedForm').length )       
+	{
+		
+		$('.validatedForm').validationEngine('attach');
+
+	};
+	
 	
 	
 
