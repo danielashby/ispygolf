@@ -67,7 +67,7 @@
                                    <a class="navbar-brand" id="navgreenfees" href="#lnk_green_fees">GREEN FEES</a>
                                    <a class="navbar-brand" id="navgolfdays" href="#lnk_golf_days">GOLF DAYS</a>
                                    <a class="navbar-brand" id="navmembership" href="#lnk_membership">MEMBERSHP</a>
-                                   <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a>
+                                   @if ($profdetail['PROF_HASPACKAGES']==true) <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a> @endif
                                    <a class="navbar-brand" id="navreviews" href="#lnk_reviews">REVIEWS</a>
                                    <a class="navbar-brand" id="navlocation" href="#lnk_location">LOCATION</a>
               
@@ -133,7 +133,7 @@
                        </div>   
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">{{ $profdetail['PROF_CLUBID']}}ENQUIRE </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">ENQUIRE </a>
                        </div>  
                            
                            
@@ -144,7 +144,7 @@
                            
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="#"> BOOK  </a>
+                            <a class="btn btn-default profile-headline-bx-btn" target="new" href="{{ $profdetail['PROF_TEE_URL'] }}"> BOOK  </a>
                        </div>  
     
                        
@@ -152,6 +152,64 @@
                    </div>
                     
                </div>
+               
+
+               @if($profdetail['PROF_HASOFFERS']==true)
+                   
+               <div class="row  top-buffer-lg row-centered">                             	 
+                 
+               @foreach ($profoffers as $profoffer)   
+					           
+				<div class="col-md-4 col-centered">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="{{ $profdetail['PROF_GOLFDAY_IMAGE'] }}"/>
+                         
+                         <div class="profile_overlayimg" >
+                         
+                         	<img src="/images/special_offer_banner.png" />
+                         
+                         </div>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>{{ $profoffer['SPECIAL_TEXT'] }}</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>
+                 
+
+                 @endforeach    
+                   
+               </div>
+               
+               @endif
                    
                
                @if($profdetail['PROF_HASPACKAGES']==true)
@@ -285,7 +343,7 @@
                </div>
                
                
-               
+               @if ($profdetail['PROF_HASPACKAGES']==true) 
                
                <div class="row top-buffer-lg">
                
@@ -309,7 +367,7 @@
                          <a name="lnk_golfbreaks"></a>
                              <h5>STAY & PLAY GOLF BREAKS</h5>
                            
-                          @if ($profdetail['PROF_HASPACKAGES']==true) 
+                          
                            
                              <h2>AVAILABLE</h2> 
                                 
@@ -329,13 +387,13 @@
                                  <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
                              </div>
                              
-                          @endif
+                          
                              
-                         @if ($profdetail['PROF_HASPACKAGES']==false) 
+                        {{-- @if ($profdetail['PROF_HASPACKAGES']==false) 
                          
                             <h2>NOT AVAILABLE</h2> 
                          
-                         @endif
+                         @endif --}}
                     
                     	</div>
                     	
@@ -343,6 +401,8 @@
                     </div>
                
                </div>
+               
+               @endif
                
                
                
@@ -450,7 +510,8 @@
                </div>
              
              {{--  COURSE LISTING START --}}
-               
+              
+             <?php $i=1; ?>
                
              @foreach ($courses as $course)                
                <div class="row">
@@ -479,10 +540,32 @@
                
 <div class="row top-buffer-lg">
                
+               
+                     	
+                	           
                		<div class="col-md-9">
                     
-                    	<img src="/clubimages/{{ $course->IMG_IMAGE1 }}"  alt=""/>
+                    <div id="profile-course-<?=$i?>-slider">    
+                    
+                    	<?php $i++; ?>
+                    
+                    	<ul class="bjqs">
+                    	
+                        @if ($course->IMG_IMAGE1!="/clubimages/noimage.jpg") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE1 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE2!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE2 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE3!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE3 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE4!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE4 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE5!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE5 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE6!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE6 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE7!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE7 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE8!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE8 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE9!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE9 }}"  alt=""/> </li> @endif 
+                        @if ($course->IMG_IMAGE10!="") <li> <img class="img-responsive" src="/clubimages/{{ $course->IMG_IMAGE10 }}"  alt=""/> </li> @endif 
+                        
+                        </ul>
 
+                    </div>
+                    
                     </div>
                     
                     <div class="col-md-3 vertical-fill" style="background-color:#cdde54;margin-left:-15px;">
@@ -580,7 +663,7 @@
                            
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="#">BOOK </a>
+                            <a class="btn btn-default profile-headline-bx-btn" target="new"  href="{{ $profdetail['PROF_TEE_URL'] }}">BOOK </a>
                        </div>  
     
                        
@@ -588,20 +671,47 @@
                    </div>
                    
                    
+                   
+
+                   
+                   
                    </div>
+                   
+                   
+                       <div class="col-md-12" style="background-color:#cdde54; ">
+                       
+                       <div class="col-md-12 text-center" style="background-image: url(/images/golf_monthly_back.png); background-size: 100%; padding-top:35px;padding-bottom:35px; ">
+                         
+                           <img src="/images/icon_golfmonthly.png" />
+                        <a name="lnk_reviews"></a>
+                            
+                            <h3> <i>TOP 100 COURSES UK&I </i> </h3>
+                        
+                            <p><i>
+                                        
+                            {{ $course->COURSE_REVIEW }}
+                            
+                            </i></p>
+                       
+                       </div>
+                       
+                       </div>
+                   
+                   
+                   
+                   
                    
                    </div>
                     
                </div>
                
                
-                 
- 
-
-					
+                @endforeach
+                                       
+               {{--  COURSE LISTING END --}}
                
                
-               <div class="row">
+                <div class="row">
                
                <div class="col-md-12  top-buffer-lg text-center">
                	 
@@ -618,35 +728,7 @@
                </div>
                
                
-               </div>
-               
-               <div class="row">
-               
-               <div class="col-md-12">
-               
-               <div class="col-md-12  top-buffer-lg text-center" style="background-image: url(/images/golf_monthly_back.png); background-size: 100%; padding-top:35px;padding-bottom:35px;">
-               	 
-                   <img src="/images/icon_golfmonthly.png" />
-                <a name="lnk_reviews"></a>
-                	
-                    <h3> <i>TOP 100 COURSES UK&I </i> </h3>
-                
-                    <p><i>
-                                
-                    {{ $course->COURSE_REVIEW }}
-                    
-                    </i></p>
-               
-               </div>
-               
-               </div>
-               
-               
-               </div>
-               
-                @endforeach
-               
-               {{--  COURSE LISTING END --}}
+               </div>              
                
                
 

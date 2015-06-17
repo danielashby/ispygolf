@@ -68,10 +68,10 @@ if( $('#datepicker').length )
 		itemSelector : "#content .listing",
 		
 		loading: {
-			msgText  : "<em>Loading More Results...</em>",
+			msgText  : "<em></em>",
 			msg: null
 		},
-		bufferPx: 80
+		bufferPx: 500
 	 });
 	}
 
@@ -166,15 +166,79 @@ function stickIt() {
 		'height' : 341,
 		'width' : 848,
 		'responsive' : true,
-animtype : 'fade', // accepts 'fade' or 'slide'
-animduration : 450, // how fast the animation are
-animspeed : 4000, // the delay between each slide
-automatic : true, // automatic
-showcontrols : true,
-showmarkers: false
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
+	});
+	
+
+	$('#profile-course-1-slider').bjqs({
+		'height' : 341,
+		'width' : 848,
+		'responsive' : true,
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
 	});
 	
 	
+
+	$('#profile-course-2-slider').bjqs({
+		'height' : 341,
+		'width' : 848,
+		'responsive' : true,
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
+	});
+	
+
+	$('#profile-course-3-slider').bjqs({
+		'height' : 341,
+		'width' : 848,
+		'responsive' : true,
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
+	});
+	
+
+	$('#profile-course-4-slider').bjqs({
+		'height' : 341,
+		'width' : 848,
+		'responsive' : true,
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
+	});
+	
+
+	$('#profile-course-5-slider').bjqs({
+		'height' : 341,
+		'width' : 848,
+		'responsive' : true,
+		animtype : 'fade', // accepts 'fade' or 'slide'
+		animduration : 450, // how fast the animation are
+		animspeed : 4000, // the delay between each slide
+		automatic : true, // automatic
+		showcontrols : true,
+		showmarkers: false
+	});
 	
 	<!-- smooth scrolling --> 
 	

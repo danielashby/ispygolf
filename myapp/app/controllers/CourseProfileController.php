@@ -40,7 +40,7 @@ class CourseProfileController extends \BaseController {
 			$clubid = $course->CLUB_ID;
 			
 			//SET DEFAULT IMAGE
-			if($course->IMG_IMAGE1 == "") {"/clubimages/".$course->IMG_IMAGE1 = "noimage.jpg";}
+			if($course->IMG_IMAGE1 == "") {"/clubimages/noimage.jpg";}
 			
 			if(trim($course->COURSE_NAME)==trim($course->CLUB_ADD1)){$course->COURSE_NAME = null;}
 	
@@ -60,27 +60,6 @@ class CourseProfileController extends \BaseController {
 					
 				);
 			}
-				
-			
-			
-			
-			//CHECK FOR SPECIAL OFFERS 
-			$todaysdate = date("Y-m-d");	
-	
-			if ($course->SPECIAL1_UNTIL > $todaysdate or $course->SPECIAL2_UNTIL > $todaysdate or
-				  $course->SPECIAL3_UNTIL > $todaysdate or
-				 ($course->SPECIAL1_UNTIL == '0000-00-00' and $course->SPECIAL1_FROM <> '0000-00-00') or
-				 ($course->SPECIAL2_UNTIL == '0000-00-00' and $course->SPECIAL2_FROM <> '0000-00-00') or
-				 ($course->SPECIAL3_UNTIL == '0000-00-00' and $course->SPECIAL3_FROM <> '0000-00-00'))	
-			 {
-				  $course->SPECIAL_OFFER = "1";
-		
-			 }
-			 else
-			 {
-			 	$course->SPECIAL_OFFER = null;
-			 }
-			 
 	
 			if($course->CLUB_MEMBER == "0") {$course->CLUB_MEMBER = null;}
 			if($course->COURSE_LOW_WEEK==0){$course->COURSE_LOW_WEEK="-";}
@@ -133,12 +112,149 @@ class CourseProfileController extends \BaseController {
 		}
 		
 		//END - GET ALL COURSES FOR CLUB
-	
 		
-		///// ---- THINGS THAT NEED ADDING TO DATABASE ----- //////
+		
+		////// -- populate special offers array -- //////
+		$SPECIAL1_NAME=$course->SPECIAL1_NAME;
+		$SPECIAL1_TYPE=$course->SPECIAL1_TYPE;
+		$SPECIAL1_FROM=$course->SPECIAL1_FROM;
+		$SPECIAL1_UNTIL=$course->SPECIAL1_UNTIL;
+		$SPECIAL1_PRICE=$course->SPECIAL1_PRICE;
+		$SPECIAL1_APPLIES=$course->SPECIAL1_APPLIES;
+		$SPECIAL1_TEXT=$course->SPECIAL1_TEXT;	
+		$SPECIAL2_NAME=$course->SPECIAL2_NAME;
+		$SPECIAL2_TYPE=$course->SPECIAL2_TYPE;
+		$SPECIAL2_FROM=$course->SPECIAL2_FROM;
+		$SPECIAL2_UNTIL=$course->SPECIAL2_UNTIL;
+		$SPECIAL2_PRICE=$course->SPECIAL2_PRICE;
+		$SPECIAL2_APPLIES=$course->SPECIAL2_APPLIES;
+		$SPECIAL2_TEXT=$course->SPECIAL2_TEXT;		
+		$SPECIAL3_NAME=$course->SPECIAL3_NAME;
+		$SPECIAL3_TYPE=$course->SPECIAL3_TYPE;
+		$SPECIAL3_FROM=$course->SPECIAL3_FROM;
+		$SPECIAL3_UNTIL=$course->SPECIAL3_UNTIL;
+		$SPECIAL3_PRICE=$course->SPECIAL3_PRICE;
+		$SPECIAL3_APPLIES=$course->SPECIAL3_APPLIES;
+		$SPECIAL3_TEXT=$course->SPECIAL3_TEXT;
+		$SPECIAL4_NAME=$course->SPECIAL4_NAME;
+		$SPECIAL4_TYPE=$course->SPECIAL4_TYPE;
+		$SPECIAL4_FROM=$course->SPECIAL4_FROM;
+		$SPECIAL4_UNTIL=$course->SPECIAL4_UNTIL;
+		$SPECIAL4_PRICE=$course->SPECIAL4_PRICE;
+		$SPECIAL4_APPLIES=$course->SPECIAL4_APPLIES;
+		$SPECIAL4_TEXT=$course->SPECIAL4_TEXT;
+		$SPECIAL5_NAME=$course->SPECIAL5_NAME;
+		$SPECIAL5_TYPE=$course->SPECIAL5_TYPE;
+		$SPECIAL5_FROM=$course->SPECIAL5_FROM;
+		$SPECIAL5_UNTIL=$course->SPECIAL5_UNTIL;
+		$SPECIAL5_PRICE=$course->SPECIAL5_PRICE;
+		$SPECIAL5_APPLIES=$course->SPECIAL5_APPLIES;
+		$SPECIAL5_TEXT=$course->SPECIAL5_TEXT;		
+		
+		$todaysdate = date("Y-m-d");
+		$profoffers = array();
+		
+		$i=0;
+		
+		$club_has_offers = FALSE;
+		
+		if ($SPECIAL1_UNTIL > $todaysdate || $SPECIAL1_UNTIL == '0000-00-00' && $SPECIAL1_NAME <>"")
+		{
+			
+			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL1_NAME;
+			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL1_TYPE;
+			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL1_FROM;
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL1_UNTIL;
+			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL1_PRICE;
+			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL1_APPLIES;
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL1_TEXT, $limit = 100, $end = '...');
+			
+			$i++;
+			
+			$club_has_offers = TRUE;
+		}
+		
+		
+	if ($SPECIAL2_UNTIL > $todaysdate || $SPECIAL2_UNTIL == '0000-00-00' && $SPECIAL2_NAME <>"")
+		{
+			
+			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL2_NAME;
+			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL2_TYPE;
+			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL2_FROM;
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL2_UNTIL;
+			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL2_PRICE;
+			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL2_APPLIES;
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL2_TEXT, $limit = 100, $end = '...');	
+			
+			$i++;
+			
+			$club_has_offers = TRUE;
+		}	
+		
+		if ($SPECIAL3_UNTIL > $todaysdate || $SPECIAL3_UNTIL == '0000-00-00' && $SPECIAL3_NAME <>"")
+		{
+			
+			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL3_NAME;
+			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL3_TYPE;
+			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL3_FROM;
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL3_UNTIL;
+			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL3_PRICE;
+			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL3_APPLIES;
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL3_TEXT, $limit = 100, $end = '...');
+			
+			$i++;
+			
+			$club_has_offers = TRUE;
+		}	
+		
+		if ($SPECIAL4_UNTIL > $todaysdate || $SPECIAL4_UNTIL == '0000-00-00'  && $SPECIAL4_NAME <>"")
+		{
+			
+			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL4_NAME;
+			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL4_TYPE;
+			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL4_FROM;
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL4_UNTIL;
+			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL4_PRICE;
+			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL4_APPLIES;
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL4_TEXT, $limit = 100, $end = '...');	
+			
+			$i++;
+			
+			$club_has_offers = TRUE;
+		}	
+			
+		if ($SPECIAL5_UNTIL > $todaysdate || $SPECIAL5_UNTIL == '0000-00-00'  && $SPECIAL5_NAME <>"")
+			{
+				
+				$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL5_NAME;
+				$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL5_TYPE;
+				$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL5_FROM;
+				$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL5_UNTIL;
+				$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL5_PRICE;
+				$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL5_APPLIES;
+				$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL5_TEXT, $limit = 100, $end = '...');
+				
+				$i++;
+				
+				$club_has_offers = TRUE;
+			}	
+			
+		//////  ---- TEE BOOKING LINK ---- ////
+		
+		$club_custom_tee=$course->CLUB_CUSTOM_TEE;	
+		$club_tee_url=$course->CLUB_TEE_URL;
+	
+		if (trim($club_custom_tee) <> "")
+		{
+			$club_tee_url = $club_custom_tee;
+		}
+		
+		///// ---- TODO THINGS THAT NEED ADDING TO DATABASE ----- //////
 		
 		$PROF_HASLOGO = false;
 		$PROF_LOGO_IMG = "";
+		$PROF_REVIEW_LINK = "";
+		$PROF_GOLF_DAY_PRICE = "";
 		
 		
 		///////////////////////////////////////////////////////////
@@ -380,6 +496,7 @@ class CourseProfileController extends \BaseController {
 					'PROF_TELNO'  => $course->CLUB_TELEPHONE,
 					'PROF_EMAIL' => $course->CLUB_EMAIL,
 					'PROF_WEBSITE' => $course->CLUB_WEBSITE,
+					'PROF_TEE_URL' => $club_tee_url,
 					'PROF_CLUBNAME' => $course->CLUB_ADD1,
 					'PROF_CLUBNAME_UPPER' => strtoupper($course->CLUB_ADD1),
 					'PROF_CLUB_ADDRESS' => $PROF_CLUB_ADDRESS,
@@ -405,6 +522,7 @@ class CourseProfileController extends \BaseController {
 					'PROF_OPEN_EMAIL' => $course->CLUB_OPEN_EMAIL,
 					'PROF_OPENS_HTML' => $PROF_OPENS_HTML,
 					'PROF_HASPACKAGES' => $club_has_packages,
+					'PROF_HASOFFERS' => $club_has_offers,
 					'PROF_PACKAGE_IMAGE' => $package_image,
 					'PROF_SERVICES_HTML' => $PROF_SERVICES_HTML,
 					'PROF_MONEY_SYMBOL' => $PROF_MONEY_SYMBOL,
@@ -426,12 +544,13 @@ class CourseProfileController extends \BaseController {
 		//die;
 		//exit;
 		
-		//dd($profpackages);
+		
 	
 		return View::make('courses.profile')->with('courses',$courses)
 									 		->with('profimages',$profimages)
 											->with('profdetail',$profdetail)
-											->with('profpackages',$profpackages);
+											->with('profpackages',$profpackages)
+											->with('profoffers',$profoffers);
 											
 											
 		

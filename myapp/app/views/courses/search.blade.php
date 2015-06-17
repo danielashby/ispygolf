@@ -14,7 +14,7 @@
         
         							
         
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
         
                                     <div class="input-group">
                                         <input type="text" class="form-control" value="{{$search_val}}" id="mainsearch_input" autocorrect="off" name="search_val" placeholder="COUNTRY, CITY OR VENUE NAME" />              
@@ -24,13 +24,14 @@
                                          {{ Form::hidden('town', $town,array('id'=>'town')) }}
                                          {{ Form::hidden('postcode', $postcode,array('id'=>'postcode')) }}  
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-primary" onClick="document.forms['search-form'].submit();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Go</button>
+                                            <button type="button" class="btn btn-default" onClick="document.forms['search-form'].submit();"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> SEARCH</button>
+                                            
                                         </span>
                                     </div>
                                          
                                     </div>
                                     
-                                    <div class="col-md-4">
+                                    <div class="col-md-2" style="padding-left:25px;">
                                   
             
                                         <div class="input-group">
@@ -52,8 +53,10 @@
                                     
                                     <div class="col-md-2">
                                     
-                                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#filters" aria-expanded="false" aria-controls="filters">
- <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter Results 
+                                    
+                                    
+                                    <button class="btn  btn-primary" type="button" data-toggle="collapse" data-target="#filters" aria-expanded="false" aria-controls="filters">
+ <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter
 </button>
                                     
                                     <!--<a class="btn btn-default" data-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="filters">More Filters...</a>-->
@@ -66,12 +69,13 @@
         
                                 <div class="row collapse" id="filters">
                                 
-                                    <div class="col-md-12 form-inline" >
+                                    <div class="col-md-12 " >
                                     
                                         <div class="row largepad">
-                                            <div class="col-md-12">
+                                           
+                                            <div class="col-md-4">
                                 
-                                                <div class="form-group" >
+                                                <div class="form-group " >
                                              
                                                  {{ Form::label('adv_filter_coursetype', 'Course Style'); }}
                                                  {{ Form::select('adv_filter_coursetype', array(
@@ -93,10 +97,19 @@
                                                                 $adv_filter_coursetype,array('class'=>'form-control','id'=>'adv_filter_coursetype')) }}                   	                        
                                                 </div>
                                                 
+                                             </div>   
+                                                
+                                                
+                                              <div class="col-md-4">  
+                                                
                                                 <div class="form-group" >
                                                 {{ Form::label('adv_filter_coursedesigner', 'Course Designer'); }}
                                                 {{ Form::text('adv_filter_coursedesigner', $adv_filter_coursedesigner,array('class'=>'form-control','id'=>'adv_filter_coursedesigner')); }}       
                                                 </div>
+                                                
+                                             </div>
+                                             
+                                             <div class="col-md-4">
                                                 
                                                 <div class="form-group" >
                                                  {{ Form::label('adv_filter_coursedif', 'Course Difficulty'); }}
@@ -109,58 +122,74 @@
                                                                 $adv_filter_coursedif,array('class'=>'form-control','id'=>'adv_filter_coursedif')) }}                   	
                                                                 
                                                 </div>
+                                              
+                                              </div>
+                                              
+                                              
                                                 
                                             </div>
                                     
                                         </div>
                                         
-                                        <div class="row largepad">
+                                        <div class="col-md-12">
+                                        
+                                        <div class="row">
                                             
-                                            <div class="col-md-12">
+                                            	<div class="col-md-8">
                                                             
-                                                <div class="form-group">
+                                              
                                                  
-                                                 <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_courseaccom',1,$adv_filter_courseaccom,array('class'=>'form-control','id'=>'adv_filter_courseaccom')) }}
+
                                                  
-                                                 {{ Form::label('adv_filter_courseaccom', 'Accommodation On Site'); }}
-                    							</div>
+                                                 <label class="checkbox-inline">
+                                                 {{ Form::checkbox('adv_filter_courseaccom',1,$adv_filter_courseaccom,array('id'=>'adv_filter_courseaccom')) }}
+                                                 Accommodation on site
+                                                 </label>
                                                 
-                                                </div>
                                                 
-                                                <div class="form-group">
-                                                 <div class="checkbox">
                                                  
-                                                 {{ Form::checkbox('adv_filter_coursechamp',1,$adv_filter_coursechamp,array('class'=>'form-control ','id'=>'adv_filter_coursechamp')) }}
-                                                 {{ Form::label('adv_filter_coursechamp', 'Championship Course'); }}
-                            					</div>
-                                                </div>
-                                                
-                                                 <div class="form-group">
-                                                 <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_coursemulti',1,$adv_filter_coursemulti,array('class'=>'form-control','id'=>'adv_filter_coursemulti')) }}
-                                                 {{ Form::label('adv_filter_coursemulti', 'Multiple Courses'); }}
-                            					</div>
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                 <div class="checkbox">
-                                                 {{ Form::checkbox('adv_filter_coursebuggy',1,$adv_filter_coursebuggy,array('class'=>'form-control','id'=>'adv_filter_coursebuggy')) }}
-                                                 {{ Form::label('adv_filter_coursebuggy', 'Buggy Hire'); }}
+                                                <label class="checkbox-inline"> 
+                                                {{ Form::checkbox('adv_filter_coursechamp',1,$adv_filter_coursechamp,array('id'=>'adv_filter_coursechamp')) }}
+                                                Championship Course
+                                                </label>
                                                  
-                            					</div>
-                                                </div>
                                                 
-                                                 <div class="form-group">
-                                                 <div class="checkbox">
+    
                                                  
-                                                 {{ Form::checkbox('adv_filter_coursedriving',1,$adv_filter_coursedriving,array('class'=>'form-control','id'=>'adv_filter_coursedriving')) }}												 
-                                                 {{ Form::label('adv_filter_coursedriving', 'Driving Range'); }}
-                                                 </div>
-                            
-                                                </div>
+                                                 <label class="checkbox-inline">
+                                                 {{ Form::checkbox('adv_filter_coursemulti',1,$adv_filter_coursemulti,array('id'=>'adv_filter_coursemulti')) }}
+                                                 Multiple Courses
+                                                 </label>
+                                                 
+     
+                                                 <label class="checkbox-inline">
+                                                 {{ Form::checkbox('adv_filter_coursebuggy',1,$adv_filter_coursebuggy,array('id'=>'adv_filter_coursebuggy')) }}
+                                                 Buggy Hire
+                                                 </label>
+                                                 
+
+                                                 <label class="checkbox-inline">
+                                                 {{ Form::checkbox('adv_filter_coursedriving',1,$adv_filter_coursedriving,array('id'=>'adv_filter_coursedriving')) }}	
+                                                 Driving Range											 
+                                                 </label>
+
                         
                                             </div>
+                                            
+                                            	
+                                             <div class="col-md-4">
+                                             
+                                             	<button class="btn  btn-primary" type="reset">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Reset Filter
+                                                </button>
+                                             	
+                                             
+                                             </div>
+                                            
+                                            
+                                            </div>
+                                            
+                                            
                                         </div>             
                                 </div>
            

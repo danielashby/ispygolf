@@ -70,6 +70,11 @@ a:focus, a:hover
 	font-size:13px;
 }
 
+.navbar ul
+{
+	padding-top:7px;
+}
+
 .navbar .dropdown-menu
 {
 	background-color:#000;
@@ -159,17 +164,30 @@ a:focus, a:hover
 
 	.btn-default
 	{
-		background-color:#a6b445 !important;
-		color:#FFF !important;
+		background-color:#cdde54 !important;
+		color:#333 !important;
 	}
 	
 	.btn-default:hover
 	{
-		background-color:#a6b445 !important;
+		background-color:#cdde54 !important;
 		color:#000 !important;
 	}	
 	
 	
+	/* centered columns styles */
+	.row-centered {
+		text-align:center;
+	}
+	.col-centered {
+		display:inline-block;
+		float:none;
+		/* reset the text-align */
+		text-align:left;
+		/* inline-block space fix */
+		margin-right:-4px;
+	}
+		
 	/*FIXES COLUMN HEIGHTS TO MATCH PARENT CONTAINER OR ROW */
 	
 	.row{
@@ -408,15 +426,17 @@ p.bjqs-caption{
 	}
 	
 	
+	
+	
 	.profile-navbar  .selected
 	{
-		background-color:#a6b445 !important;
-		color: #5e5e5e; !important;
+		background-color:#cdde54 !important;
+		color: #333; !important;
 	}
 	
 	.profile-navbar  .selected :hover, .profile-navbar  .selected :focus
 	{
-		background-color:#a6b445 !important;
+		background-color:#333 !important;
 	}
 	
 	
@@ -733,6 +753,13 @@ p.bjqs-caption{
 	
 	
 		@media (min-width: 992px){
+		
+		
+
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+
 		
 		
 		.nav > li > a {
