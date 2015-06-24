@@ -21,26 +21,24 @@ Route::get('users/{id}', function($id)
 
 Route::get('/', 'PagesController@index');
 
-/* Default Course Listing */
-Route::any('golfcourses', 'CourseSearchController@courses');
 
 /* Course Listing With A Posted Search 'place' */
 /* Route::post('golfcourses', 'PagesController@courses');*/
 
-/* Course Profile Page */
+/* Courses */
+Route::any('golfcourses', 'CourseSearchController@courses');
 Route::get('golfcourses/profile/{urlid}',  'CourseProfileController@profile');
-
-/* Course Enquiries Page */
 Route::get('enquiries', 'EnquiriesController@enquiries');
+
+/* Golf Breaks */
+Route::any('golfbreaks', 'GolfbreaksSearchController@golfbreaks');
+Route::get('golfbreaks/profile/{urlid}',  'GolfbreaksProfileController@profile');
 
 /* About Page */
 Route::get('about', 'PagesController@about');
 
 /* News Page */
 //Route::get('news', 'NewsController@news');
-
-/* Golf Breaks Page */
-Route::get('golfbreaks', 'GolfbreaksController@golfbreaks');
 
 /* golfdays Page */
 Route::get('golfdays', 'GolfdaysController@golfdays');

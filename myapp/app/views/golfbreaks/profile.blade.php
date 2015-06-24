@@ -136,24 +136,15 @@
                             <a class="btn btn-default profile-headline-bx-btn" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">ENQUIRE </a>
                        </div>  
                            
-                          
+                           
                        <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
                          <p>BOOK ONLINE</p>
-                         @if ($profdetail['PROF_TEE_URL'] !="")
                          <h2>TEE TIMES</h2>
-                         @endif
-                         @if ($profdetail['PROF_TEE_URL'] =="")
-                         <h2>NA</h2>
-                         @endif                     
-                         
-                         
                        </div>  
                            
                            
                        <div class="col-sm-2 col-md-4">
-                           @if ($profdetail['PROF_TEE_URL'] !="")
                             <a class="btn btn-default profile-headline-bx-btn" target="new" href="{{ $profdetail['PROF_TEE_URL'] }}"> BOOK  </a>
-                       	   @endif 
                        </div>  
     
                        
@@ -162,32 +153,10 @@
                     
                </div>
                
-               
-               
-                               <div class="row">
-               
-
-               
-               
-               </div>
-               
-               
 
                @if($profdetail['PROF_HASOFFERS']==true)
                    
-               <div class="row  row-centered">   
-               
-               
-                  {{--<div class="col-md-12  text-center">
-                     
-                       <img src="/images/icon_course.png" />
-                       
-                       <h2>SPECIAL OFFERS</h2>
-                       <br>
-                       <br>
-                
-                   </div>--}}
-                                         	 
+               <div class="row  top-buffer-lg row-centered">                             	 
                  
                @foreach ($profoffers as $profoffer)   
 					           
@@ -243,7 +212,62 @@
                @endif
                    
                
-   
+               @if($profdetail['PROF_HASPACKAGES']==true)
+                   
+               <div class="row  top-buffer-lg">                             	 
+                 
+               @foreach ($profpackages as $profpackage)   
+					           
+				<div class="col-md-4">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="{{ $profpackage['PACKAGE_IMG'] }}"/>
+                         
+                         <div class="profile_overlayimg" >
+                         
+                         	<img src="/images/special_offer_banner.png" />
+                         
+                         </div>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>{{ $profpackage['PACKAGE_DESCRIPTION'] }}</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>
+                 
+
+                 @endforeach    
+                   
+               </div>
+               
+               @endif
                
                
                @if ($profdetail['PROF_HASVIDEO'] == true) 
@@ -319,73 +343,63 @@
                </div>
                
                
-            @if($profdetail['PROF_HASPACKAGES']==true)
-                   
-               <div class="row  row-centered">      
+               @if ($profdetail['PROF_HASPACKAGES']==true) 
                
+               <div class="row top-buffer-lg no-overflow">
                
-                                  <div class="col-md-12  text-center">
-                     
-                       <img src="/images/icon_course.png" />
-                       
-                       <h2>GOLF BREAKS</h2>
-                       <h5>Play and Stay</h5>
-                       <br>
-                       <br>
-                
-                   </div>                      	 
-                 
-               @foreach ($profpackages as $profpackage)   
-				           
-				<div class="col-md-4 col-centered">
-                <a name="lnk_golfbreaks"></a>	
-                
+               		
+               
+               		<div class="col-md-9">
                     
-                   	 <div class="row">
-                     
-                     	 <div class="col-md-12">
+                    	<img  class="img-responsive"  src="{{ $profdetail['PROF_PACKAGE_IMAGE'] }}"  alt="" />
                         
-                       	 <img  class="img-responsive"  src="{{ $profpackage['PACKAGE_IMG'] }}"/>
+                         <div class="profile_overlayimg img-responsive" >
                          
-                         <div class="profile_overlayimg" >
-                         
-                         	<img src="/images/golf_breaks_banner_sml.png" />
+                         	<img src="/images/golf_breaks_banner.png" />
                          
                          </div>
+
+                    </div>
+                    
+                    <div class="col-md-3 vertical-fill" style="background-color:#ececec;margin-left:-15px;">
+                    
+                    	 <div class="col-md-12 col-sm-2  largepad text-center" >
+                         <a name="lnk_golfbreaks"></a>
+                             <h5>STAY & PLAY GOLF BREAKS</h5>
+                           
+                          
+                           
+                             <h2>AVAILABLE</h2> 
+                                
+
+                              <div class="col-md-12 col-sm-2 ">
+                                 <p class="text-left">
+                                     FOR ALL THE LATEST GOLF 
+                                     BREAKS AT {{ $profdetail['PROF_CLUBNAME_UPPER'] }}
+                                     PLEASE CLICK BELOW.
+                                 </p>
+                                 
+                              </div>
+                          
                          
-                         </div>
-                        
-                     </div>
-                     
-                     <div class="row">
-                        
-                     <div class="col-md-12">
-                        
-                        <div class="col-md-12" style="background-color:#ececec;">
-                       	 
-                             <div class="col-md-12">
-                                
-                               <p>{{ $profpackage['PACKAGE_DESCRIPTION'] }}</p>
-                                
-                             </div>
-                                
-                                
-                             <div class="col-md-12 text-right">
+                         
+                             <div class="col-md-12 text-right" style="margin-bottom">
                                  <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
                              </div>
-
-                     	  </div>
-                     
-                     </div>
-                     
-                     </div>
-                        
+                             
+                          
+                             
+                        {{-- @if ($profdetail['PROF_HASPACKAGES']==false) 
+                         
+                            <h2>NOT AVAILABLE</h2> 
+                         
+                         @endif --}}
                     
-                 </div>
-                 
-
-                 @endforeach    
-                   
+                    	</div>
+                    	
+                    
+                    </div>
+               
                </div>
                
                @endif
