@@ -98,7 +98,7 @@ class CourseSearchController extends \BaseController {
 		else
 		{
 			//Default sort order 
-			$orderby_colname_1 = "COURSES.COURSE_LOW_WEEK";
+			$orderby_colname_1 = "COURSES.COURSE_HIGH_WEEK";
 			$orderby_colsort_1 = "desc";
 		}
 		

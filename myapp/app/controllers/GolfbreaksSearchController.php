@@ -7,6 +7,10 @@ class GolfBreaksSearchController extends \BaseController {
 	public function golfbreaks()
 	{
 		
+		$isghelper = new helperlib;
+		
+		$todaysdate = date("Y-m-d");
+		
 		$selected_venues_per_page = 11;
 		$search_distance = "10";
 		
@@ -69,13 +73,13 @@ class GolfBreaksSearchController extends \BaseController {
 		else if($orderby_opt1=="S51") 
 		{
 			$orderby_colname_1 = "HOTELS.HOTEL_ACCOM_STAN";
-			$orderby_colsort_1 = "asc";	
+			$orderby_colsort_1 = "desc";	
 		
 		}
 		else if($orderby_opt1=="S15") 
 		{
 			$orderby_colname_1 = "HOTELS.HOTEL_ACCOM_STAN";
-			$orderby_colsort_1 = "desc";	
+			$orderby_colsort_1 = "asc";	
 		
 		}	
 		else if($orderby_opt1=="VAZ") 
@@ -109,50 +113,170 @@ class GolfBreaksSearchController extends \BaseController {
 			$orderby_colsort_1 = "desc";
 		}
 		
+		//dd("Colum:".$orderby_colname_1." ".$orderby_colsort_1);
+		
+/*
+	
+			HOTELS.HOTEL_SPA
+			HOTELS.HOTEL_SWIM
+			HOTELS.HOTEL_TENNIS
+			HOTELS.HOTEL_GYM 
+
+
+
+		//   $this->radioquerychecks = $this->radioquerychecks . " GROUP BY PACKAGES.PACKAGE_HOTEL_ID ";*/
+		   
+		   
+		   
 
 	    //->where('HOTELS.HOTEL_POSTCODE ','like','%'.$search_postcode."%")
+		
+	    // PACKAGES.PACKAGE_VALID_TO > '".$this->todaysdate."' ";
+		
 									
-		$venuepackages = DB::table('hotels')			
-		->leftJoin('PACKAGES', 'HOTELS.HOTEL_ID', '=', 'PACKAGES.PACKAGE_HOTEL_ID')
+		$venuepackages = DB::table('PACKAGES')			
+		->leftJoin('HOTELS', 'PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID')
 		->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
 		->where('HOTELS.HOTEL_ADD1','like','%'.$search_name."%")
 		->where('HOTELS.HOTEL_COUNTRY','like','%'.$search_country."%")
 		->where('HOTELS.HOTEL_CITY','like','%'.$search_town."%")
 		->where('HOTELS.HOTEL_COUNTY','like','%'.$search_region."%")
-		->orderBy('PACKAGES.PACKAGE_GBP','ASC')->orderBy($orderby_colname_1,$orderby_colsort_1)
+		->where('HOTELS.HOTEL_SPA','like','%'.$adv_filter_spa."%")
+		->where('HOTELS.HOTEL_SWIM','like','%'.$adv_filter_swimming."%")
+		->where('HOTELS.HOTEL_TENNIS','like','%'.$adv_filter_tennis."%")
+		->where('HOTELS.HOTEL_GYM','like','%'.$adv_filter_gym."%")
+		->where('HOTELS.HOTEL_ACCOM_STAN','like','%'.$adv_filter_standard."%")
+		->where('PACKAGES.PACKAGE_HOTEL_CATER','like','%'.$adv_filter_catering."%")
+		->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
+		->orderBy($orderby_colname_1,$orderby_colsort_1)
 		->paginate($selected_venues_per_page);
 			
-	
-	
-	
-	/*
-	
-		->where('HOTELS.HOTEL_ADD1','like','%'.$search_name."%")
-		->where('HOTELS.HOTEL_COUNTRY','like','%'.$search_country."%")
-		->where('HOTELS.HOTEL_CITY','like','%'.$search_town."%")
-		->where('HOTELS.HOTEL_COUNTY','like','%'.$search_region."%")
-		->orderBy('PACKAGES.PACKAGE_GBP','ASC')->orderBy($orderby_colname_1,$orderby_colsort_1)
-		->paginate($selected_venues_per_page);
-		
-		
-		*/
 		
 		$i=0;
+		
+	
 		
 		//SET STANDARD FIELD OPTIONS FOR VIEW
 		foreach($venuepackages as $venuepackage)
 		{
-			
-			$hotelid = $venuepackage->HOTEL_ID;
-			
-			//SET DEFAULT IMAGE
+		    //SET DEFAULT IMAGE
 			if($venuepackage->IMG_IMAGE1 == "") {$venuepackage->IMG_IMAGE1 = "search_noimg_lrg.jpg";}
+			
+			//dd($venuepackage);
 
-			 //FORMAT URLID 
-			 //$venuepackage->HOTEL_URLID = str_replace(' ', '-', $venuepackage->HOTEL_URLID);
-			 $venuepackage->HOTEL_URLID = "test";
+
+
+			  //FORMAT URL FOR PACKAGE LINK
+			  $venuepackage->HOTEL_URLID = "/golfbreaks/".str_replace(' ', '-', $venuepackage->HOTEL_ADD1)."/".str_replace(' ', '', $venuepackage->PACKAGE_NAME)."_".ltrim($venuepackage->PACKAGE_ID,'0').".html";
+			
+			
+			   //HOTEL RAITING
+			  $hotel_standard = $venuepackage->HOTEL_ACCOM_STAN;
+			  if ($hotel_standard == "1")
+			  {
+				$venuepackage->HOTEL_STAR_RATING == "<img class='shadowed' src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_inactive.png\" /><img src=\"/images/symbols/star_inactive.png\" /><img src=\"/images/symbols/star_inactive.png\" /><img src=\"/images/symbols/star_inactive.png\" />";
+			  }
+			  elseif ($hotel_standard == "2")
+			  {
+				$venuepackage->HOTEL_STAR_RATING = "<img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_inactive.png\" /><img src=\"/images/symbols/star_inactive.png\" /> <img src=\"/images/symbols/star_inactive.png\" />";
+			  }
+			
+			  elseif ($hotel_standard == "3")
+			  {
+				$venuepackage->HOTEL_STAR_RATING = "<img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_inactive.png\" /><img src=\"/images/symbols/star_inactive.png\" />";
+			  }
+			  
+			  elseif ($hotel_standard == "4")
+			  {
+				$venuepackage->HOTEL_STAR_RATING = "<img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_inactive.png\" />";
+			  }
+			  
+			  elseif ($hotel_standard == "5")
+			  {
+				$venuepackage->HOTEL_STAR_RATING = "<img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" /><img src=\"/images/symbols/star_active.png\" />";
+			  }
+			  
+			  else
+			  {
+			  	$venuepackage->HOTEL_STAR_RATING = "STAR RATING NO AVAILABLE";
+			  }
+			  
+			  //PACKAGE APPLIES
+			  
+			    if ($venuepackage->PACKAGE_APPLIES=="R") { $venuepackage->PACKAGE_APPLIES = "Per Room";}
+	  			else {$venuepackage->PACKAGE_APPLIES = "Per Person";}	  
+				
+			  //CATERING
+			  	
+			  
+			  $package_cater = $venuepackage->PACKAGE_HOTEL_CATER;
+				
+				
+			
+			   $venuepackage->PACKAGE_VALID_FR = $isghelper->mysql_date_to_uk_date_slash($venuepackage->PACKAGE_VALID_FR);
+			   $venuepackage->PACKAGE_VALID_TO = $isghelper->mysql_date_to_uk_date_slash($venuepackage->PACKAGE_VALID_TO);
+	
+	
+			  if ($package_cater =="A") {$package_cater= "Accommodation Only";}
+			  if ($package_cater=="B") {$package_cater= "Bed &amp; Breakfast";}
+			  if ($package_cater=="D") {$package_cater= "Dinner, Bed &amp; Breakfast";}
+			  if ($package_cater=="F") {$package_cater= "Full Board";}
+			  if ($package_cater=="I") {$package_cater= "All Inclusive";}
+			  if ($package_cater=="S") {$package_cater= "Self Catering";}
+			  
+			  $venuepackage->PACKAGE_HOTEL_CATER = $package_cater;
+			  
+			  //DEESCRIPTION
+			 
+			  $venuepackage->PACKAGE_DESCRIPTION = $isghelper->splitStringByWord($venuepackage->PACKAGE_DESCRIPTION,65,2);
+			  
+			  //FACILITIES
+			  
+			  $hotel_tennis =$venuepackage->HOTEL_TENNIS;
+			  $hotel_swim = $venuepackage->HOTEL_SWIM;
+		      $hotel_spa = $venuepackage->HOTEL_SPA;	
+		      $hotel_gym = $venuepackage->HOTEL_GYM;
+		      $hotel_rest = $venuepackage->HOTEL_REST;	
+			  $hotel_clubid = $venuepackage->HOTEL_CLUB_ID;
+			  
+	
+				if($hotel_rest)
+				{
+					$fac_icons = "Golf Course | &nbsp;";
+				}
+				
+				if($hotel_clubid!="0" && $hotel_clubid!="")
+				{
+					$fac_icons = $fac_icons."Restaurant | &nbsp;";
+				}
+		
+				if($hotel_spa)
+				{
+					$fac_icons = $fac_icons."Spa | &nbsp;";
+				}
+				
+				if($hotel_swim)
+				{
+					$fac_icons = $fac_icons."Swimming Pool | &nbsp;";
+				}
+		
+				if($hotel_gym)
+				{
+					$fac_icons = $fac_icons."Gym | &nbsp;";
+				}
+				
+				if($hotel_tennis)
+				{
+					$fac_icons = $fac_icons."Tennis | &nbsp;";
+				}
+				
+				$venuepackage->HOTEL_AVAL_FACILITIES = $fac_icons;
+	  
+		
 						
 		}
+		
+		
 		
 	
 		return View::make('golfbreaks.search')->with('venuepackages',$venuepackages)

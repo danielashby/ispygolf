@@ -79,3 +79,7 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/* helper class */
+
+require app_path().'/libraries/helpers.php';
