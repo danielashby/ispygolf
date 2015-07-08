@@ -26,13 +26,13 @@ Route::get('/', 'PagesController@index');
 /* Route::post('golfcourses', 'PagesController@courses');*/
 
 /* Courses */
-Route::any('golfcourses', 'CourseSearchController@courses');
-Route::get('golfcourses/profile/{urlid}',  'CourseProfileController@profile');
+Route::any('golf-courses', 'CourseSearchController@courses');
+Route::get('golf-courses/{urlid}',  'CourseProfileController@profile');
 Route::get('enquiries', 'EnquiriesController@enquiries');
 
 /* Golf Breaks */
-Route::any('golfbreaks', 'GolfbreaksSearchController@golfbreaks');
-Route::get('golfbreaks/profile/{urlid}',  'GolfbreaksProfileController@profile');
+Route::any('golf-breaks', 'GolfbreaksSearchController@golfbreaks');
+Route::get('golf-breaks/{urlid}',  'GolfbreaksProfileController@profile');
 
 /* About Page */
 Route::get('about', 'PagesController@about');
@@ -41,10 +41,10 @@ Route::get('about', 'PagesController@about');
 //Route::get('news', 'NewsController@news');
 
 /* golfdays Page */
-Route::get('golfdays', 'GolfdaysController@golfdays');
+Route::get('golf-days', 'GolfdaysController@golfdays');
 
 /* golfmembership Page */
-Route::get('golfmembership', 'GolfmembershipController@golfmembership');
+Route::get('golf-membership', 'GolfmembershipController@golfmembership');
 
 /* Offers Page */
 Route::get('offers', 'OffersController@offers');

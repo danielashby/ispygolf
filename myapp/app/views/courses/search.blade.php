@@ -8,7 +8,7 @@
         				
                         <div class="container"> 
                             
-                            <form action="/golfcourses" method="post" name="search-form" id="searchheadform">     
+                            <form action="/golf-courses" method="post" name="search-form" id="searchheadform">     
                            
                                 <div class="row">
         
@@ -251,15 +251,15 @@
                                                     <div class="col-md-12 col-sm-12">
                     
                                                            
-                                                            <a href="/golfcourses/profile/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
+                                                            <a href="/golf-courses/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
                     
                 
                                                     </div>
                                                      
                                                     <div class="col-md-12  col-sm-12 ">
 
-                                                        <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
-                                                        <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
+                                                        <h4><a class="dark-heading" href="/golf-courses/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
+                                                        <h4 class="small-lineheight" ><a class="light-heading href="/golf-courses/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
                                                         
                                                     </div>
                                                     
@@ -292,7 +292,7 @@
                                             <div class="col-md-10 col-sm-12">
             
                                                    <?php //	dd($course); ?>
-                                                    <a href="/golfcourses/profile/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
+                                                    <a href="/golf-courses/{{$course->CLUB_URLID}}"><img class="img-responsive search-mainimage" src="/clubimages/{{$course->IMG_IMAGE1}}" /></a>
             
         
                                             </div>
@@ -331,8 +331,8 @@
                                             
                                                 <div class="col-md-6  col-sm-6 ">
                                             
-                                                    <h4><a class="dark-heading" href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
-                                                    <h4 class="small-lineheight" ><a class="light-heading href="/golfcourses/profile/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
+                                                    <h4><a class="dark-heading" href="/golf-courses/{{$course->CLUB_URLID}}">{{ $course->CLUB_ADD1 }} @if (isset($course->COURSE_NAME)) ({{$course->COURSE_NAME}}) @endif </a></h4>
+                                                    <h4 class="small-lineheight" ><a class="light-heading href="/golf-courses/{{$course->CLUB_URLID}}">{{$course->CLUB_COUNTY}}, {{$course->CLUB_COUNTRY}}  </a></h4>
                                                     
                                                 </div>
                                             
@@ -344,7 +344,7 @@
                                                             
                                                             
                                                             @if (isset($course->PACKAGE_IMG))
-                                                            <a href="/golfcourses/profile/{{$course->CLUB_URLID}}">
+                                                            <a href="/golf-courses/{{$course->CLUB_URLID}}">
                                                             <h4 class="dark-heading">Golf Breaks Available</h4>
                                                             <h4 class="light-heading  small-lineheight">View Latest</h4>
                                                             

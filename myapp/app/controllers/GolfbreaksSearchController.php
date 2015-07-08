@@ -167,7 +167,7 @@ class GolfBreaksSearchController extends \BaseController {
 
 
 			  //FORMAT URL FOR PACKAGE LINK
-			  $venuepackage->HOTEL_URLID = "/golfbreaks/".str_replace(' ', '-', $venuepackage->HOTEL_ADD1)."/".str_replace(' ', '', $venuepackage->PACKAGE_NAME)."_".ltrim($venuepackage->PACKAGE_ID,'0').".html";
+			  $venuepackage->HOTEL_URLID = "/golf-breaks/".str_replace(' ', '-', $venuepackage->HOTEL_ADD1);
 			
 			
 			   //HOTEL RAITING
@@ -239,6 +239,8 @@ class GolfBreaksSearchController extends \BaseController {
 		      $hotel_rest = $venuepackage->HOTEL_REST;	
 			  $hotel_clubid = $venuepackage->HOTEL_CLUB_ID;
 			  
+			  $fac_icons = "";
+			
 	
 				if($hotel_rest)
 				{

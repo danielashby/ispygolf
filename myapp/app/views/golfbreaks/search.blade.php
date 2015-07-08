@@ -216,51 +216,54 @@
             
                                                    <?php //	dd($venuepackage); ?>
                                                    
-                                                    <a href="/golfbreaks/profile/{{$venuepackage->HOTEL_URLID}}"><img class="img-responsive search-mainimage" src="/hotelimages/{{$venuepackage->IMG_IMAGE1}}" /></a>
-                                                    
-                                                    <div  style="position:absolute;right:50px;top:30px;color:white;">
-                                                    {{$venuepackage->HOTEL_STAR_RATING}}
-                                                    </div>
+                                                    <a href="{{$venuepackage->HOTEL_URLID}}"><img class="img-responsive search-mainimage" src="/hotelimages/{{$venuepackage->IMG_IMAGE1}}" /></a>
+                                                   
             
         
                                             </div>
                                             
                                             <div class="col-md-2 col-sm-12" >
          
+                                                
+     
+                                                    
              											<div class="search-result-bx col-sm-2 col-md-12 " >
-                                                        <p><strong>{{$venuepackage->PACKAGE_NAME}}</strong></hp>
+                                                        <p><strong>{{$venuepackage->HOTEL_STAR_RATING}}</strong></hp>
                                                         <h2></h2>
                                                         </div>	
                                                         
                                                         <div class="search-result-bx col-sm-2 col-md-12 " >
                                                         
-                                                        <p>FROM</p>
+                                                        <p>GOLF BREAKS FROM</p>
                                                         <h2>£{{$venuepackage->PACKAGE_PRICE}}</h2>
                                                         
                                                         </div>	
                                                         
-                                                        <div class="search-result-bx col-sm-2 col-md-12">
-														<p>Available</p>
-                                                        <h2><span class="gb-text-small">{{$venuepackage->PACKAGE_VALID_FR}} to {{$venuepackage->PACKAGE_VALID_TO}}</span></h2>
-                                                        </div>
+                                                        <div class="search-result-bx col-sm-2 col-md-12 " >
+                                                        
+                                                         <p>CLICK TO VIEW ON</p>
+                                                        <h2>MAP</h2>
+                                                        
+                                                        </div>   
+                                            
+                                            
                                                         
                                                         <div class="search-result-bx col-sm-2 col-md-12 " >
-                                                        <p>BOARD</p>
-                                                        <h2><span class="gb-text-small">{{$venuepackage->PACKAGE_HOTEL_CATER}}</span></h2>
-                                                        </div>	
                                                         
-                                                        <div class="search-result-bx col-sm-2 col-md-12 " >
-                                                        <p></p>
-                                                        <h2><span class="gb-text-small">{{$venuepackage->PACKAGE_DESCRIPTION}}</span></h2>
-                                                        </div>	
+                                                        <p>VIEW THEIR LATEST</p>
+                                                        <h2><span style="color:#cdde54;">GOLF BREAKS</span></h2>
+                                                        
+                                                        </div>                                                        
+                                            
+                                                        
                   
                                                 </div>
                                             
                                             
                                                 <div class="col-md-5  col-sm-5 ">
                                             
-                                                    <h4><a class="dark-heading" href="/golfbreaks/profile/{{$venuepackage->HOTEL_URLID}}">{{ $venuepackage->HOTEL_ADD1 }} </a></h4>
-                                                    <h4 class="small-lineheight" ><a class="light-heading href="/golfbreaks/profile/{{$venuepackage->HOTEL_URLID}}">{{$venuepackage->HOTEL_COUNTY}}, {{$venuepackage->HOTEL_COUNTRY}}  </a></h4>
+                                                    <h4><a class="dark-heading" href="{{$venuepackage->HOTEL_URLID}}">{{ $venuepackage->HOTEL_ADD1 }} </a></h4>
+                                                    <h4 class="small-lineheight" ><a class="light-heading href="{{$venuepackage->HOTEL_URLID}}">{{$venuepackage->HOTEL_COUNTY}}, {{$venuepackage->HOTEL_COUNTRY}}  </a></h4>
                                                     
                                                 </div>
                                                 
