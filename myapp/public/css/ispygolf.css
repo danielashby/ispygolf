@@ -15,7 +15,7 @@
 /* MAIN CSS */
 
 body {
-  padding-top: 55px;
+  /*padding-top: 55px;*/
   font-family: 'PT Sans', sans-serif !important;
   background-color: #fefefe;
 }
@@ -50,13 +50,14 @@ a:focus, a:hover
   /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
+ 
 	
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
 	
   /* Set up positioning */
-  position: fixed;
+  /*position: fixed;*/
   top: 0;
   left: 0;
   
@@ -211,6 +212,13 @@ a:focus, a:hover
 		width:100%;
 	}
 	
+	.absolute-center
+	{
+		left:50%;
+		top:50%;
+		position:absolute;
+	}
+	
 	#main-search  h1{font-size: 33px;}
 	#main-search  h2{font-size: 16px;}
 	
@@ -220,7 +228,7 @@ a:focus, a:hover
 	
 	#main-pop-box
 	{
-	bottom:30px;position:fixed;right:30px;
+	bottom:30px;position:absolute;right:30px;
 	}
 	
     .ui-autocomplete-loading

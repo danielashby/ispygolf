@@ -134,7 +134,7 @@ class GolfBreaksSearchController extends \BaseController {
 	    // PACKAGES.PACKAGE_VALID_TO > '".$this->todaysdate."' ";
 		
 									
-		$venuepackages = DB::table('PACKAGES')			
+		/*$venuepackages = DB::table('PACKAGES')			
 		->leftJoin('HOTELS', 'PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID')
 		->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
 		->where('HOTELS.HOTEL_ADD1','like','%'.$search_name."%")
@@ -148,13 +148,37 @@ class GolfBreaksSearchController extends \BaseController {
 		->where('HOTELS.HOTEL_ACCOM_STAN','like','%'.$adv_filter_standard."%")
 		->where('PACKAGES.PACKAGE_HOTEL_CATER','like','%'.$adv_filter_catering."%")
 		->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
+		->groupBy('HOTELS.HOTEL_ID')
 		->orderBy($orderby_colname_1,$orderby_colsort_1)
-		->paginate($selected_venues_per_page);
+		->paginate($selected_venues_per_page);*/
+	
+
+	    $venuepackages = DB::table('HOTELS')			
+		->rightJoin('PACKAGES', function ($join) {
+			$todaysdate = date("Y-m-d");
+			$join->on('PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID');
+		}) 
+		->rightJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
+		->where('HOTELS.HOTEL_ADD1','like','%'.$search_name."%")
+		->where('HOTELS.HOTEL_COUNTRY','like','%'.$search_country."%")
+		->where('HOTELS.HOTEL_CITY','like','%'.$search_town."%")
+		->where('HOTELS.HOTEL_COUNTY','like','%'.$search_region."%")
+		->where('HOTELS.HOTEL_SPA','like','%'.$adv_filter_spa."%")
+		->where('HOTELS.HOTEL_SWIM','like','%'.$adv_filter_swimming."%")
+		->where('HOTELS.HOTEL_TENNIS','like','%'.$adv_filter_tennis."%")
+		->where('HOTELS.HOTEL_GYM','like','%'.$adv_filter_gym."%")
+		->where('HOTELS.HOTEL_ACCOM_STAN','like','%'.$adv_filter_standard."%")
+		->where('PACKAGES.PACKAGE_HOTEL_CATER','like','%'.$adv_filter_catering."%")
+		->groupBy('HOTELS.HOTEL_ID')
+		->orderBy($orderby_colname_1,$orderby_colsort_1)
+		->paginate($selected_venues_per_page);		
+		
+		
+		//->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
+		//taken out as we want to show all hotels wven without packages
 			
 		
 		$i=0;
-		
-	
 		
 		//SET STANDARD FIELD OPTIONS FOR VIEW
 		foreach($venuepackages as $venuepackage)
@@ -162,10 +186,6 @@ class GolfBreaksSearchController extends \BaseController {
 		    //SET DEFAULT IMAGE
 			if($venuepackage->IMG_IMAGE1 == "") {$venuepackage->IMG_IMAGE1 = "search_noimg_lrg.jpg";}
 			
-			//dd($venuepackage);
-
-
-
 			  //FORMAT URL FOR PACKAGE LINK
 			  $venuepackage->HOTEL_URLID = "/golf-breaks/".str_replace(' ', '-', $venuepackage->HOTEL_ADD1);
 			
@@ -273,8 +293,70 @@ class GolfBreaksSearchController extends \BaseController {
 				}
 				
 				$venuepackage->HOTEL_AVAL_FACILITIES = $fac_icons;
-	  
-		
+				
+				//START CURRENCY SYMBOL
+					
+				$PROF_MONEY_SYMBOL = $venuepackage -> PACKAGE_CURRENCY;	
+					
+				if ($PROF_MONEY_SYMBOL=="")
+				{       	
+				  $PROF_MONEY_SYMBOL="&pound;";
+				}
+				else if ($PROF_MONEY_SYMBOL=="P")
+				{
+				  $PROF_MONEY_SYMBOL="&pound;";
+				}
+				else if ($PROF_MONEY_SYMBOL=="E")
+				{
+				  $PROF_MONEY_SYMBOL="&euro;";
+				}	
+				else if ($PROF_MONEY_SYMBOL=="D")
+				{
+				  $PROF_MONEY_SYMBOL="US$";
+				}	
+				else if ($PROF_MONEY_SYMBOL=="U")
+				{
+				  //This will need changing to AED once new layout is done for profile
+				  $PROF_MONEY_SYMBOL="AED";
+				}
+				else if ($PROF_MONEY_SYMBOL=="R")
+				{
+				  //This will need changing to AED once new layout is done for profile
+				  $PROF_MONEY_SYMBOL="R";
+				}
+				
+				$venuepackage -> PACKAGE_CURRENCY = $PROF_MONEY_SYMBOL;	
+				
+				$venuepackage->LOWEST_PACKAGE_PRICE = 0;
+				
+				
+				$hotel_id = $venuepackage->HOTEL_ID;
+				
+				//echo $hotel_id;
+				
+				//get the lowest price of the valid packages for the hotel	
+				$venuepackage->LOWEST_PACKAGE_PRICE = DB::table('PACKAGES')
+				->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
+				->where('PACKAGES.PACKAGE_HOTEL_ID','=',$hotel_id)
+				->min('PACKAGES.PACKAGE_PRICE');
+				//->orderBy('PACKAGES.PACKAGE_GBP','asc')
+				
+				//->groupBy('PACKAGES.PACKAGE_HOTEL_ID')->get();
+				
+				//->groupBy('PACKAGES.PACKAGE_HOTEL_ID')
+				
+				//dd($package_prices);
+				
+				//foreach($package_prices as $package_price)
+				//{
+				
+				//$venuepackage->LOWEST_PACKAGE_PRICE = $package_price->PACKAGE_PRICE;
+				
+				//}
+				
+	  			
+				
+				
 						
 		}
 		

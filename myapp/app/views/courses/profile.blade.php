@@ -4,7 +4,7 @@
 
 <div  class="row profile-main-banner">
                         
-      <div class="col-md-9 profile-main-banner-images">
+      <div class="col-md-12 profile-main-banner-images">
       
       		  <div id="profile-slider">
               
@@ -26,7 +26,7 @@
                     
        </div>
                            
-       <div class="col-md-3 profile-main-banner-info">
+ {{--      <div class="col-md-3 profile-main-banner-info">
                     		
           @if ($profdetail['PROF_HASLOGO']==true)                 
 		  <div class="col-md-12 largepad profile-logo"> <img src="/clublogos/{{$profdetail['PROF_LOGO_IMG']}}" /></div>
@@ -43,7 +43,7 @@
           <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
           @endif
 
-       </div>
+       </div> --}}
                          
     </div>
                     

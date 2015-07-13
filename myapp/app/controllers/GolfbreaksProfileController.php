@@ -8,27 +8,47 @@ class GolfbreaksProfileController extends \BaseController {
 	public function profile($urlid)
 	{
 	
+		//(1) if there are '-' in the actual name in the DB then we dont want to strip so temp convert
+	    $urlid = str_replace('---', '~~',$urlid);
+	
+		//clear all valid '-' generated for url
 		$urlid = str_replace('-', ' ',$urlid);
+		
+		//replace back valid '-' that existed from ADD1 in the DB from point (1)
+		 $urlid = str_replace('~~', ' - ',$urlid);
+		
 		$urlid = str_replace('.html', '',$urlid);
+		
+		
+		//echo $urlid;
+		//die;
+		//exit;
 		
 		$todaysdate = date("Y-m-d");
 		
 		
-		$venuepackages = DB::table('PACKAGES')			
-		->leftJoin('HOTELS', 'PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID')
+	    $venuepackages = DB::table('HOTELS')			
+			->rightJoin('PACKAGES', function ($join) {
+			$todaysdate = date("Y-m-d");
+			$join->on('PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID');
+		})
 		->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
-		->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
 		->where('HOTELS.HOTEL_ADD1','like','%'.$urlid."%")->get();
 		
-			$i=0;
+		
+		//	->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
+		
+		$i=0;
 		
 		//echo $urlid;
+		
+		$PROF_PACKAGES_VALID = FALSE;
 		
 		//START - GET ALL PACKAGES FOR HOTEL 
 		foreach($venuepackages as $package)
 		{
 			
-			//dd($package);
+			//dd($package);yy
 			
 			$hotelid = $package->PACKAGE_HOTEL_ID;
 				
@@ -42,8 +62,12 @@ class GolfbreaksProfileController extends \BaseController {
 			if($package->HOTEL_POSTCODE!="") { $PROF_HOTEL_ADDRESS.= ", ".$package->HOTEL_POSTCODE; }
 			if( substr($PROF_HOTEL_ADDRESS,0,1)==","){ $PROF_HOTEL_ADDRESS = substr($PROF_HOTEL_ADDRESS,1); }
 		
-		    $PROF_HASPACKAGES = TRUE;	
-		
+			
+			if($package->PACKAGE_VALID_TO > $todaysdate)
+			{
+		    	$PROF_PACKAGES_VALID = TRUE;	
+			}
+			
 			if($package->IMG_IMAGE1 == "") {"/hotelimages/noimage.jpg";}
 			
 	
@@ -140,7 +164,7 @@ class GolfbreaksProfileController extends \BaseController {
 					'PROF_EMAIL' => $package->HOTEL_ACCOM_EMAIL,
 					'PROF_WEBSITE' => $PROF_WEBSITE,
 					'PROF_DIALCODE' => $PROF_DIALCODE,
-					'PROF_HASPACKAGES' => $PROF_HASPACKAGES,
+					'PROF_PACKAGES_VALID' => $PROF_PACKAGES_VALID,
 					'PROF_LAT' => $package->HOTEL_LAT,
 					'PROF_LON' => $package->HOTEL_LON,
 					'PROF_FACILITIES' => $fac_icons,

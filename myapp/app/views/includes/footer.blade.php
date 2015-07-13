@@ -146,7 +146,7 @@ function stickIt() {
 		
 	});
 	
-    $('.cloned').css('left',leftOrgElement+'px'+10).css('top',55).css('width','100%').show();
+    $('.cloned').css('left',leftOrgElement+'px'+10).css('top',0).css('width','100%').show();
 	
     $('.original').css('visibility','hidden');
 	
@@ -172,8 +172,6 @@ function stickIt() {
 	
 	
 	$('#profile-slider').bjqs({
-		'height' : 341,
-		'width' : 848,
 		'responsive' : true,
 		animtype : 'fade', // accepts 'fade' or 'slide'
 		animduration : 450, // how fast the animation are

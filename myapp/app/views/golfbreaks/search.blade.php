@@ -8,7 +8,7 @@
         				
                         <div class="container"> 
                             
-                            <form action="/golfbreaks" method="post" name="search-form" id="searchheadform">     
+                            <form action="/golf-breaks" method="post" name="search-form" id="searchheadform">     
                            
                                 <div class="row">
         
@@ -235,7 +235,7 @@
                                                         <div class="search-result-bx col-sm-2 col-md-12 " >
                                                         
                                                         <p>GOLF BREAKS FROM</p>
-                                                        <h2>£{{$venuepackage->PACKAGE_PRICE}}</h2>
+                                                        <h2>{{$venuepackage->PACKAGE_CURRENCY}} {{$venuepackage->LOWEST_PACKAGE_PRICE}}</h2>
                                                         
                                                         </div>	
                                                         

@@ -4,7 +4,7 @@
 
 <div  class="row profile-main-banner">
                         
-      <div class="col-md-9 profile-main-banner-images">
+      <div class="col-md-12 profile-main-banner-images">
       
       		  <div id="profile-slider">
               
@@ -27,24 +27,7 @@
        </div>
        
                                   
-       <div class="col-md-3 profile-main-banner-info">
-                    		
-          @if ($profdetail['PROF_HASLOGO']==true)                 
-		  <div class="col-md-12 largepad profile-logo"> <img src="/clublogos/{{$profdetail['PROF_LOGO_IMG']}}" /></div>
-          @endif   
-          @if ($profdetail['PROF_HASLOGO']==false)                 
-		  <div class="col-md-12 largepad profile-logo-none"></div>
-          @endif     
-                             
-          <div class="col-md-8 profile-main-banner-bx largepad"><h2>{{ $profdetail['PROF_DIALCODE'] }} {{ $profdetail['PROF_TELNO'] }}</h2></div> <div class="col-md-4"> <img  class="img-responsive" align="center" src="/images/icon_telno.png" /> </div>
-                            
-          <div class="col-md-8 profile-main-banner-bx largepad"><h2><a href="mailto:{{ $profdetail['PROF_EMAIL'] }}">EMAIL DIRECT</a></h2></div><div class="col-md-4"> <a href="mailto:{{ $profdetail['PROF_EMAIL'] }}"><img  class="img-responsive" src="/images/icon_address.png" /></a> </div>
-                
-          @if($profdetail['PROF_WEBSITE']  !="")       
-          <div class="col-md-8 profile-main-banner-bx profile-main-banner-bx-last largepad"><h2><a target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}">VISIT WEBSITE</a></h2></div> <div class="col-md-4"> <a  target="new" href="http://{{ $profdetail['PROF_WEBSITE'] }}" ><img  class="img-responsive" src="/images/icon_web.png" /> </a></div>
-          @endif
 
-       </div>
                            
                          
     </div>
@@ -65,7 +48,7 @@
                                <div class="navbar-header profile-nav">
               
                                    <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_overview">ACCOMMODATION</a>
-                                        @if ($profdetail['PROF_HASPACKAGES']==true) <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a> @endif
+                                        @if ($profdetail['PROF_PACKAGES_VALID']==true) <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a> @endif
                     			<a class="navbar-brand noleftmargin" id="navoverview" href="#lnk_location">LOCATION</a>
               
                              </div>
@@ -110,7 +93,7 @@
                </div>
                
                
-     @if($profdetail['PROF_HASPACKAGES']==true)
+     @if($profdetail['PROF_PACKAGES_VALID']==true)
                                         	 
                                              
                <div class="row">

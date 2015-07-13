@@ -12,13 +12,16 @@
     
     @yield('searchbar')
 
-    <div class="container">
 
-		@yield('content')
 
+	@yield('herobanner')
+        
+     <div class="container">
+        
+        @yield('content')
+        
+        
     </div><!-- /.container -->
-   
-   	@yield('smallbox')
 
 
 	@include('includes.footer')
