@@ -208,7 +208,7 @@
 	                         
                                     @foreach ($venuepackages as $venuepackage)   
    
-                                        {{-- PACKAGES LISTING START --}}
+                                        {{-- VENUE LISTING START --}}
         
                                         <div class="row search-result">
                                                                    
@@ -227,7 +227,7 @@
                                                 
      
                                                     
-             											<div class="search-result-bx col-sm-2 col-md-12 " >
+             											<div class="search-result-bx col-sm-2 col-md-12 golf-breaks-rating" >
                                                         <p><strong>{{$venuepackage->HOTEL_STAR_RATING}}</strong></hp>
                                                         <h2></h2>
                                                         </div>	
@@ -267,7 +267,7 @@
                                                     
                                                 </div>
                                                 
-                                                <div class="col-md-5  col-sm-5 text-right">
+                                                <div class="col-md-5  col-sm-5 text-right golf-breaks-facilities">
                                             
                                                    {{$venuepackage->HOTEL_AVAL_FACILITIES}}
                                                     

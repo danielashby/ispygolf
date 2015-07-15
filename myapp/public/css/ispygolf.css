@@ -3,6 +3,9 @@
 /* MISC */
 /* COURSES SEARCH PAGE */
 /* COURSES PROFILE PAGE */
+/* GOLF BREAKS PROFILE PAGE */
+/* GOLFBREAKS SEARCH PAGE */
+/* MAP PAGE */
 /* CONTENT PAGE LAYOUT */
 /* PADDINGS */
 /* FORMS */
@@ -69,6 +72,7 @@ a:focus, a:hover
 {
 	min-height:55px;
 	font-size:13px;
+	border-radius:0px !important;
 }
 
 .navbar ul
@@ -159,6 +163,28 @@ a:focus, a:hover
 		
 	}	
 	
+	.home-block-icon
+	{
+	margin-left:-50px;margin-top:-50px;
+	}
+	
+	.home-block-troon
+	{
+	 margin-left: -115px; margin-top: -27px;
+	}
+	
+	.home-block-atlantic
+	{
+	 margin-left: -112px; margin-top: -23px;
+	}
+	
+	
+	.home-block-marriott
+	{
+	 margin-left: -66px; margin-top: -50px;"
+	}
+	
+	
 	
 	/* MISC */
 	
@@ -210,6 +236,8 @@ a:focus, a:hover
 	.full-width
 	{
 		width:100%;
+		padding-left:0px !important;
+		padding-right:0px !important;
 	}
 	
 	.absolute-center
@@ -608,8 +636,34 @@ p.bjqs-caption{
 		font-size:14px;
 	}
 	
+	.golf-breaks-rating
+	{
+		padding-bottom: 10px !important;
+	}
+	
+	.golf-breaks-facilities
+	{
+		padding:10px;
+	}
+	
+	/* MAP PAGE */
+	
+	.map_label_image
+	{
+	width: 50%;
+  	float: left;
+	}
+	
+	.map_label_detail .btn
+	{
+		position:absolute;
+		bottom:0;
+		right:0;
+	}
+	
 	
 	/* CONTENT PAGE LAYOUT */ 
+	
 	
 	.contentpage h2
 	{

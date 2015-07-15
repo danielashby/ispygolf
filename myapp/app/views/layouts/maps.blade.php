@@ -9,17 +9,10 @@
   <body>
   
 	@include('includes.header')
-    
-    @yield('searchbar')
 
-    <div class="container">
+		@yield('map-search-row')
 
-		@yield('content')
-
-    </div><!-- /.container -->
-   
-   	@yield('smallbox')
-
+   		@yield('map-container')
 
 	@include('includes.footer')
     

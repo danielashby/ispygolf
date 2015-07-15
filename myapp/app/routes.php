@@ -56,7 +56,7 @@ Route::get('terms', 'TermsController@terms');
 Route::get('privacy', 'PrivacyController@privacy');
 
 /* Maps Page */
-Route::get('maps', 'MapsController@maps');
+Route::get('golf-course-maps/united-kingdom', 'MapsController@maps');
 
 /* ALL AJAX ROUTES */
 Route::get('ajax/coursesearch','AjaxController@coursesearch');

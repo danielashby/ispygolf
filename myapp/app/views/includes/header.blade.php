@@ -86,7 +86,7 @@
                </li>
                <li><a href="/offers/">OFFERS</a></li>
                <li><a class="grey" href="/news/">NEWS</a></li>
-               <li><a class="grey" href="/maps/">MAP</a></li>
+               <li><a class="grey" href="/golf-course-maps/united-kingdom">MAP</a></li>
                <li><a class="grey" href="/blog/">BLOG</a></li>
           </ul>
         </div><!--/.nav-collapse -->

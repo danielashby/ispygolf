@@ -92,7 +92,7 @@
                 
                 	<img src="/images/home-courses.png"  style="width:100%;">
                 
-                	<img class="absolute-center" src="/images/home-icon-courses.png" >
+                	<img class="absolute-center home-block-icon" src="/images/home-icon-courses.png" >
 
                 </div>
                 
@@ -101,7 +101,7 @@
                 
 					<img src="/images/home-golf-breaks.png"  style="width:100%;">
 
-					<img class="absolute-center" src="/images/home-icon-golf-breaks.png" >
+					<img class="absolute-center home-block-icon" src="/images/home-icon-golf-breaks.png" >
 
                 </div>
                 
@@ -115,7 +115,7 @@
                 
                 	<img src="/images/home-map.png"  style="width:100%;">
                 
-                	<img class="absolute-center" src="/images/home-icon-map.png" >
+                	<img class="absolute-center home-block-icon" src="/images/home-icon-map.png" >
 
                 </div>
                 
@@ -124,7 +124,7 @@
                 
 					<img src="/images/home-reviews.png"  style="width:100%;">
 
-					<img class="absolute-center" src="/images/home-icon-reviews.png" >
+					<img class="absolute-center home-block-icon" src="/images/home-icon-reviews.png" >
 
                 </div>
                 
@@ -138,7 +138,7 @@
                 	                
                 	<img src="/images/home-troon.png"  style="width:100%;">
                 
-                	<img class="absolute-center" src="/images/home-icon-troon.png" >
+                	<img class="absolute-center home-block-troon"src="/images/home-icon-troon.png" >
                 
                 </div>
                 
@@ -146,7 +146,7 @@
                 	                
                 	<img src="/images/home-atlantic.png"  style="width:100%;">
                 
-                	<img class="absolute-center" src="/images/home-icon-atlantic.png" >
+                	<img class="absolute-center home-block-atlantic"  src="/images/home-icon-atlantic.png" >
                 
                 </div>
                 
@@ -154,7 +154,7 @@
                 	                
                 	<img src="/images/home-marriott.png"  style="width:100%;">
                 
-                	<img class="absolute-center" src="/images/home-icon-marriott.png" >
+                	<img class="absolute-center home-block-marriott" src="/images/home-icon-marriott.png" >
                 
                 </div>
             

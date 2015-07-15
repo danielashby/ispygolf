@@ -10,20 +10,7 @@
 		var latLng;
 		var marker;
 		var cluster_opt;
-		
-/*		var myIcon = new GIcon();
-		myIcon.image = 'images/image.png';
-		myIcon.shadow = 'images/shadow.png';
-		myIcon.iconSize = new GSize(24,24);
-		myIcon.shadowSize = new GSize(36,24);
-		myIcon.iconAnchor = new GPoint(0,24);
-		myIcon.infoWindowAnchor = new GPoint(12,0);
-		myIcon.printImage = 'images/printImage.gif';
-		myIcon.mozPrintImage = 'images/mozPrintImage.gif';
-		myIcon.printShadow = 'images/printShadow.gif';
-		myIcon.transparent = 'images/transparent.png';
-		myIcon.imageMap = [15,2,17,3,18,4,19,5,20,6,20,7,21,8,21,9,21,10,21,11,21,12,21,13,21,14,21,15,21,16,20,17,19,18,19,19,17,20,16,21,8,21,6,20,5,19,4,18,3,17,3,16,2,15,2,14,2,13,2,12,2,11,2,10,2,9,2,8,3,7,3,6,4,5,5,4,6,3,9,2];*/
-          
+	   
 		var markers = [];
 		  
 		longitudes = new Array();
@@ -50,40 +37,37 @@
 	
 			geocoder = new google.maps.Geocoder();
 	
-	
-				
-
 			 var i = 0;
 			 
 			 $.ajax({
-						url: '/js/markers.xml',
+						url: '/js/markersv2.xml',
 						type: 'GET', 
 						dataType: 'xml',
 						async:   false,
 						success: function(xml){
 														
-							  $(xml).find("marker").each(function () {
-							  
-							  lattitudes[i] =  $(this).find("lat").text(); 
-							  longitudes[i] =  $(this).find("lng").text(); 
-							  bubhtml[i] = $(this).find("html").text(); 
-							  
-							  dir_courses[i] = $(this).find("dir_courses").text(); 
-							  dir_destinations[i] = $(this).find("dir_destinations").text(); 
-							  dir_championship[i] = $(this).find("dir_championship").text(); 
-							  dir_cororate[i] = $(this).find("dir_cororate").text(); 
-							  dir_society[i] = $(this).find("dir_society").text(); 
-							  dir_membership[i] = $(this).find("dir_membership").text(); 
-							  dir_luxury[i] = $(this).find("dir_luxury").text(); 
-							  
-							  dir_offer[i] = $(this).find("dir_offer").text(); 
-							  
-							  dir_soc_offer[i] = $(this).find("dir_soc_offer").text(); 
-							  dir_stay_offer[i] = $(this).find("dir_stay_offer").text(); 
-							  dir_member_offer[i] = $(this).find("dir_member_offer").text(); 
-							  dir_corp_offer[i] = $(this).find("dir_corp_offer").text(); 	
-							  
-							  i++;
+								  $(xml).find("marker").each(function () {
+								  
+								  lattitudes[i] =  $(this).find("lat").text(); 
+								  longitudes[i] =  $(this).find("lng").text(); 
+								  bubhtml[i] = $(this).find("html").text(); 
+								  
+								  dir_courses[i] = $(this).find("dir_courses").text(); 
+								  dir_destinations[i] = $(this).find("dir_destinations").text(); 
+								  dir_championship[i] = $(this).find("dir_championship").text(); 
+								  dir_cororate[i] = $(this).find("dir_cororate").text(); 
+								  dir_society[i] = $(this).find("dir_society").text(); 
+								  dir_membership[i] = $(this).find("dir_membership").text(); 
+								  dir_luxury[i] = $(this).find("dir_luxury").text(); 
+								  
+								  dir_offer[i] = $(this).find("dir_offer").text(); 
+								  
+								  dir_soc_offer[i] = $(this).find("dir_soc_offer").text(); 
+								  dir_stay_offer[i] = $(this).find("dir_stay_offer").text(); 
+								  dir_member_offer[i] = $(this).find("dir_member_offer").text(); 
+								  dir_corp_offer[i] = $(this).find("dir_corp_offer").text(); 	
+								  
+								  i++;
 							  
 							  
 				
@@ -97,7 +81,7 @@
 		    cluster_opt = 'Y';
 			
 			
-					  		map = new google.maps.Map(document.getElementById('map'), {
+			map = new google.maps.Map(document.getElementById('map'), {
 			  zoom: 3,
 			  center: center,
 			  mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -130,7 +114,7 @@
 	
 	  function changeMarkersSpecOffers()
 	  {
-			var sel_championship = document.getElementById("dir_championship").checked;		
+			/* var sel_championship = document.getElementById("dir_championship").checked;		
 			var sel_destinations = document.getElementById("dir_destinations").checked;	
 			var sel_membership  = document.getElementById("dir_membership").checked;			
 			var sel_all = document.getElementById("dir_all").checked;	
@@ -142,7 +126,7 @@
 			document.getElementById("dir_membership").checked = false;
 			document.getElementById("dir_specials").checked = true;
 
-			changeOverlays();
+			changeOverlays(); */
 			
 	  }
 	  
@@ -203,11 +187,15 @@
 		   		markers.pop();
 		   }
 			
-			var sel_championship = document.getElementById("dir_championship").checked;		
-			var sel_destinations = document.getElementById("dir_destinations").checked;		
-			var sel_membership  = document.getElementById("dir_membership").checked;			
-			var sel_all = document.getElementById("dir_all").checked;
-			var sel_specials = document.getElementById("dir_specials").checked;
+			//New v2 set to all courses as no options given any more
+			var sel_all = true;
+			var sel_specials = false;
+			
+			//var sel_championship = document.getElementById("dir_championship").checked;		
+			//var sel_destinations = document.getElementById("dir_destinations").checked;		
+			//var sel_membership  = document.getElementById("dir_membership").checked;			
+			//var sel_all = document.getElementById("dir_all").checked;
+			//var sel_specials = document.getElementById("dir_specials").checked;
 		   
 
 		   
@@ -251,7 +239,7 @@
 				{
 				  marker = new google.maps.Marker({
 					position: latLng,
-					icon: 'images/image.png' // Optional Marker Icon to use
+					icon: '/images/map-course-icon.png' // Optional Marker Icon to use
 				  });		
 				}
 				else
@@ -259,7 +247,7 @@
 				  marker = new google.maps.Marker({
 					position: latLng,
 					map: map,
-					icon: 'images/image.png' // Optional Marker Icon to use
+					icon: 'images/map-course-icon.png' // Optional Marker Icon to use
 				  });
 				}
 				

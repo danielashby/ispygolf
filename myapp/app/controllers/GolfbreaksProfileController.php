@@ -100,36 +100,35 @@ class GolfbreaksProfileController extends \BaseController {
 			  $fac_icons = "";
 			
 	
-				if($hotel_rest)
-				{
-					$fac_icons = "<li>Golf Course</li>";
-				}
-				
-				if($hotel_clubid!="0" && $hotel_clubid!="")
-				{
-					$fac_icons = $fac_icons."<li>Restaurant</li>";
-				}
-		
-				if($hotel_spa)
-				{
-					$fac_icons = $fac_icons."<li>Spa</li>";
-				}
-				
-				if($hotel_swim)
-				{
-					$fac_icons = $fac_icons."<li>Swimming Pool</li>";
-				}
-		
-				if($hotel_gym)
-				{
-					$fac_icons = $fac_icons."<li>Gym</li>";
-				}
-				
-				if($hotel_tennis)
-				{
-					$fac_icons = $fac_icons."<li>Tennis</li>";
-				}
+			if($hotel_rest)
+			{
+				$fac_icons = '<img  title="COURSE ON SITE" alt="COURSE ON SITE" src="/images/icon-golfbreask-course.png" width="50" height="50" alt=""/>';
+			}
 			
+			if($hotel_clubid!="0" && $hotel_clubid!="")
+			{
+				$fac_icons = $fac_icons.'<img  title="RESTAURANT ON SITE" alt="RESTAURANT ON SITE" src="/images/icon-golfbreaks-restaurant.png" width="50" height="50" alt=""/>';
+			}
+	
+			if($hotel_spa)
+			{
+				$fac_icons = $fac_icons.'<img  title="SPA ON SITE" alt="SPOA ON SITE" src="/images/icon-golfbreaks-spa.png" width="50" height="50" alt=""/>';
+			}
+			
+			if($hotel_swim)
+			{
+				$fac_icons = $fac_icons.'<img  title="SWIMMING ON SITE" alt="SWIMMING ON SITE" src="/images/icon-golfbreaks-swimming.png" width="50" height="50" alt=""/>';
+			}
+	
+			if($hotel_gym)
+			{
+				$fac_icons = $fac_icons.'<img title="GYM ON SITE" alt="GYM ON SITE" src="/images/icon-golfbreaks-gym.png" width="50" height="50" alt=""/>';
+			}
+			
+			if($hotel_tennis)
+			{
+				$fac_icons = $fac_icons.'<img  title="TENNIS ON SITE" alt="TENNIS ON SITE" src="/images/icon-golfbreaks-tennis.png" width="50" height="50" alt=""/>';
+			}
 	
 			  if ($package->PACKAGE_HOTEL_CATER =="A") {$package->PACKAGE_HOTEL_CATER= "Accommodation Only";}
 			  if ($package->PACKAGE_HOTEL_CATER=="B") {$package->PACKAGE_HOTEL_CATER= "Bed &amp; Breakfast";}
