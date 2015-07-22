@@ -1,6 +1,18 @@
  
 
 	<!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">-->
+    <!--<div class="navbar" >
+    	<div class="container">
+              <ul class="nav navbar-nav navbar-right">
+              
+              <li style="margin-right:10px;"><img src="/images/icon-mail.png"></li>
+              <li style="margin-right:10px;padding-top:10px;padding-right:20px;">SIGN UP FOR LATEST OFFERS</li>
+              <li style="margin-right:10px;"><img src="/images/icon-twitter.png"></li>
+              <li style="margin-right:10px;"><img src="/images/icon-facebook.png"></li>
+              <li style="margin-right:30px;"><img src="/images/icon-youtube.png"></li>
+              </ul>
+         </div>
+    </div>-->
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -17,7 +29,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
                <li class="dropdown">
-                  <a href="/golf-courses" aria-expanded="false">GOLF COURSES
+                  <a href="/golf-courses" aria-expanded="false"  class="green" >GOLF COURSES
                   {{-- <span class="caret"></span> --}}</a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="/golf-courses?country=England">ENGLAND
@@ -51,7 +63,7 @@
                   </ul>
                </li>
                <li class="dropdown">
-                  <a href="/golf-breaks" aria-expanded="false">GOLF BREAKS
+                  <a href="/golf-breaks" aria-expanded="false"  class="green" >GOLF BREAKS
                   {{-- <span class="caret"></span> --}}</a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="/golf-breaks?country=England">ENGLAND
@@ -84,10 +96,17 @@
                     <img class="pull-right" src="/images/flag_mauritius_small.png" /></a></li>
                   </ul>
                </li>
-               <li><a href="/offers/">OFFERS</a></li>
-               <li><a class="grey" href="/news/">NEWS</a></li>
-               <li><a class="grey" href="/golf-course-maps/united-kingdom">MAP</a></li>
-               <li><a class="grey" href="/blog/">BLOG</a></li>
+               <li><a href="/offers/"  class="green" >OFFERS</a></li>
+               <li><a href="/news/">NEWS</a></li>
+               <li><a href="/golf-course-maps/united-kingdom">MAP</a></li>
+               <li style="margin-right:23px;"><a href="/blog/">BLOG</a></li>
+               
+              <!--<li style="margin-right:10px;"><img src="/images/icon-mail.png"></li>
+              <li style="margin-right:10px;padding-top:10px;padding-right:20px;color:#FFF;">SIGN UP</li>-->
+              <li style="margin-right:10px;"><img src="/images/icon-twitter.png"></li>
+              <li style="margin-right:10px;"><img src="/images/icon-facebook.png"></li>
+              <li style="margin-right:30px;"><img src="/images/icon-youtube.png"></li>
+          
           </ul>
         </div><!--/.nav-collapse -->
       </div>

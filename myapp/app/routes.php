@@ -60,3 +60,4 @@ Route::get('golf-course-maps/united-kingdom', 'MapsController@maps');
 
 /* ALL AJAX ROUTES */
 Route::get('ajax/coursesearch','AjaxController@coursesearch');
+Route::get('ajax/golfbreakssearch','AjaxController@golfbreakssearch');

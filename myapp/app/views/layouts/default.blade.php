@@ -12,8 +12,6 @@
     
     @yield('searchbar')
 
-
-
 	@yield('herobanner')
         
      <div class="container">

@@ -64,7 +64,7 @@
                 
                 </div>
 
-                                <!-- pop box -->
+                <!-- pop box 
                 <div id="main-pop-box" >
 
                     <a id="pop-url" href="">
@@ -74,7 +74,7 @@
                     </a>
                 
                 </div>
-                <!-- pop box end -->
+                pop box end -->
                 
                
                 

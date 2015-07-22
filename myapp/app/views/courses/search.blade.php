@@ -17,7 +17,7 @@
                                     <div class="col-md-8">
         
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="{{$search_val}}" id="mainsearch_input" autocorrect="off" name="search_val" placeholder="COUNTRY, CITY OR VENUE NAME" />              
+                                        <input type="text" class="form-control" value="{{$search_val}}" id="mainsearch_input" autocorrect="off" name="search_val" placeholder="COUNTRY, CITY OR CLUB NAME" />              
                                         {{ Form::hidden('name', $name,array('id'=>'name')) }}
                                          {{ Form::hidden('country', $country,array('id'=>'country')) }}
                                          {{ Form::hidden('region', $region,array('id'=>'region')) }}

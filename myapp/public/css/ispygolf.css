@@ -5,6 +5,7 @@
 /* COURSES PROFILE PAGE */
 /* GOLF BREAKS PROFILE PAGE */
 /* GOLFBREAKS SEARCH PAGE */
+/* AUTO COMPLETE SEARCH FORMATTING */
 /* MAP PAGE */
 /* CONTENT PAGE LAYOUT */
 /* PADDINGS */
@@ -71,7 +72,7 @@ a:focus, a:hover
 .navbar
 {
 	min-height:55px;
-	font-size:13px;
+	font-size:16px;
 	border-radius:0px !important;
 }
 
@@ -83,6 +84,8 @@ a:focus, a:hover
 .navbar .dropdown-menu
 {
 	background-color:#000;
+	font-size:16px;
+	min-width:180px;
 }
 
 	/* Menu link Styling */
@@ -96,6 +99,12 @@ a:focus, a:hover
 	/* CUSTOM LINK COLORS */
 	.navbar .grey , .navbar .grey:visited {color: #999 !important; }
 	.navbar .grey:hover { color: #666 !important; }
+	
+	.navbar .greeb , .navbar .green:visited {color: #cdde54 !important; }
+	.navbar .green:hover { color: #666 !important; }
+	
+	
+	
 
 
 
@@ -259,15 +268,7 @@ a:focus, a:hover
 	bottom:30px;position:absolute;right:30px;
 	}
 	
-    .ui-autocomplete-loading
-	{
-		background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
-		background-color:#fff;
-		-moz-background-clip: padding;     
-		-webkit-background-clip: padding;  
-		background-clip: padding-box;   
-	}
-	
+
 	.cf
 	{
 		
@@ -283,7 +284,7 @@ a:focus, a:hover
 
 	.search-header
 	{
-		background-color:rgba(198, 198, 198, 0.91);
+		background-color:rgba(244, 244, 244, 1);
 		padding-top:25px;
 		padding-bottom:25px;
 	}
@@ -622,6 +623,8 @@ p.bjqs-caption{
 	{
 		background-color:blue;
 	}
+
+	
 	
 
 	.prof-difficultyP
@@ -645,6 +648,54 @@ p.bjqs-caption{
 	{
 		padding:10px;
 	}
+	
+	
+	/* AUTO COMPLETE SEARCH FORMATTING */
+	
+	.ui-autocomplete ul
+	{
+		width:100%;	
+	}
+	
+	.ui-autocomplete li
+	{
+		width:100%;	
+		border-bottom:solid 1px #BBBBBB;
+		padding-top:10px !important;
+		padding-bottom:10px !important;
+		font-size:19px !important;
+	}
+	
+	
+	
+	.ui-autocomplete-loading
+	{
+		background:url('/images/autocomplete_loading.gif') no-repeat right 20px center;
+		background-color:#fff;
+		-moz-background-clip: padding;     
+		-webkit-background-clip: padding;  
+		background-clip: padding-box;   
+	}
+		
+	.ui-menu .ui-menu-item a.ui-corner-all:hover, .ui-menu .ui-menu-item a.ui-corner-all:focus, .ui-menu .ui-menu-item a.ui-corner-all:active {
+    background:#919191;
+    color:#000;
+    border-radius:0;
+	}
+
+	.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+		background: #BBB;
+		border: none;
+		border-bottom:1px solid #999;
+		color:#000;
+		border-radius:0;
+		font-weight: normal;
+	}
+	
+			
+	
+	/* */
+	
 	
 	/* MAP PAGE */
 	

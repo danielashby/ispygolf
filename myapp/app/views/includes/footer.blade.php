@@ -14,9 +14,12 @@ var titleDisplayed = false;
 $(document).ready(function() {
 
 
+	/* AJAX QUERIES */
+
+	//HOME PAGE SEARCH AJAX
 	if( $('#mainsearch_input').length )       
 	{
-		//HOME PAGE SEARCH AJAX
+		
 
 		$( "#mainsearch_input" ).autocomplete({
 		  source: "/ajax/coursesearch",
@@ -32,15 +35,57 @@ $(document).ready(function() {
 			 $("#"+ui.item.type).val(ui.item.value);
 			 this.value =  ui.item.value;
 			 return false;
-		  }
+		  },
+		  change: function (event, ui) {
+            if (ui.item === null) {
+                $(this).val('');
+                $('#name').val('');
+            }
+        }
 		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
 			return $( "<li></li>" )
 				.data( "ui-autocomplete-item", item )
-				.append( "<span style='text-align:left;'><a>" + "<span class='glyphicon glyphicon-med glyphicon-"+item.imgsrc+"' aria-hidden='true'> </span>&nbsp;" + item.label+ "</a></span>" )
+				.append( "<span style='width:100%;text-align:left;'><a>" + "<span><img src='/images/icon-small-"+item.imgsrc+".png'></span>&nbsp;" + item.label+ "</a></span>" )
 				.appendTo( ul );
 		};
 	
 	};
+	
+	//GOLF BREAKS SEARCH AJAX
+	if( $('#golfbreakssearch_input').length )       
+	{
+		
+
+		$( "#golfbreakssearch_input" ).autocomplete({
+		  source: "/ajax/golfbreakssearch",
+		  minLength: 0,
+		  select: function( event, ui ) {
+			
+			 $("#country").val("");
+			 $("#region").val("");
+			 $("#town").val("");
+			 $("#postcode").val("");
+			 $("#name").val("");
+			 
+			 $("#"+ui.item.type).val(ui.item.value);
+			 this.value =  ui.item.value;
+			 return false;
+		  },
+		  change: function (event, ui) {
+            if (ui.item === null) {
+                $(this).val('');
+                $('#name').val('');
+            }
+        }
+		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+			return $( "<li></li>" )
+				.data( "ui-autocomplete-item", item )
+				.append( "<span style='width:100%;text-align:left;'><a>" + "<span><img src='/images/icon-small-"+item.imgsrc+".png'></span>&nbsp;" + item.label+ "</a></span>" )
+				.appendTo( ul );
+		};
+	
+	};
+	
 	
 	if( $('#datepicker').length )       
 	{
