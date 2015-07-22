@@ -5,7 +5,7 @@
 <div  class="row profile-main-banner">
                         
       <div class="col-md-12 profile-main-banner-images">
-      
+       
       		  <div id="profile-slider">
               
               	<ul class="bjqs">
@@ -25,7 +25,7 @@
               
                     
        </div>
-                           
+                       
  {{--      <div class="col-md-3 profile-main-banner-info">
                     		
           @if ($profdetail['PROF_HASLOGO']==true)                 
@@ -49,20 +49,27 @@
                     
                 <div class="row menu"  style="z-index:500;">
                   
-                   <a name="link_overview"></a>
+                   
 
                     <div class="col-md-12 profilemenu"> 
+                    
+                   
                         
                         <nav class="navbar profile-navbar navbar-default">
                              
                           <div class="container">
                               
-                              <div class="hidden-title-conatiner"><h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }} - {{ $profdetail['PROF_CLUB_ADDRESS'] }}
-                              </h3></div>
+                              <div class="hidden-title-conatiner">
+                              		 
+                                    <a class="hidden-logo" href="/">
+        								<img alt="Brand" id="logo" style="height:30px;" src="/images/logo.png">
+      								</a>
+            						<h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }} - {{ $profdetail['PROF_CLUB_ADDRESS'] }}</h3>
+                                    </div>
                                   
                                <div class="navbar-header profile-nav">
               
-                                   <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_overview">OVERVIEW</a>
+                                   <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_maindetails">OVERVIEW</a>
                                    <a class="navbar-brand" id="navdetails" href="#link_course_details">COURSE DETAILS</a>
                                    <a class="navbar-brand" id="navgreenfees" href="#lnk_green_fees">GREEN FEES</a>
                                    <a class="navbar-brand" id="navgolfdays" href="#lnk_golf_days">GOLF DAYS</a>
@@ -85,7 +92,7 @@
                 <div class="row top-buffer">
 	
                     <div class="col-md-6">
-                        
+                     <a name="link_maindetails"></a>       
                         <h2>{{ $profdetail['PROF_CLUBNAME'] }}</h2>
                         <P>{{ $profdetail['PROF_CLUB_ADDRESS'] }}</P>
                         

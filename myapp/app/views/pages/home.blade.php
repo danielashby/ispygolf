@@ -90,18 +90,46 @@
                 
                 <div class="col-md-6" style="padding:5px;padding-top:10px;">
                 
-                	<img src="/images/home-courses.png"  style="width:100%;">
+                	<a href="/golf-courses">
                 
-                	<img class="absolute-center home-block-icon" src="/images/home-icon-courses.png" >
-
+                        <img src="/images/home-courses.png"  style="width:100%;">
+                    
+                        <img class="absolute-center home-block-icon" src="/images/home-icon-courses.png" >
+                        
+                        <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>Golf Courses</h2>
+                                <h3 class="desc">Visually Stunning</h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>
+		
                 </div>
                 
                 
                 <div class="col-md-6"  style="padding:5px;padding-top:10px;">
                 
-					<img src="/images/home-golf-breaks.png"  style="width:100%;">
+                	<a href="/golf-courses">
+                
+                        <img src="/images/home-golf-breaks.png"  style="width:100%;">
+    
+                        <img class="absolute-center home-block-icon" src="/images/home-icon-golf-breaks.png" >
+    
+                        <div id="hover">
+        
+                            <div class="link-text">
+                                <h2>Golf Breaks</h2>
+                                <h3 class="desc">Amazing Venues</h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>
 
-					<img class="absolute-center home-block-icon" src="/images/home-icon-golf-breaks.png" >
+					
 
                 </div>
                 
@@ -113,18 +141,44 @@
                 
                 <div class="col-md-6"  style="padding:5px;">
                 
-                	<img src="/images/home-map.png"  style="width:100%;">
+                	<a href="/golf-course-maps/united-kingdom">
                 
-                	<img class="absolute-center home-block-icon" src="/images/home-icon-map.png" >
+                        <img src="/images/home-map.png"  style="width:100%;">
+                    
+                        <img class="absolute-center home-block-icon" src="/images/home-icon-map.png" >
+                        
+                       <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>Locate Golf Courses</h2>
+                                <h3 class="desc">From round the World</h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>
 
                 </div>
                 
                 
                 <div class="col-md-6"  style="padding:5px;">
                 
-					<img src="/images/home-reviews.png"  style="width:100%;">
-
-					<img class="absolute-center home-block-icon" src="/images/home-icon-reviews.png" >
+                		<a href="#">
+                
+                        <img src="/images/home-reviews.png"  style="width:100%;">
+    
+                        <img class="absolute-center home-block-icon" src="/images/home-icon-reviews.png" >
+                    
+                       <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>Course Reviews</h2>
+                                <h3 class="desc"></h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>                    
 
                 </div>
                 
@@ -136,25 +190,67 @@
             
                 <div class="col-md-4" style="padding:5px;">
                 	                
+                    <a href="/golf-courses/troon-golf-courses">                
+                                    
                 	<img src="/images/home-troon.png"  style="width:100%;">
                 
                 	<img class="absolute-center home-block-troon"src="/images/home-icon-troon.png" >
+                    
+                       <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>TROON GOLF</h2>
+                                <h3 class="desc"></h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>               
                 
                 </div>
                 
                 <div class="col-md-4" style="padding:5px;">
                 	                
+                                    
+                   <a href="/golf-courses/atlantic-golf-courses">    
+  
                 	<img src="/images/home-atlantic.png"  style="width:100%;">
                 
                 	<img class="absolute-center home-block-atlantic"  src="/images/home-icon-atlantic.png" >
+                    
+                       <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>ATLANTIC GOLF</h2>
+                                <h3 class="desc"></h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>               
+                                    
                 
                 </div>
                 
                  <div class="col-md-4" style="padding:5px;">
+                 
+                 <a href="/golf-courses/marriott-golf-courses">    
                 	                
                 	<img src="/images/home-marriott.png"  style="width:100%;">
                 
                 	<img class="absolute-center home-block-marriott" src="/images/home-icon-marriott.png" >
+                    
+                       <div id="hover">
+    
+                            <div class="link-text">
+                                <h2>MARRIOTT GOLF</h2>
+                                <h3 class="desc"></h3>
+                            </div>
+    
+                        </div>
+                    
+                    </a>               
+                                    
                 
                 </div>
             

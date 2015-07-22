@@ -11,8 +11,10 @@
 /* PADDINGS */
 /* FORMS */
 /* TEXT OPTIONS */
+/* HOVERS */
 /* SHADOW OPTIONS */
 /* PRIVACY AND TERMS PAGE */
+
 
 
 
@@ -491,9 +493,28 @@ p.bjqs-caption{
 		padding-left:15px;
 	}
 	
+	.hidden-title
+	{
+		padding-top:10px;
+		margin-bottom:0px;
+		margin-top:0px;
+	}
+	
+	.hidden-logo
+	{
+		margin-left:-14px;
+		padding:10px;
+		display:inline;
+		float:left;
+	}
+	
 	.cloned .navbar-header
 	{
 		padding-left:15px;
+		transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-webkit-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
 	}
 	
 	.cloned
@@ -782,8 +803,38 @@ p.bjqs-caption{
 		text-align:right;
 	}
 	
+	/* HOVERS */
 	
-
+	#hover
+	{
+		 width:90%;
+		 background-color:#fff;
+		 position:absolute;
+		 height: 90.4%; 
+		 left: 6.38%;
+		 top: 4.8%;
+		 width: 87.24%;
+		 opacity: 0;
+		transition: all 0.2s linear;
+		-moz-transition: all 0.2s linear;
+		-webkit-transition: all 0.2s linear;
+		-o-transition: all 0.2s linear;
+	}
+	
+	#hover:hover
+	{
+		 opacity: .80;
+	}
+	
+	.link-text {
+    position: absolute;
+    text-align: center;
+    top: 41%;
+    width: 100%;
+	}
+	
+	
+	
 	/* SHADOW OPTIONS */
 	.shadow-big
 	{
