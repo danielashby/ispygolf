@@ -10,6 +10,30 @@ class CourseProfileController extends \BaseController {
 		return $outdate;
 	}
 	
+	
+	
+	private function getspecialofferApplies($incode)
+	{
+		if ($incode=="P")
+		{
+		  $returnval = "Per Person";
+		}
+		else if ($incode=="2")
+		{
+		  $returnval = "2 People";
+		}
+		else if ($incode=="4") 
+		{
+		  $returnval = "4 People";
+		}	
+		else
+		{
+		  $returnval = "Per Tee Booking";
+		}
+		
+		return $returnval;
+	}
+	
 	public function profile($urlid)
 	{
 		
@@ -113,6 +137,38 @@ class CourseProfileController extends \BaseController {
 		
 		//END - GET ALL COURSES FOR CLUB
 		
+		//START CURRENCY SYMBOL
+				
+			$PROF_MONEY_SYMBOL = $course -> MONETARY_SYMBOL;	
+				
+			if ($PROF_MONEY_SYMBOL=="")
+			{       	
+			  $PROF_MONEY_SYMBOL="&pound;";
+			}
+			else if ($PROF_MONEY_SYMBOL=="P")
+			{
+			  $PROF_MONEY_SYMBOL="&pound;";
+			}
+			else if ($PROF_MONEY_SYMBOL=="E")
+			{
+			  $PROF_MONEY_SYMBOL="&euro;";
+			}	
+			else if ($PROF_MONEY_SYMBOL=="D")
+			{
+			  $PROF_MONEY_SYMBOL="US$";
+			}	
+			else if ($PROF_MONEY_SYMBOL=="U")
+			{
+			  //This will need changing to AED once new layout is done for profile
+			  $PROF_MONEY_SYMBOL="AED";
+			}
+			else if ($PROF_MONEY_SYMBOL=="R")
+			{
+			  //This will need changing to AED once new layout is done for profile
+			  $PROF_MONEY_SYMBOL="R";
+			}
+			
+			//END CURRENCY SYMBOL
 		
 		////// -- populate special offers array -- //////
 		$SPECIAL1_NAME=$course->SPECIAL1_NAME;
@@ -160,14 +216,30 @@ class CourseProfileController extends \BaseController {
 		
 		if ($SPECIAL1_UNTIL > $todaysdate || $SPECIAL1_UNTIL == '0000-00-00' && $SPECIAL1_NAME <>"")
 		{
-			
+				
 			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL1_NAME;
 			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL1_TYPE;
-			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL1_FROM;
-			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL1_UNTIL;
+			$profoffers[$i]['SPECIAL_FROM'] =  $this->formatDate($SPECIAL1_FROM);
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $this->formatDate($SPECIAL1_UNTIL);
+			
+			if($profoffers[$i]['SPECIAL_UNTIL']=="00/00/0000") $profoffers[$i]['SPECIAL_UNTIL'] = "Until Further Notice";
+			
 			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL1_PRICE;
 			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL1_APPLIES;
-			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL1_TEXT, $limit = 100, $end = '...');
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit(nl2br($SPECIAL1_TEXT), $limit = 100, $end = '...');
+			$profoffers[$i]['SPECIAL_TEXT_FULL'] =  nl2br($SPECIAL1_TEXT);
+			
+			
+			if($profoffers[$i]['SPECIAL_PRICE']==0) 
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']="N/A";
+			}
+			else
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']=$PROF_MONEY_SYMBOL.$profoffers[$i]['SPECIAL_PRICE']." ".$this->getspecialofferApplies($profoffers[$i]['SPECIAL_APPLIES']);
+			}
+		
+			
 			
 			$i++;
 			
@@ -180,11 +252,26 @@ class CourseProfileController extends \BaseController {
 			
 			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL2_NAME;
 			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL2_TYPE;
-			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL2_FROM;
-			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL2_UNTIL;
+			$profoffers[$i]['SPECIAL_FROM'] =  $this->formatDate($SPECIAL2_FROM);
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $this->formatDate($SPECIAL2_UNTIL);
+			
+			if($profoffers[$i]['SPECIAL_UNTIL']=="00/00/0000") $profoffers[$i]['SPECIAL_UNTIL'] = "Until Further Notice";
+			
 			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL2_PRICE;
 			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL2_APPLIES;
-			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL2_TEXT, $limit = 100, $end = '...');	
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit(nl2br($SPECIAL2_TEXT), $limit = 100, $end = '...');	
+			$profoffers[$i]['SPECIAL_TEXT_FULL'] =  nl2br($SPECIAL2_TEXT);
+			
+					
+			if($profoffers[$i]['SPECIAL_PRICE']==0) 
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']="N/A";
+			}
+			else
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']=$PROF_MONEY_SYMBOL.$profoffers[$i]['SPECIAL_PRICE']." ".$this->getspecialofferApplies($profoffers[$i]['SPECIAL_APPLIES']);
+			}
+		
 			
 			$i++;
 			
@@ -196,11 +283,23 @@ class CourseProfileController extends \BaseController {
 			
 			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL3_NAME;
 			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL3_TYPE;
-			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL3_FROM;
-			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL3_UNTIL;
+			$profoffers[$i]['SPECIAL_FROM'] =  $this->formatDate($SPECIAL3_FROM);
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $this->formatDate($SPECIAL3_UNTIL);
 			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL3_PRICE;
 			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL3_APPLIES;
-			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL3_TEXT, $limit = 100, $end = '...');
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit(nl2br($SPECIAL3_TEXT), $limit = 100, $end = '...');
+			$profoffers[$i]['SPECIAL_TEXT_FULL'] =  nl2br($SPECIAL3_TEXT);
+			
+					
+			if($profoffers[$i]['SPECIAL_PRICE']==0) 
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']="N/A";
+			}
+			else
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']=$PROF_MONEY_SYMBOL.$profoffers[$i]['SPECIAL_PRICE']." ".$this->getspecialofferApplies($profoffers[$i]['SPECIAL_APPLIES']);
+			}
+		
 			
 			$i++;
 			
@@ -212,11 +311,23 @@ class CourseProfileController extends \BaseController {
 			
 			$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL4_NAME;
 			$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL4_TYPE;
-			$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL4_FROM;
-			$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL4_UNTIL;
+			$profoffers[$i]['SPECIAL_FROM'] =  $this->formatDate($SPECIAL4_FROM);
+			$profoffers[$i]['SPECIAL_UNTIL'] =  $this->formatDate($SPECIAL4_UNTIL);
 			$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL4_PRICE;
 			$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL4_APPLIES;
-			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL4_TEXT, $limit = 100, $end = '...');	
+			$profoffers[$i]['SPECIAL_TEXT'] =  str_limit(nl2br($SPECIAL4_TEXT), $limit = 100, $end = '...');	
+			$profoffers[$i]['SPECIAL_TEXT_FULL'] =  nl2br($SPECIAL4_TEXT);
+			
+					
+			if($profoffers[$i]['SPECIAL_PRICE']==0) 
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']="N/A";
+			}
+			else
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']=$PROF_MONEY_SYMBOL.$profoffers[$i]['SPECIAL_PRICE']." ".$this->getspecialofferApplies($profoffers[$i]['SPECIAL_APPLIES']);
+			}
+		
 			
 			$i++;
 			
@@ -228,11 +339,23 @@ class CourseProfileController extends \BaseController {
 				
 				$profoffers[$i]['SPECIAL_NAME'] =  $SPECIAL5_NAME;
 				$profoffers[$i]['SPECIAL_TYPE'] =  $SPECIAL5_TYPE;
-				$profoffers[$i]['SPECIAL_FROM'] =  $SPECIAL5_FROM;
-				$profoffers[$i]['SPECIAL_UNTIL'] =  $SPECIAL5_UNTIL;
+				$profoffers[$i]['SPECIAL_FROM'] =  $this->formatDate($SPECIAL5_FROM);
+				$profoffers[$i]['SPECIAL_UNTIL'] =  $this->formatDate($SPECIAL5_UNTIL);
 				$profoffers[$i]['SPECIAL_PRICE'] =  $SPECIAL5_PRICE;
 				$profoffers[$i]['SPECIAL_APPLIES'] =  $SPECIAL5_APPLIES;
-				$profoffers[$i]['SPECIAL_TEXT'] =  str_limit($SPECIAL5_TEXT, $limit = 100, $end = '...');
+				$profoffers[$i]['SPECIAL_TEXT'] =  str_limit(nl2br($SPECIAL5_TEXT), $limit = 100, $end = '...');
+				$profoffers[$i]['SPECIAL_TEXT_FULL'] =  nl2br($SPECIAL5_TEXT);
+				
+						
+			if($profoffers[$i]['SPECIAL_PRICE']==0) 
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']="N/A";
+			}
+			else
+			{
+				$profoffers[$i]['SPECIAL_PRICE_FORMATTED']=$PROF_MONEY_SYMBOL.$profoffers[$i]['SPECIAL_PRICE']." ".$this->getspecialofferApplies($profoffers[$i]['SPECIAL_APPLIES']);
+			}
+		
 				
 				$i++;
 				
@@ -299,38 +422,7 @@ class CourseProfileController extends \BaseController {
 			}
 			
 			
-			//START CURRENCY SYMBOL
-				
-			$PROF_MONEY_SYMBOL = $course -> MONETARY_SYMBOL;	
-				
-			if ($PROF_MONEY_SYMBOL=="")
-			{       	
-			  $PROF_MONEY_SYMBOL="&pound;";
-			}
-			else if ($PROF_MONEY_SYMBOL=="P")
-			{
-			  $PROF_MONEY_SYMBOL="&pound;";
-			}
-			else if ($PROF_MONEY_SYMBOL=="E")
-			{
-			  $PROF_MONEY_SYMBOL="&euro;";
-			}	
-			else if ($PROF_MONEY_SYMBOL=="D")
-			{
-			  $PROF_MONEY_SYMBOL="US$";
-			}	
-			else if ($PROF_MONEY_SYMBOL=="U")
-			{
-			  //This will need changing to AED once new layout is done for profile
-			  $PROF_MONEY_SYMBOL="AED";
-			}
-			else if ($PROF_MONEY_SYMBOL=="R")
-			{
-			  //This will need changing to AED once new layout is done for profile
-			  $PROF_MONEY_SYMBOL="R";
-			}
-			
-			//END CURRENCY SYMBOL
+	
 			
 			//START COURSE T PRICE
 			
@@ -508,7 +600,7 @@ class CourseProfileController extends \BaseController {
 					'PROF_CLUB_COUNTRY' => $course->CLUB_COUNTRY,	
 				    'PROF_HASLOGO' => $PROF_HASLOGO,
 					'PROF_LOGO_IMG' => $PROF_LOGO_IMG,
-					'PROF_CLUBDESC' => $course->CLUB_DESC,
+					'PROF_CLUBDESC' => nl2br($course->CLUB_DESC),
 					'PROF_LON' => $course->CLUB_LAT,
 					'PROF_LAT' => $course->CLUB_LON,
 					'PROF_COURSE_GF_HIGH_WEEK' => $course_high_week,

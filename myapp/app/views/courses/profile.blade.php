@@ -47,26 +47,35 @@
                          
     </div>
                     
-                <div class="row menu"  style="z-index:500;">
+                <div class="row menu"  style="z-index:500;margin-left:15px;margin-right:15px;">
                   
-                   
-
-                    <div class="col-md-12 profilemenu"> 
-                    
-                   
-                        
-                        <nav class="navbar profile-navbar navbar-default">
-                             
-                          <div class="container">
-                              
-                              <div class="hidden-title-conatiner">
-                              		 
+                    <nav class="navbar profile-navbar navbar-default">
+                            <div style="background-color:#222;">
+                            
+                                <div class="container">
+                            
+                                   <div class="hidden-title-conatiner">
+                                     
                                     <a class="hidden-logo" href="/">
-        								<img alt="Brand" id="logo" style="height:30px;" src="/images/logo.png">
-      								</a>
-            						<h3 class="hidden-title">{{ $profdetail['PROF_CLUBNAME'] }} - {{ $profdetail['PROF_CLUB_ADDRESS'] }}</h3>
-                                    </div>
-                                  
+                                       <img alt="Brand" id="logo" style="height:30px;" src="/images/logo.png">
+                                    </a>
+                                    
+                                    <h3 class="hidden-title text_white">{{ $profdetail['PROF_CLUBNAME'] }} <span class="profile-title-lower">{{$profdetail['PROF_CLUB_CITY']}}, {{$profdetail['PROF_CLUB_COUNTRY']}}</span></h3>
+                                
+                                    </div>            
+                    
+                                </div>
+                                
+                        </div>
+                    
+                        <div class="row" style="background-color:#99999F;">
+                        
+                          		<div class="container">
+                            
+                            	<div class="row">
+                                
+                            	<div class="col-md-12">
+                    
                                <div class="navbar-header profile-nav">
               
                                    <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_maindetails">OVERVIEW</a>
@@ -77,15 +86,26 @@
                                    @if ($profdetail['PROF_HASPACKAGES']==true) <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a> @endif
                                    <a class="navbar-brand" id="navreviews" href="#lnk_reviews">REVIEWS</a>
                                    <a class="navbar-brand" id="navlocation" href="#lnk_location">LOCATION</a>
+                                   
+                                   <div class="hidden-title-conatiner" style="float:right;margin-right:28px;">
+                                   <a class="btn btn-default profile-headline-bx-btn" style="margin-top:8px;" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">ENQUIRE </a>
+                                   </div>
               
-                             </div>
-                              
-                          </div>
-                            
-                        </nav>
-    
-                    </div>
-                    
+                                </div>   
+                                
+                                </div>
+                                
+                                </div>
+                                
+                                </div>
+                                
+                             
+                           
+                        
+                        </div>
+                        
+                    </nav>
+                               
                 </div>
                     
                     
@@ -171,7 +191,7 @@
                
                
                
-                               <div class="row">
+               <div class="row">
                
 
                
@@ -182,23 +202,51 @@
 
                @if($profdetail['PROF_HASOFFERS']==true)
                    
-               <div class="row  row-centered">   
+               <div class="row  row-centered top-buffer-lg">   
                
-               
-                  {{--<div class="col-md-12  text-center">
-                     
-                       <img src="/images/icon_course.png" />
-                       
-                       <h2>SPECIAL OFFERS</h2>
-                       <br>
-                       <br>
+			    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"> 
+               <?php $i=0; ?> 
                 
-                   </div>--}}
-                                         	 
-                 
                @foreach ($profoffers as $profoffer)   
+               
+               <?php $i++; ?>
+               
+               <div class="col-md-6 col-centered" style="vertical-align:top;">
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{$i}}" aria-expanded="false" aria-controls="collapseOne{{$i}}">
+                          <span style="font-weight:bold;">Special Offer</span> <span class="text_grey">{{ $profoffer['SPECIAL_NAME'] }}</span><span style="float:right;"><img style="width:33px;margin-top:-8px;" src="/images/icon-golf-offers.png"></span>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne{{$i}}" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <p>
+                        <strong>Valid from </strong><span class="text_grey">{{ $profoffer['SPECIAL_FROM'] }}</span><br>
+                        <strong>Valid to </strong><span class="text_grey">{{ $profoffer['SPECIAL_UNTIL'] }}</span>
+                        <p>
+						<span class="text_grey">{{ $profoffer['SPECIAL_TEXT_FULL'] }}</span>
+                      	</p>
+                        <P>
+                        Price: <span class="text_grey">{{ $profoffer['SPECIAL_PRICE_FORMATTED']}}</span>
+                        </P>
+                        
+                        <p>
+                        <strong>Telephone</strong> <span class="text_grey">{{ $profdetail['PROF_TELNO'] }}<br></span>
+                        <strong>Quote</strong> <span class="text_grey">iSpyGolf - {{ $profoffer['SPECIAL_NAME'] }}</span>
+                        </p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+                
+               
 					           
-				<div class="col-md-4 col-centered">
+				<!--<div class="col-md-6 col-centered">
                     
                    	 <div class="row">
                      
@@ -240,10 +288,14 @@
                      </div>
                         
                     
-                 </div>
+                 </div>-->
+                 
+                 
                  
 
-                 @endforeach    
+                 @endforeach  
+                 
+                 </div>  
                    
                </div>
                

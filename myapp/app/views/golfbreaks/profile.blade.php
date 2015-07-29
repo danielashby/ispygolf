@@ -32,7 +32,70 @@
                          
     </div>
     
-                    <div class="row menu"  style="z-index:500;">
+                   
+                   
+                   <div class="row menu"  style="z-index:500;margin-left:15px;margin-right:15px;">
+                  
+                    <nav class="navbar profile-navbar navbar-default">
+                            <div style="background-color:#222;">
+                            
+                                <div class="container">
+                            
+                                   <div class="hidden-title-conatiner">
+                                     
+                                    <a class="hidden-logo" href="/">
+                                       <img alt="Brand" id="logo" style="height:30px;" src="/images/logo.png">
+                                    </a>
+                                    
+                                    <h3 class="hidden-title text_white">{{ $profdetail['PROF_HOTELNAME'] }} <span class="profile-title-lower">{{$profdetail['PROF_HOTEL_CITY']}}, {{$profdetail['PROF_HOTEL_COUNTRY']}}</span></h3>
+                                
+                                    </div>            
+                    
+                                </div>
+                                
+                        </div>
+                    
+                        <div class="row" style="background-color:#99999F;">
+                        
+                          		<div class="container">
+                            
+                            	<div class="row">
+                                
+                            	<div class="col-md-12">
+                    
+                               <div class="navbar-header profile-nav" style="width:100%;">
+              
+                                   <a class="navbar-brand selected noleftmargin" id="navoverview" href="#link_overview">ACCOMMODATION</a>
+                                        @if ($profdetail['PROF_PACKAGES_VALID']==true) <a class="navbar-brand" id="navgolfbreaks" href="#lnk_golfbreaks">GOLF BREAKS</a> @endif
+                    				<a class="navbar-brand noleftmargin" id="navoverview" href="#lnk_location">LOCATION</a>
+                                   
+                                   <div class="hidden-title-conatiner" style="float:right;margin-right:28px;">
+                                   <a class="btn btn-default profile-headline-bx-btn" style="margin-top:8px;" href="/enquiries?type=c&id={{ $profdetail['PROF_HOTELID'] }}">ENQUIRE </a>
+                                   </div>
+              
+                                </div>   
+                                
+                                </div>
+                                
+                                </div>
+                                
+                                </div>
+                                
+                             
+                           
+                        
+                        </div>
+                        
+                    </nav>
+                               
+                </div>
+                   
+                   
+                   
+                   
+                 
+          <!--       
+                 <div class="row menu"  style="z-index:500;">
                   
                    <a name="link_overview"></a>
 
@@ -60,6 +123,13 @@
                     </div>
                     
                 </div>
+                
+                
+             -->   
+                
+                
+                
+                
                 
 				<div class="row top-buffer">
 	
