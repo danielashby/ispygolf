@@ -37,8 +37,13 @@ class CourseProfileController extends \BaseController {
 	public function profile($urlid)
 	{
 		
+		$urlid_unformatted = $urlid;
 		
 		$urlid = str_replace('-', ' ',$urlid);
+		
+		
+		$clubrecord = DB::table('CLUBS')->where('CLUB_URLID',$urlid)->first();
+		$clubid = $clubrecord->CLUB_ID;	
 		
 		
 		//SYS_CLUBS_USERS.SOCIETY = '1' and SYS_CLUBS_USERS.CORPORATE = '1' " 
@@ -55,13 +60,18 @@ class CourseProfileController extends \BaseController {
 		
 		$i=0;
 		
+		
+		//dd($courses);
+		
 		//START - GET ALL COURSES FOR CLUB
 		foreach($courses as $course)
 		{
 			
 			//GET INDIVIDUAL ITEMS LINKED TO EACH COURSE  (PACKAGES,GOLFDAYS...)
 			
-			$clubid = $course->CLUB_ID;
+			//$clubid = $course->CLUB_ID;
+			
+			
 			
 			//SET DEFAULT IMAGE
 			if($course->IMG_IMAGE1 == "") {"/clubimages/noimage.jpg";}
@@ -88,7 +98,8 @@ class CourseProfileController extends \BaseController {
 			if($course->CLUB_MEMBER == "0") {$course->CLUB_MEMBER = null;}
 			if($course->COURSE_LOW_WEEK==0){$course->COURSE_LOW_WEEK="-";}
 			if($course->COURSE_DESC==""){$course->COURSE_DESC = $course->CLUB_DESC;}
-			 
+			
+			//echo "CLUBID:".$clubrecord->CLUB_ID;	
 			
 			//FIND PACKAGES FOR CLUB 
 			$datenow = date('d-m-Y');		 
@@ -99,6 +110,9 @@ class CourseProfileController extends \BaseController {
 			->where('HOTELS.HOTEL_CLUB_ID','=',$clubid)
 			->get();
 			
+			
+			
+			//echo "Club ID:".$course->CLUB_ID;
 			
 			$course->PACKAGE_IMG = null;
 			$i = 0;
@@ -122,7 +136,7 @@ class CourseProfileController extends \BaseController {
 					
 					$profpackages[$i]['PACKAGE_IMG'] =  "/hotelimages/".$package->IMG_SEARCH2;
 					$profpackages[$i]['PACKAGE_IMG_LARGE'] = 	"/hotelimages/".$package->IMG_IMAGE1;
-					$profpackages[$i]['PACKAGE_DESCRIPTION'] = 	str_limit($package->PACKAGE_DESCRIPTION, $limit = 100, $end = '...');
+					$profpackages[$i]['PACKAGE_DESCRIPTION'] = 	utf8_decode(str_limit($package->PACKAGE_DESCRIPTION, $limit = 100, $end = '...'));
 					$profpackages[$i]['PACKAGE_NAME'] = 	$package->PACKAGE_NAME;
 					
 					$club_has_packages = true;
@@ -134,6 +148,8 @@ class CourseProfileController extends \BaseController {
 			}
 						
 		}
+		
+		//dd();
 		
 		//END - GET ALL COURSES FOR CLUB
 		
@@ -589,6 +605,7 @@ class CourseProfileController extends \BaseController {
 					'PROF_EMAIL' => $course->CLUB_EMAIL,
 					'PROF_WEBSITE' => $course->CLUB_WEBSITE,
 					'PROF_TEE_URL' => $club_tee_url,
+					'PROF_CLUBURLID' => $urlid_unformatted,
 					'PROF_CLUBNAME' => $course->CLUB_ADD1,
 					'PROF_CLUBNAME_UPPER' => strtoupper($course->CLUB_ADD1),
 					'PROF_CLUB_ADDRESS' => $PROF_CLUB_ADDRESS,

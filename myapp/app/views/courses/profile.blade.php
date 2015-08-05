@@ -60,7 +60,15 @@
                                        <img alt="Brand" id="logo" style="height:30px;" src="/images/logo.png">
                                     </a>
                                     
+                                   
+                                	<div class="hidden-title-conatiner" style="float:right;width:80%;">
+                                    <div style="float:left;">
                                     <h3 class="hidden-title text_white">{{ $profdetail['PROF_CLUBNAME'] }} <span class="profile-title-lower">{{$profdetail['PROF_CLUB_CITY']}}, {{$profdetail['PROF_CLUB_COUNTRY']}}</span></h3>
+        							</div>
+                                    <div style="float:right;">
+                                    <a class="btn btn-default profile-headline-bx-btn" style="margin-top:8px;" href="/golf-courses/{{$profdetail['PROF_CLUBURLID']}}/enquire">ENQUIRE </a>
+                                    </div>
+                                    </div>
                                 
                                     </div>            
                     
@@ -87,9 +95,7 @@
                                    <a class="navbar-brand" id="navreviews" href="#lnk_reviews">REVIEWS</a>
                                    <a class="navbar-brand" id="navlocation" href="#lnk_location">LOCATION</a>
                                    
-                                   <div class="hidden-title-conatiner" style="float:right;margin-right:28px;">
-                                   <a class="btn btn-default profile-headline-bx-btn" style="margin-top:8px;" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">ENQUIRE </a>
-                                   </div>
+
               
                                 </div>   
                                 
@@ -160,7 +166,7 @@
                        </div>   
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="/enquiries?type=c&id={{ $profdetail['PROF_CLUBID'] }}">ENQUIRE </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="/golf-courses/{{$profdetail['PROF_CLUBURLID']}}/enquire">ENQUIRE </a>
                        </div>  
                            
                           
@@ -543,7 +549,7 @@
                              </p>
                           </div>
                              <div class="col-md-12 text-right" style="margin-bottom">
-                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                                 <a class="btn btn-default profile-offers-bx-btn" href="/golf-courses/{{$profdetail['PROF_CLUBURLID']}}/membership-enquire">DETAILS </a>
                              </div>
                     	
                         @endif
@@ -697,7 +703,7 @@
                        </div>   
                            
                        <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="#">ENQUIRE </a>
+                            <a class="btn btn-default profile-headline-bx-btn" href="/golf-courses/{{$profdetail['PROF_CLUBURLID']}}/enquire">ENQUIRE </a>
                        </div>  
                            
                            

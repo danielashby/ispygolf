@@ -175,7 +175,7 @@
                    	
                    <img src="/images/icon_golfbreaks.png" />
                    <a name="lnk_golfbreaks"></a>
-                   <h2>GOLF BREAKS AVAILABLE</h2>
+                   <h3>Latest Golf Breaks available <strong>direct</strong> from {{ $profdetail['PROF_HOTELNAME'] }}</h3>
     
                    
                   
@@ -202,55 +202,66 @@
 
                     <div class="col-md-6">
                         
-                        <h2>{{ $profpackage->PACKAGE_NAME}}</h2>
+                        <div class="row">
                         
+                        	<div class="col-md-9">
+                            
+                                <h2>{{ $profpackage->PACKAGE_NAME}}</h2>
+
+                            </div>
+                            
+                            <div class="col-md-3" style="text-align:right;">
+                            	<a class="btn btn-default" style="margin-top:20px;" href="#">ENQUIRE </a>
+                            </div>
                         
-                         <a name="lnk_green_fees"></a>
-            
-                        <p>{{ $profpackage->PACKAGE_DESCRIPTION }}</p>
+                        </div>
                         
-                        
+                        <div class="row">               
+                          
+                          	<div class="col-md-12">
+                            
+                            <hr style="border-color:#666;">
+                            
+                            <h3><span class="text_grey">Price </span>{{ $profpackage->PACKAGE_PRICE}} {{ $profpackage->PACKAGE_APPLIES }}</h3>
+                            <h3><span class="text_grey">Nights </span>{{ $profpackage->PACKAGE_NIGHTS}} <span class="text_grey">Rounds</span> {{ $profpackage->PACKAGE_INC_ROUNDS}}</h3>
+                            <h3>{{ $profpackage->PACKAGE_HOTEL_CATER}} </h3>
+                            
+                            <hr style="border-color:#666;">
+
+                            <p>{{ $profpackage->PACKAGE_DESCRIPTION }}</p>
+                            
+                            <hr style="border-color:#666;">
+                            
+                            <h3><strong>AVAILABLE DATES</strong></h3>
+                            <h3>From {{ $profpackage->PACKAGE_VALID_FR}} </h3> 
+                            <h3>Until {{ $profpackage->PACKAGE_VALID_FR}} </h3>
+
+							<hr style="border-color:#666;">
+                            
+                            <h3><strong>TERMS & CONDITIONS</strong></h3>
+							<h3>TERMS (TBC)</h3>
+
+                            </div>
+                          
+                          </div>
+ 
                     </div>
                         
-                        
-                    <div class="col-md-3">                   
-                           
-                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
-                         <p>PRICE FROM</p>
-                         <h2>£ {{ $profpackage->PACKAGE_PRICE}} {{ $profpackage->PACKAGE_APPLIES }}</h2>
-                       </div>   
-                           
-                       <div class="profile-headline-bx largepad col-sm-2 col-md-12">
-                         <p>PACKAGE</p>
-                         <h2>{{ $profpackage->PACKAGE_HOTEL_CATER}} </h2>
-                       </div>  
-                           
-                      
-                       
-                       
-                   </div>
-                       
-                       
-                   <div class="col-md-3">                   
-                           
-                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
-                         <p>NO. NIGHTS</p>
-                         <h2>{{ $profpackage->PACKAGE_NIGHTS}}</h2>
-                       </div>   
-                           
-                       <div class="col-sm-2 col-md-4">
-                            <a class="btn btn-default profile-headline-bx-btn" href="#">ENQUIRE </a>
-                       </div>  
-                           
-                           
-                       <div class="profile-headline-bx  largepad col-sm-2 col-md-8">
-                         <p>NO. ROUNDS</p>
-                         <h2>{{ $profpackage->PACKAGE_INC_ROUNDS}}</h2>
-                       </div>  
-                           
-                           
+     
+                   <div class="col-md-6">                   
+
+                       <h2 style="margin-bottom:30px;"><span class="text_grey" >Golf Courses Included</span></h2>
     
+                       @foreach ($profpackage->COURSES as $course)   
                        
+                       <a href="/golf-courses/{{$course['CLUB_URL']}}">
+                       <img  class="img-responsive"  src="/clubimages/{{$course['COURSE_IMAGE']}}">
+                       <h3 style="margin-top:10px;margin-bottom:30px;">{{$course['CLUB_NAME']}}<br>
+                       	   <span class="text_grey">{{$course['COURSE_NAME']}}</span></h3>
+                       </a>
+                       
+                       @endforeach
+                           
                        
                    </div>
                    

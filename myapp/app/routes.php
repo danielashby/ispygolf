@@ -28,7 +28,16 @@ Route::get('/', 'PagesController@index');
 /* Courses */
 Route::any('golf-courses', 'CourseSearchController@courses');
 Route::get('golf-courses/{urlid}',  'CourseProfileController@profile');
-Route::get('enquiries', 'EnquiriesController@enquiries');
+
+/* Enquiry Forms*/
+Route::get('golf-courses/{urlid}/enquire', 'EnquiriesController@golf_course_enquiry');
+Route::get('golf-courses/{urlid}/membership-enquire', 'EnquiriesController@golf_membership_enquiry');
+
+
+
+/* Form Submissions */
+Route::post('golf-courses/{urlid}/enquire', 'EnquiriesController@golf_course_enquiry_post');
+
 
 /* Golf Breaks */
 Route::any('golf-breaks', 'GolfbreaksSearchController@golfbreaks');

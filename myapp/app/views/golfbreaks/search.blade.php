@@ -250,8 +250,10 @@
                                                         
                                                         <div class="search-result-bx col-sm-2 col-md-12 " >
                                                         
+                                                        <a href="{{$venuepackage->HOTEL_URLID}}">
                                                         <p>VIEW THEIR LATEST</p>
                                                         <h2><span style="color:#cdde54;">GOLF BREAKS</span></h2>
+                                                        </a>
                                                         
                                                         </div>                                                        
                                             

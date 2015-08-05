@@ -3,7 +3,12 @@
 
 class GolfbreaksProfileController extends \BaseController {
 
-
+	private function formatDate($indate)
+	{
+		$split_date=explode("-", $indate);
+		$outdate=$split_date[2] . "/" . $split_date[1] . "/" . $split_date[0];	
+		return $outdate;
+	}
 
 	public function profile($urlid)
 	{
@@ -33,7 +38,8 @@ class GolfbreaksProfileController extends \BaseController {
 			$join->on('PACKAGES.PACKAGE_HOTEL_ID', '=', 'HOTELS.HOTEL_ID');
 		})
 		->leftJoin('HOTELS_IMAGEREFS', 'HOTELS.HOTEL_ID', '=', 'HOTELS_IMAGEREFS.IMG_HOTEL_ID')
-		->where('HOTELS.HOTEL_ADD1','like','%'.$urlid."%")->get();
+		->where('HOTELS.HOTEL_ADD1','like','%'.$urlid."%")
+		->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)->get();
 		
 		
 		//	->where('PACKAGES.PACKAGE_VALID_TO','>',$todaysdate)
@@ -157,7 +163,7 @@ class GolfbreaksProfileController extends \BaseController {
 					'PROF_HOTEL_CITY' => $package->HOTEL_CITY,	
 					'PROF_HOTEL_POSTCODE' => $package->HOTEL_POSTCODE,		
 					'PROF_HOTEL_COUNTRY' => $package->HOTEL_COUNTRY,	
-					'PROF_HOTEL_DESC' => utf8_encode($package->HOTEL_DESC),	
+					'PROF_HOTEL_DESC' => nl2br($package->HOTEL_DESC),	
 					'PROF_HASLOGO' => $PROF_HASLOGO,
 					'PROF_TELNO' => $package->HOTEL_ACCOM_TEL,
 					'PROF_EMAIL' => $package->HOTEL_ACCOM_EMAIL,
@@ -170,7 +176,61 @@ class GolfbreaksProfileController extends \BaseController {
 					
 			);
 			
-			$package->PACKAGE_DESCRIPTION = utf8_decode($package->PACKAGE_DESCRIPTION);
+			$package->PACKAGE_DESCRIPTION = utf8_decode( nl2br($package->PACKAGE_DESCRIPTION));
+			
+			//FORMAT DATES//
+	
+			$package->PACKAGE_VALID_FR = $this->formatDate($package->PACKAGE_VALID_FR);
+			$package->PACKAGE_VALID_TO = $this->formatDate($package->PACKAGE_VALID_TO);
+				
+			$packagecourses = array();
+			
+			$packagecourses[0]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_1;
+			$packagecourses[1]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_2;
+			$packagecourses[2]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_3;
+			$packagecourses[3]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_4;
+			$packagecourses[4]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_5;
+			$packagecourses[5]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_6;
+			$packagecourses[6]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_7;
+			$packagecourses[7]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_8;
+			$packagecourses[8]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_9;
+			$packagecourses[9]['PACKAGE_COURSE'] = $package->PACKAGE_COURSEID_10;
+	
+
+			$package->COURSES = array();
+			
+			for($i=0;$i<10;$i++)
+			{
+				
+				if($packagecourses[$i]['PACKAGE_COURSE']!=0)
+				{
+				
+					$courses = DB::table('COURSES')	
+					->leftJoin('CLUBS','COURSES.CLUB_ID','=','CLUBS.CLUB_ID')
+					->leftJoin('IMAGEREFS', 'COURSES.COURSE_ID', '=', 'IMAGEREFS.IMG_COURSE_ID')
+					->where('COURSES.COURSE_ID',$packagecourses[$i]['PACKAGE_COURSE'])->first();
+					
+					if($courses->COURSE_NAME==$courses->CLUB_ADD1)
+					{
+						$courses->COURSE_NAME = "";
+					}
+					
+					$package->COURSES[$i]['CLUB_NAME'] = $courses->CLUB_ADD1;
+					$package->COURSES[$i]['COURSE_NAME'] = $courses->COURSE_NAME;
+					$package->COURSES[$i]['COURSE_IMAGE'] = $courses->IMG_IMAGE1;
+					$package->COURSES[$i]['CLUB_URL'] = str_replace(" ","-", $courses->CLUB_URLID);
+					
+	
+				
+				}
+	
+
+				
+			}
+		
+			
+			
+			//
 					
 		}
 		

@@ -6,7 +6,7 @@
       
       	  <div class="col-md-12">
       
-                	<h2>MAKE AN ENQUIRY AT CLUB NAME - COURSE</h2>
+                	<h2>Golf Day Enquiry</h2>
                     <hr>
           
           </div>
@@ -17,11 +17,11 @@
             
             
             
-            <p>Completing this form allows you to request a  quote for your golf day from your chosen venue.  Simply complete  the following details and your request will be automatically submitted to your  chosen destination who will reply DIRECTLY to you by email.
+            <p>Completing this form allows you to request a  quote for your golf day at <strong>{{$club->CLUB_ADD1}}</strong>.  Simply complete  the following details and your request will be automatically submitted to your  chosen destination who will reply DIRECTLY to you by email.
             </p>
             
             
-            <form name="membenq" method="post" action="thankspage" role="form" class="validatedForm">
+            <form name="membenq" method="post" action="#" role="form" class="validatedForm">
             
                 <input type="hidden" name="recipient" value="ispygolf" />
                 <input type="hidden" name="club_id" value="to add club id" />
@@ -189,7 +189,7 @@
                 
                 <div class="col=md-2 text-right r-padding-15 bottom-buffer">
                 
-                <input type="submit" value="Submit" class="btn btn-default" alt="Submit" onClick="return checkForm();">
+                <input type="submit" value="SUBMIT" class="btn btn-default" alt="Submit" onClick="return checkForm();">
                 
                 </div>
                 
@@ -201,13 +201,72 @@
           </div>   
           
           <div class="col-md-4" >
-          
-          	<h2> Sidebar </h2>
-            
-            <hr>
-            
-            <p> This is going to be the sidebar </p>
-          
+    
+                @if($PROF_CLUB_OFFERS==true)
+                
+                <h2>Latest Special Offers</h2>
+                <hr>
+                
+                <?php $i=0; ?> 
+                
+               @foreach ($profoffers as $profoffer)   
+               
+               <?php $i++; ?>
+               
+					           
+				<div class="col-md-12 col-centered">
+                    
+                   	 <div class="row">
+                     
+                     	 <div class="col-md-12">
+                        
+                       	 <img  class="img-responsive"  src="/clubimages/{{$club->IMG_IMAGE2}}"/>
+                         
+                         <div class="profile_overlayimg" >
+                         
+                         	<img src="/images/special_offer_banner.png" />
+                         
+                         </div>
+                         
+                         </div>
+                        
+                     </div>
+                     
+                     <div class="row">
+                        
+                     <div class="col-md-12">
+                        
+                        <div class="col-md-12" style="background-color:#ececec;">
+                       	 
+                             <div class="col-md-12">
+                                
+                               <p>{{ $profoffer['SPECIAL_TEXT'] }}</p>
+                                
+                             </div>
+                                
+                                
+                             <div class="col-md-12 text-right">
+                                 <a class="btn btn-default profile-offers-bx-btn" href="#">DETAILS </a>
+                             </div>
+
+                     	  </div>
+                     
+                     </div>
+                     
+                     </div>
+                        
+                    
+                 </div>
+                 
+                 
+                 
+
+                 @endforeach      
+                 
+                 @endif           
+                
+                
+                
           </div>
           
          

@@ -4,6 +4,14 @@
 class GolfBreaksSearchController extends \BaseController {
 
 
+	private function formatDate($indate)
+	{
+		$split_date=explode("-", $indate);
+		$outdate=$split_date[2] . "/" . $split_date[1] . "/" . $split_date[0];	
+		return $outdate;
+	}
+	
+
 	public function golfbreaks()
 	{
 		
@@ -218,7 +226,7 @@ class GolfBreaksSearchController extends \BaseController {
 			  
 			  else
 			  {
-			  	$venuepackage->HOTEL_STAR_RATING = "STAR RATING NO AVAILABLE";
+			  	$venuepackage->HOTEL_STAR_RATING = "STAR RATING NOT AVAILABLE";
 			  }
 			  
 			  //PACKAGE APPLIES
@@ -353,6 +361,9 @@ class GolfBreaksSearchController extends \BaseController {
 				//$venuepackage->LOWEST_PACKAGE_PRICE = $package_price->PACKAGE_PRICE;
 				
 				//}
+				
+				//FORMAT DATES
+	
 				
 	  			
 				
