@@ -33,11 +33,8 @@ Route::get('golf-courses/{urlid}',  'CourseProfileController@profile');
 Route::get('golf-courses/{urlid}/enquire', 'EnquiriesController@golf_course_enquiry');
 Route::get('golf-courses/{urlid}/membership-enquire', 'EnquiriesController@golf_membership_enquiry');
 
-
-
 /* Form Submissions */
 Route::post('golf-courses/{urlid}/enquire', 'EnquiriesController@golf_course_enquiry_post');
-
 
 /* Golf Breaks */
 Route::any('golf-breaks', 'GolfbreaksSearchController@golfbreaks');
@@ -56,7 +53,7 @@ Route::get('golf-days', 'GolfdaysController@golfdays');
 Route::get('golf-membership', 'GolfmembershipController@golfmembership');
 
 /* Offers Page */
-Route::get('offers', 'OffersController@offers');
+Route::any('offers', 'OffersController@offers');
 
 /* Terms Page */
 Route::get('terms', 'TermsController@terms');

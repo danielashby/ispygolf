@@ -192,7 +192,7 @@
                        
                        
                    </div>
-                    
+                     <a name="offers"></a>
                </div>
                
                
@@ -207,7 +207,7 @@
                
 
                @if($profdetail['PROF_HASOFFERS']==true)
-                   
+              
                <div class="row  row-centered top-buffer-lg">   
                
 			    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"> 
@@ -217,9 +217,9 @@
                
                <?php $i++; ?>
                
-               <div class="col-md-6 col-centered" style="vertical-align:top;">
+               <div class="col-md-6 col-centered top-buffer" style="vertical-align:top;">
 
-                  <div class="panel panel-default">
+                  <div class="panel panel-default ">
                     <div class="panel-heading" role="tab" id="headingOne">
                       <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{$i}}" aria-expanded="false" aria-controls="collapseOne{{$i}}">
@@ -227,7 +227,7 @@
                         </a>
                       </h4>
                     </div>
-                    <div id="collapseOne{{$i}}" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                    <div id="collapseOne{{$i}}" class="panel-collapse {{ $profdetail['PROF_OFFERS_COLLAPSED'] }} " role="tabpanel" aria-labelledby="headingOne">
                       <div class="panel-body">
                         <p>
                         <strong>Valid from </strong><span class="text_grey">{{ $profoffer['SPECIAL_FROM'] }}</span><br>

@@ -41,6 +41,11 @@ class CourseProfileController extends \BaseController {
 		
 		$urlid = str_replace('-', ' ',$urlid);
 		
+		$offers_expanded = Input::get('oe');
+		
+		//DECIDE IF OFFERS COLLAPSED OR EXPANDED
+		if($offers_expanded==1) {$offers_expanded="";}
+		else {$offers_expanded="collapse";}
 		
 		$clubrecord = DB::table('CLUBS')->where('CLUB_URLID',$urlid)->first();
 		$clubid = $clubrecord->CLUB_ID;	
@@ -640,8 +645,8 @@ class CourseProfileController extends \BaseController {
 					'PROF_GOLFDAY_PRICE_FROM' => $PROF_GOLFDAY_PRICE_FROM,
 					'PROF_HASMEMBERS' => $course->MEMBERSHIP,
 					'PROF_MEMBERSHIP_AVAILABLE' => $PROF_MEMBERSHIP_AVAILABLE,
-					'PROF_MEMBERSHIP_IMAGE' => $PROF_MEMBERSHIP_IMAGE
-					
+					'PROF_MEMBERSHIP_IMAGE' => $PROF_MEMBERSHIP_IMAGE,
+					'PROF_OFFERS_COLLAPSED' => $offers_expanded
 					
 		);
 			
