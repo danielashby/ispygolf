@@ -3,7 +3,7 @@
  * Laravel - A PHP Framework For Web Artisans
  *
  * @package  Laravel
- * @author   Daniel	 Ashby <taylorotwell@gmail.com>
+ * @author   david	 Ashby <taylorotwell@gmail.com>
  */
 
 /*
